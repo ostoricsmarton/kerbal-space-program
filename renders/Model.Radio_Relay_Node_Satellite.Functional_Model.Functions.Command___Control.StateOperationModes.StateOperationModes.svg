@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mainSvg" width="723" height="570" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+		#viewport {
+			margin:0;
+			font-family:"Arial";
+			font-size: 10px;
+			text-rendering: optimizeLegibility;
+			image-rendering: optimizeQuality;
+			buffered-rendering: static;
+			color:rgb(109,112,114);
+		}
+		
+		#viewport tab { padding-left: 4em; }
+		
+		.fo-body { margin:0; }
+		
+		.stereotype::before { content: '\00AB'; }
+		.stereotype::after { content: '\00BB'; }
+		.text-stereotype { padding-top: 6px; }
+		
+		.visible { display:block; }
+		.invisible { display:none; }
+		
+		.text-center { text-align:center; }
+		.text-ellipsis {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	
+				g.element				{ fill: url(#gradStandardObject);stroke:rgb(157,139,141);stroke-width:1px;}
+				g.uml-Enumeration		{ fill: url(#gradEnumeration) }
+				g.element rect		{ filter:url(#dropshadow)}
+				g.element circle		{ filter:url(#dropshadow)}
+				g.element ellipse		{ filter:url(#dropshadow)}
+				.fillBeige			{ fill: #fcf2e3; }
+	 
+		g.element text {
+			stroke: rgb(253,250,247);
+			stroke-width:2px;
+			paint-order:stroke;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			fill: rgb(109,112,114);
+		}
+
+		#mainSvg { 
+			background: #aab9dc;
+			background: -moz-linear-gradient(top, #aab9dc 0%, #eff1f8 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aab9dc), color-stop(100%,#eff1f8));
+			background: -webkit-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -o-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -ms-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: linear-gradient(to bottom, #aab9dc 0%,#eff1f8 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab9dc', endColorstr='#eff1f8',GradientType=0 );
+			
+			background:white;
+		}
+		
+		.node					{ fill:none; }
+		.connector				{ fill:none;pointer-events:visibleStroke; }
+		.connectorPointerTarget { fill:none;pointer-events:stroke;visibility:hidden;stroke-width:17;stroke-linejoin:miter;stroke-linecap:butt; }
+		.connector-dash			{ fill:none; stroke-dasharray:7 4; pointer-events:visibleStroke; }
+		.part-notelink			{ fill:none; stroke-dasharray:3; pointer-events:visibleStroke; }
+		.part-associationclass	{ fill:none; stroke-dasharray:6 3; pointer-events:visibleStroke; }
+		.partition-splitter		{ fill:none; stroke-dasharray:3; }
+		.line-dash				{ stroke-dasharray: 7 4; }
+		
+		.action					{ text-anchor:middle; }
+		.actionpin				{ text-anchor:middle; }
+		.text-middle			{ text-anchor:middle; }
+		
+		.fill-gray				{ fill:#3f3f3f; }
+		.text-members			{ fill:#696969;stroke:none;text-anchor:start; }
+		.text-transition		{ fill:black;stroke:none;text-anchor:middle; }
+		.text-object-name		{ fill:black;stroke:none;text-anchor:middle;font-weight:bold; }
+		.text-stereotypes		{ fill:black;stroke:none;text-anchor:start; }
+		.connector-label		{ text-anchor:middle; alignment-baseline:hanging; }
+		.controlflow-label		{ text-anchor:end; alignment-baseline:baseline; }
+		.message-label			{ text-anchor:middle; }
+		.opaque-action-body		{ color:grey }
+	 
+		.partition-name			{ text-anchor:start;alignment-baseline:hanging; }
+		
+		.childelement-icon		{ display:inline-block;width:20px;height:16px;vertical-align:middle; }
+		.component-icon			{ fill:rgb(252,242,227); }
+		.template-arg-box		{ fill:rgb(252,242,227); stroke-dasharray: 7 4; }
+		.template-arg-text		{ text-anchor:start; alignment-baseline:hanging; }
+		
+		.hyperlink-text			{ color:blue; text-decoration:underline; margin:0 }
+		
+		.enumliterals-list {
+			list-style-type: none;
+			margin: 3px 0px 3px 24px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list {
+			list-style-type: none;
+			margin: 3px 0px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list li::before {
+			padding: 0px 8px 0px 5px
+		}
+		.properties-list li.private::before {
+			content: '-'; padding-right: 11px;
+		}
+		.properties-list li.protected::before {
+			content: '#';
+		}
+		.properties-list li.public::before {
+			content: '+';
+		}
+		.properties-list li.internal::before {
+			content: '~';
+		}
+		.properties-list li.package::before {
+			content: '~';
+		}
+	 
+		g.element .partitionHeader {
+			fill: none;
+			filter: none;
+		}
+		
+		.highlighted { filter:url(#highlighter)}
+		
+		.part-object-parent {
+			margin: 0px;
+			padding-top: 4px;
+			padding-right: 3px;
+			text-align: right;
+			font-style: italic;
+		}
+		
+		.part-object-rootleaf {
+			margin: 0px;
+			padding-right: 6px;
+			text-align: right;
+		}
+		
+		.part-object-tests {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			border-top: 2px solid red;
+		}
+		
+		.part-usecase-extensionpoints {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 3px;
+			padding-left: 12%;
+			vertical-align: top;
+			border-top: 2px solid red;
+		}
+		
+		.part-diagram-details { border:0; color:blue }
+		.part-diagram-details td { padding:0 }
+		
+		.part-diagram-notes { border:0 }
+		.part-diagram-notes td { padding:0 }		
+	    
+		.part-state-operation { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 71, 136) }
+		.part-state-operation-method { margin:0px; padding-left:10px; color:gray }
+		.part-state-operation-method p { margin: 2px 0px 2px 0px; }
+		.part-state-asframe-name { fill:#f7f3f7 }
+		.part-internal-transition-do { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 30, 30) }
+		.part-internal-transition-behavior { margin:2px 0 0 0; padding-left:15px; color:rgb(0, 71, 136) }
+		
+		.part-timeline-timelabel-container { fill:white }
+    
+	    .connected-feature_mark { fill:none; stroke-width:1 }
+	    
+	    .part-note { line-height:125%; }
+	    .part-note ul { margin:0; padding-left:17px; }
+	    .part-note ol { margin:0; padding-left:12px; }
+	    .part-note ul li { padding-left:10px; }
+	    .part-note ol li { padding-left:15px; }
+	    .part-note ntab { white-space:pre; tab-size:4em; }
+	    .part-note ntab::before { content: '	'; }
+	    
+	    .part-constraint { line-height:125%; }
+	    .part-constraint ul { margin:0; padding-left:5px; list-style-type: none; display: inline-block; }
+	    .part-constraint ol { margin:0; padding-left:5px; display: inline-block; }
+		.part-constraint ul li::before { content: '-'; padding: 0px 2px 0px 0px; }
+	    .part-constraint ntab { white-space:pre; tab-size:4em; }
+	    .part-constraint ntab::before { content: '	'; }
+    
+		.part-decision-label	{ text-anchor:middle;alignment-baseline:central }
+		
+		/*==============================*/
+		
+		.shapescript-errors {
+			border: 0;
+			color: red;
+			width: auto;
+			margin-top: 3px;
+			margin-right: 3px;
+			margin-left: auto;
+			background-color: #e5e5e5a3;
+		}
+		.shapescript-errors caption { text-align: left; font-weight: bold; background-color: inherit }
+		
+		.part-separator { border-top: 1px solid rgb(157,139,141); margin:0px; margin-top:5px }
+		.connector { fill:none; stroke:rgb(107,115,139) }
+		
+		.element.base-Action { fill:rgb(251,241,218) }
+		.element.base-Requirement { fill:url(#gradRequirement) }
+		.element.uml-Activity { fill:rgb(250,247,220) }
+		.element.uml-ActivityParameterNode { fill:rgb(247,197,195) }
+		.element.uml-Class.requirement { fill:rgb(242,251,239) }
+		.element.uml-Interface { fill:url(#gradInterface) }
+		.element.uml-Property, .element.uml-Port { fill:url(#gradProperty) }
+		.element.uml-DataType { fill:rgb(250,249,230) }
+		.element.uml-StateMachine { fill:rgb(245,247,240) }
+		.element.uml-State { fill:url(#gradState) }
+		.element.uml-InstanceSpecification { fill:rgb(224,244,245) }
+		.element.uml-Package { fill:rgb(249,243,240) }
+		.element.uml-Signal { fill:rgb(249,249,249) } /*rgb(255,255,255) - rgb(239,239,239)*/
+		.element.uml-Gate { fill:rgb(032,032,032) }
+		.element.uml-Trigger { fill:rgb(253,240,245) }
+		.element.uml-UseCase { fill:rgb(231,242,253) }
+		.element.uml-Comment { fill:white; stroke:rgb(131,181,190) }
+		
+		.element.uml-InitialNode, .element.uml-JoinNode, .element.uml-ForkNode { fill:rgb(152,132,132) }
+		.element.uml-Pseudostate.kind-Initial, .element.uml-Pseudostate.kind-Join, .element.uml-Pseudostate.kind-Fork, .element.uml-Pseudostate.kind-Junction { fill:rgb(152,132,132) }
+		.element.uml-DecisionNode, .element.uml-MergeNode, .element.uml-ActivityFinalNode, .element.uml-FinalState { fill:rgb(206,225,163) }				
+		.element.uml-Pseudostate.kind-DeepHistory,
+		.element.uml-Pseudostate.kind-ShallowHistory,
+		.element.uml-Pseudostate.kind-Choice,
+		.element.uml-Pseudostate.kind-ExitPoint,		
+		.element.uml-Pseudostate.kind-EntryPoint { fill:rgb(206,225,163) }
+		
+		.part-attribute-container { color:rgb(123,82,86) }
+		.part-operation-container { color:rgb(0, 71, 136) }
+		.part-taggedvalue-container { padding-top:4px }
+		.part-occurrence-specifications { color:rgb(123,82,86); padding-top:2px; padding-left:14px }
+		.part-object-notes { color:#a0a0a0; padding-top:10px; padding-left:11px; padding-right:2px; line-height:110% }
+		.part-timeline-container { fill:#f3fcfc }
+		
+		.requirement-text { white-space:break-spaces }
+
+		a.disabled { pointer-events:none; cursor:not-allowed; color:currentColor; text-decoration:auto }
+
+	]]></style>
+  <defs>
+    <g id="_EAArrow">
+      <polyline points="0,15 5,0 10,15" style="fill:none" />
+    </g>
+    <g id="_EAArrow2">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:black" />
+    </g>
+    <g id="_EAArrow3">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:rgb(252, 242, 227)" />
+    </g>
+    <g id="_EAArrowFull">
+      <polyline points="0,15 5,0 10,15 0,15" class="fillBeige" />
+    </g>
+    <g id="_EAArrowFullBlack">
+      <polyline points="0,15 5,0 10,15 0,15" style="fill:black" />
+    </g>
+    <g id="NestingArrow">
+      <circle cx="5" cy="8" r="8" class="fillBeige" />
+      <line x1="-3" y1="8" x2="13" y2="8" />
+      <line x1="5" y1="0" x2="5" y2="16" />
+    </g>
+    <g id="NestingArrowBigger">
+      <circle cx="5" cy="10" r="10" class="fillBeige" />
+      <line x1="-5" y1="10" x2="15" y2="10" />
+      <line x1="5" y1="0" x2="5" y2="20" />
+    </g>
+    <g id="AssemblyConnectorMark">
+      <path class="node" style="stroke-width: 1.001;" d="M-10,0 a10,10 0 1 0 20,0" />
+      <circle cx="0" cy="0" r="7" class="fillBeige" />
+    </g>
+    <g id="RealizesArrow">
+      <polyline points="0,10 5,0 10,10 0,10" style="fill:black" />
+    </g>
+    <linearGradient id="gradStandardObject" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(253,250,247);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(245,234,223);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradEnumeration" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(234,253,228);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(213,249,200);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDeepHistory" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradRequirement" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(242,251,239);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,243,215);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradInterface" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(241,236,250);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,212,242);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradProperty" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(218,234,252);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(189,217,249);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradState" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(244,237,217);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(236,225,192);stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropshadow" height="140%" width="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <!-- stdDeviation is how much to blur -->
+      <feOffset dx="3" dy="3" result="offsetblur" />
+      <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic" />
+        <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <g id="compositeDiagramIcon">
+      <ellipse cx="0" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <ellipse cx="15" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <polyline class="node" points="5,0 10,0" />
+    </g>
+    <filter id="highlighter">
+      <feFlood flood-color="rgb(0,0,255)" result="flood" />
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1" />
+      <feOffset dx=" 1" dy=" 1" in="composite1" result="offset1" />
+      <feOffset dx="-1" dy="-1" in="composite1" result="offset2" />
+      <feOffset dx=" 1" dy="-1" in="composite1" result="offset3" />
+      <feOffset dx="-1" dy=" 1" in="composite1" result="offset4" />
+      <feMerge result="merge">
+        <feMergeNode in="offset1" />
+        <feMergeNode in="offset2" />
+        <feMergeNode in="offset3" />
+        <feMergeNode in="offset4" />
+      </feMerge>
+      <feGaussianBlur in="merge" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="doubleStroke" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feMorphology in="SourceGraphic" result="a" operator="dilate" radius="1" />
+      <feComposite in="SourceGraphic" in2="a" result="xx" operator="xor" />
+    </filter>
+    <radialGradient id="gradNotePin" cx="35%" cy="35%" r="70%" fx="35%" fy="35%">
+      <stop offset="20%" style="stop-color:white;" />
+      <stop offset="100%" style="stop-color:gray;" />
+    </radialGradient>
+    <g id="NotePin">
+      <circle cx="0" cy="0" r="9" stroke="gray" fill="url(#gradNotePin)" />
+    </g>
+  </defs>
+  <g id="viewport" transform="translate(0.5,-9.5)">
+    <g style="" id="{107968A5-0F64-4d0f-A0AA-60D9E832152B}" transform="translate(10, 20)" class="element uml-StateMachine" data-diagram-object-guid="{be169037-7064-f961-316d-5d89d51f4c40}">
+      <rect x="0" y="0" width="703" height="548" style="fill:none" class="main-shape" />
+      <polygon points="0,0 217.0332,0 217.0332,5 204.0332,19 0,19" />
+      <text x="3" y="12" style="font-weight: bold; fill:black; stroke:none">[statemachine] StateOperationModes</text>
+    </g>
+    <g style="" id="{F2B262A5-693A-4811-B67C-A58005D0DACA}" transform="translate(391, 56)" class="element uml-State" data-diagram-object-guid="{22dfec6f-37db-7a1d-7f3e-16c41be9cd72}">
+      <rect x="0" y="0" rx="20" ry="20" width="159" height="60" class="main-shape" />
+      <foreignObject width="159" height="60" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;"></p>
+          <p class="text-center" style="margin:0px;padding:3px; padding-bottom:6px;">
+            <b>Safe Mode
+</b>
+          </p>
+          <div class="part-state-operations part-separator">
+            <div id="{F44F7C1D-AB8C-431f-ADF7-6F10BB1DBDD9}" class="main-shape part-state-operation uml-Operation">entry / Payload_Power_OFF</div>
+          </div>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{20006A4B-8663-4902-A967-2E538A3A4364}" transform="translate(55, 56)" class="element uml-Pseudostate kind-Initial" data-diagram-object-guid="{25b51dd2-bc79-0a29-583c-334e27a32cd8}">
+      <circle cx="10" cy="10" r="10" class="main-shape" />
+      <text x="10" y="30" class="text-transition">Initial</text>
+      <!--Label></-Label-->
+    </g>
+    <g style="" id="{0213E55F-60FB-4141-99E7-963776E45726}" transform="translate(133, 56)" class="element uml-State" data-diagram-object-guid="{384f0ee3-ccd2-5198-829d-5518073d9804}">
+      <rect x="0" y="0" rx="20" ry="20" width="120" height="60" class="main-shape" />
+      <foreignObject width="120" height="60" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;"></p>
+          <p class="text-center" style="margin:0px;padding:3px; padding-bottom:6px;">
+            <b>Launch Mode</b>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{94E23515-9454-40f1-8D0B-5B904831A11F}" transform="translate(31, 174)" class="element uml-State" data-diagram-object-guid="{957e7bd6-c815-2d49-24a5-ba80b2642637}">
+      <rect x="0" y="0" rx="20" ry="20" width="645" height="357" class="main-shape" />
+      <foreignObject width="645" height="357" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;"></p>
+          <p class="text-center" style="margin:0px;padding:3px; padding-bottom:6px;">
+            <b>Operational</b>
+          </p>
+          <div class="part-state-operations part-separator">
+            <div id="{5ED3995E-90A5-4f5e-A5C4-4B4C4203FAA2}" class="main-shape part-state-operation uml-Operation">entry / Payload_Power_ON</div>
+          </div>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3AA81579-081D-45ce-A269-722BE4A86F1C}" transform="translate(413, 436)" class="element uml-State" data-diagram-object-guid="{1585edb3-99a2-5063-8a1d-c72aab6f0249}">
+      <rect x="0" y="0" rx="20" ry="20" width="120" height="60" class="main-shape" />
+      <foreignObject width="120" height="60" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;"></p>
+          <p class="text-center" style="margin:0px;padding:3px; padding-bottom:6px;">
+            <b>Transmitting</b>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{E25D14DC-745D-4631-B808-C67CD3601658}" transform="translate(146, 244)" class="element uml-State" data-diagram-object-guid="{1b2c43ee-5031-01f1-b0a7-22593c31b244}">
+      <rect x="0" y="0" rx="20" ry="20" width="120" height="60" class="main-shape" />
+      <foreignObject width="120" height="60" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;"></p>
+          <p class="text-center" style="margin:0px;padding:3px; padding-bottom:6px;">
+            <b>Sleep</b>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EC359FE1-4BF7-4b3b-9407-644085352C3E}" transform="translate(404, 214)" class="element uml-State" data-diagram-object-guid="{4f5feef6-130d-d25b-a9ff-8b6aa1f90e8e}">
+      <rect x="0" y="0" rx="20" ry="20" width="120" height="60" class="main-shape" />
+      <foreignObject width="120" height="60" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;"></p>
+          <p class="text-center" style="margin:0px;padding:3px; padding-bottom:6px;">
+            <b>Listening</b>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{25B94D19-CFF8-4e86-91C0-77CFEEB0A1EC}" transform="translate(56, 247)" class="element uml-Pseudostate kind-Initial" data-diagram-object-guid="{cf592b72-4e72-8c5c-7368-b895aba117ef}">
+      <circle cx="10" cy="10" r="10" class="main-shape" />
+      <text x="10" y="30" class="text-transition">Initial</text>
+      <!--Label></-Label-->
+    </g>
+    <g id="{E14E94F6-6420-47a2-A842-5394CF03BDE6}" class="element uml-Transition" data-diagram-object-guid="{3f22d492-e441-91c9-35aa-c860267c5a30}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="75,67 133,76" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(128,76) rotate(98.82,5,0)" />
+      </g>
+    </g>
+    <g id="{813EED73-B681-4eb1-92B9-213D9095FEC0}" class="element uml-Transition" data-diagram-object-guid="{72cad1ea-7381-61dc-ab63-b754d20328e8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="491,436 639,366 510,274" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(505,274) rotate(305.496,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(574,333)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">/Antenna_Signal_Recive</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{88D367E2-E3DB-456f-83DA-FF4BEA78D56A}" class="element uml-Transition" data-diagram-object-guid="{81bc5874-27ff-32ca-48d2-0c1def91b9cd}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="211,116 245,174" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(240,174) rotate(149.621,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(228,158)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Inhibit_Timer_Expired</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{D53C60DB-E8E6-4660-A040-A5118385CB62}" class="element uml-Transition" data-diagram-object-guid="{9fdb8488-eb78-2370-a847-1df140cb3690}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="266,267 404,250" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(399,250) rotate(82.977,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(335,271)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">/Antenna_Signal_Recive</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{71301D1A-6306-4f7f-BC5D-6127BF292991}" class="element uml-Transition" data-diagram-object-guid="{a664bd1d-d16a-67cf-952f-73a51e0ab6b5}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="431,436 247,304" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(242,304) rotate(305.655,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(339,383)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">/Antenna_Signal_StandBy</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{A77F44CA-8752-416f-B7B7-487A08CC03F9}" class="element uml-Transition" data-diagram-object-guid="{c557546e-e5b1-9737-b0c1-68e4eaa8b51b}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="422,174 448,116" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(443,116) rotate(24.146,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(435,158)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Battery_Power&lt; 20% OR Current_Temp&gt; 45 C</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{A7AB8BC5-D13B-48b0-A2B6-0B847EA51D2A}" class="element uml-Transition" data-diagram-object-guid="{ee59e085-f7fd-4879-fe80-8af6b804b45d}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="527,116 503,174" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(498,174) rotate(202.479,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(515,158)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Battery_Power &gt; 50% AND Current_Temp &lt; 30C</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{B4CF75BB-63E1-4937-86D8-4AF433B3809B}" class="element uml-Transition" data-diagram-object-guid="{f2701556-576d-7d28-abae-f7fdb5f328f2}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="465,274 471,436" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(466,436) rotate(177.879,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(468,368)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">/Antenna_Signal_Transmit</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{8B604176-5D62-4b10-989B-353D8BC38F5F}" class="element uml-Transition" data-diagram-object-guid="{f66555c9-f426-9b95-cbac-5a93e89051dd}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="76,258 146,266" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(141,266) rotate(96.52,5,0)" />
+      </g>
+    </g>
+  </g>
+</svg>

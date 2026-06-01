@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mainSvg" width="868" height="586" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+		#viewport {
+			margin:0;
+			font-family:"Arial";
+			font-size: 10px;
+			text-rendering: optimizeLegibility;
+			image-rendering: optimizeQuality;
+			buffered-rendering: static;
+			color:rgb(109,112,114);
+		}
+		
+		#viewport tab { padding-left: 4em; }
+		
+		.fo-body { margin:0; }
+		
+		.stereotype::before { content: '\00AB'; }
+		.stereotype::after { content: '\00BB'; }
+		.text-stereotype { padding-top: 6px; }
+		
+		.visible { display:block; }
+		.invisible { display:none; }
+		
+		.text-center { text-align:center; }
+		.text-ellipsis {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	
+				g.element				{ fill: url(#gradStandardObject);stroke:rgb(157,139,141);stroke-width:1px;}
+				g.uml-Enumeration		{ fill: url(#gradEnumeration) }
+				g.element rect		{ filter:url(#dropshadow)}
+				g.element circle		{ filter:url(#dropshadow)}
+				g.element ellipse		{ filter:url(#dropshadow)}
+				.fillBeige			{ fill: #fcf2e3; }
+	 
+		g.element text {
+			stroke: rgb(253,250,247);
+			stroke-width:2px;
+			paint-order:stroke;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			fill: rgb(109,112,114);
+		}
+
+		#mainSvg { 
+			background: #aab9dc;
+			background: -moz-linear-gradient(top, #aab9dc 0%, #eff1f8 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aab9dc), color-stop(100%,#eff1f8));
+			background: -webkit-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -o-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -ms-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: linear-gradient(to bottom, #aab9dc 0%,#eff1f8 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab9dc', endColorstr='#eff1f8',GradientType=0 );
+			
+			background:white;
+		}
+		
+		.node					{ fill:none; }
+		.connector				{ fill:none;pointer-events:visibleStroke; }
+		.connectorPointerTarget { fill:none;pointer-events:stroke;visibility:hidden;stroke-width:17;stroke-linejoin:miter;stroke-linecap:butt; }
+		.connector-dash			{ fill:none; stroke-dasharray:7 4; pointer-events:visibleStroke; }
+		.part-notelink			{ fill:none; stroke-dasharray:3; pointer-events:visibleStroke; }
+		.part-associationclass	{ fill:none; stroke-dasharray:6 3; pointer-events:visibleStroke; }
+		.partition-splitter		{ fill:none; stroke-dasharray:3; }
+		.line-dash				{ stroke-dasharray: 7 4; }
+		
+		.action					{ text-anchor:middle; }
+		.actionpin				{ text-anchor:middle; }
+		.text-middle			{ text-anchor:middle; }
+		
+		.fill-gray				{ fill:#3f3f3f; }
+		.text-members			{ fill:#696969;stroke:none;text-anchor:start; }
+		.text-transition		{ fill:black;stroke:none;text-anchor:middle; }
+		.text-object-name		{ fill:black;stroke:none;text-anchor:middle;font-weight:bold; }
+		.text-stereotypes		{ fill:black;stroke:none;text-anchor:start; }
+		.connector-label		{ text-anchor:middle; alignment-baseline:hanging; }
+		.controlflow-label		{ text-anchor:end; alignment-baseline:baseline; }
+		.message-label			{ text-anchor:middle; }
+		.opaque-action-body		{ color:grey }
+	 
+		.partition-name			{ text-anchor:start;alignment-baseline:hanging; }
+		
+		.childelement-icon		{ display:inline-block;width:20px;height:16px;vertical-align:middle; }
+		.component-icon			{ fill:rgb(252,242,227); }
+		.template-arg-box		{ fill:rgb(252,242,227); stroke-dasharray: 7 4; }
+		.template-arg-text		{ text-anchor:start; alignment-baseline:hanging; }
+		
+		.hyperlink-text			{ color:blue; text-decoration:underline; margin:0 }
+		
+		.enumliterals-list {
+			list-style-type: none;
+			margin: 3px 0px 3px 24px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list {
+			list-style-type: none;
+			margin: 3px 0px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list li::before {
+			padding: 0px 8px 0px 5px
+		}
+		.properties-list li.private::before {
+			content: '-'; padding-right: 11px;
+		}
+		.properties-list li.protected::before {
+			content: '#';
+		}
+		.properties-list li.public::before {
+			content: '+';
+		}
+		.properties-list li.internal::before {
+			content: '~';
+		}
+		.properties-list li.package::before {
+			content: '~';
+		}
+	 
+		g.element .partitionHeader {
+			fill: none;
+			filter: none;
+		}
+		
+		.highlighted { filter:url(#highlighter)}
+		
+		.part-object-parent {
+			margin: 0px;
+			padding-top: 4px;
+			padding-right: 3px;
+			text-align: right;
+			font-style: italic;
+		}
+		
+		.part-object-rootleaf {
+			margin: 0px;
+			padding-right: 6px;
+			text-align: right;
+		}
+		
+		.part-object-tests {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			border-top: 2px solid red;
+		}
+		
+		.part-usecase-extensionpoints {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 3px;
+			padding-left: 12%;
+			vertical-align: top;
+			border-top: 2px solid red;
+		}
+		
+		.part-diagram-details { border:0; color:blue }
+		.part-diagram-details td { padding:0 }
+		
+		.part-diagram-notes { border:0 }
+		.part-diagram-notes td { padding:0 }		
+	    
+		.part-state-operation { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 71, 136) }
+		.part-state-operation-method { margin:0px; padding-left:10px; color:gray }
+		.part-state-operation-method p { margin: 2px 0px 2px 0px; }
+		.part-state-asframe-name { fill:#f7f3f7 }
+		.part-internal-transition-do { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 30, 30) }
+		.part-internal-transition-behavior { margin:2px 0 0 0; padding-left:15px; color:rgb(0, 71, 136) }
+		
+		.part-timeline-timelabel-container { fill:white }
+    
+	    .connected-feature_mark { fill:none; stroke-width:1 }
+	    
+	    .part-note { line-height:125%; }
+	    .part-note ul { margin:0; padding-left:17px; }
+	    .part-note ol { margin:0; padding-left:12px; }
+	    .part-note ul li { padding-left:10px; }
+	    .part-note ol li { padding-left:15px; }
+	    .part-note ntab { white-space:pre; tab-size:4em; }
+	    .part-note ntab::before { content: '	'; }
+	    
+	    .part-constraint { line-height:125%; }
+	    .part-constraint ul { margin:0; padding-left:5px; list-style-type: none; display: inline-block; }
+	    .part-constraint ol { margin:0; padding-left:5px; display: inline-block; }
+		.part-constraint ul li::before { content: '-'; padding: 0px 2px 0px 0px; }
+	    .part-constraint ntab { white-space:pre; tab-size:4em; }
+	    .part-constraint ntab::before { content: '	'; }
+    
+		.part-decision-label	{ text-anchor:middle;alignment-baseline:central }
+		
+		/*==============================*/
+		
+		.shapescript-errors {
+			border: 0;
+			color: red;
+			width: auto;
+			margin-top: 3px;
+			margin-right: 3px;
+			margin-left: auto;
+			background-color: #e5e5e5a3;
+		}
+		.shapescript-errors caption { text-align: left; font-weight: bold; background-color: inherit }
+		
+		.part-separator { border-top: 1px solid rgb(157,139,141); margin:0px; margin-top:5px }
+		.connector { fill:none; stroke:rgb(107,115,139) }
+		
+		.element.base-Action { fill:rgb(251,241,218) }
+		.element.base-Requirement { fill:url(#gradRequirement) }
+		.element.uml-Activity { fill:rgb(250,247,220) }
+		.element.uml-ActivityParameterNode { fill:rgb(247,197,195) }
+		.element.uml-Class.requirement { fill:rgb(242,251,239) }
+		.element.uml-Interface { fill:url(#gradInterface) }
+		.element.uml-Property, .element.uml-Port { fill:url(#gradProperty) }
+		.element.uml-DataType { fill:rgb(250,249,230) }
+		.element.uml-StateMachine { fill:rgb(245,247,240) }
+		.element.uml-State { fill:url(#gradState) }
+		.element.uml-InstanceSpecification { fill:rgb(224,244,245) }
+		.element.uml-Package { fill:rgb(249,243,240) }
+		.element.uml-Signal { fill:rgb(249,249,249) } /*rgb(255,255,255) - rgb(239,239,239)*/
+		.element.uml-Gate { fill:rgb(032,032,032) }
+		.element.uml-Trigger { fill:rgb(253,240,245) }
+		.element.uml-UseCase { fill:rgb(231,242,253) }
+		.element.uml-Comment { fill:white; stroke:rgb(131,181,190) }
+		
+		.element.uml-InitialNode, .element.uml-JoinNode, .element.uml-ForkNode { fill:rgb(152,132,132) }
+		.element.uml-Pseudostate.kind-Initial, .element.uml-Pseudostate.kind-Join, .element.uml-Pseudostate.kind-Fork, .element.uml-Pseudostate.kind-Junction { fill:rgb(152,132,132) }
+		.element.uml-DecisionNode, .element.uml-MergeNode, .element.uml-ActivityFinalNode, .element.uml-FinalState { fill:rgb(206,225,163) }				
+		.element.uml-Pseudostate.kind-DeepHistory,
+		.element.uml-Pseudostate.kind-ShallowHistory,
+		.element.uml-Pseudostate.kind-Choice,
+		.element.uml-Pseudostate.kind-ExitPoint,		
+		.element.uml-Pseudostate.kind-EntryPoint { fill:rgb(206,225,163) }
+		
+		.part-attribute-container { color:rgb(123,82,86) }
+		.part-operation-container { color:rgb(0, 71, 136) }
+		.part-taggedvalue-container { padding-top:4px }
+		.part-occurrence-specifications { color:rgb(123,82,86); padding-top:2px; padding-left:14px }
+		.part-object-notes { color:#a0a0a0; padding-top:10px; padding-left:11px; padding-right:2px; line-height:110% }
+		.part-timeline-container { fill:#f3fcfc }
+		
+		.requirement-text { white-space:break-spaces }
+
+		a.disabled { pointer-events:none; cursor:not-allowed; color:currentColor; text-decoration:auto }
+
+	]]></style>
+  <defs>
+    <g id="_EAArrow">
+      <polyline points="0,15 5,0 10,15" style="fill:none" />
+    </g>
+    <g id="_EAArrow2">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:black" />
+    </g>
+    <g id="_EAArrow3">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:rgb(252, 242, 227)" />
+    </g>
+    <g id="_EAArrowFull">
+      <polyline points="0,15 5,0 10,15 0,15" class="fillBeige" />
+    </g>
+    <g id="_EAArrowFullBlack">
+      <polyline points="0,15 5,0 10,15 0,15" style="fill:black" />
+    </g>
+    <g id="NestingArrow">
+      <circle cx="5" cy="8" r="8" class="fillBeige" />
+      <line x1="-3" y1="8" x2="13" y2="8" />
+      <line x1="5" y1="0" x2="5" y2="16" />
+    </g>
+    <g id="NestingArrowBigger">
+      <circle cx="5" cy="10" r="10" class="fillBeige" />
+      <line x1="-5" y1="10" x2="15" y2="10" />
+      <line x1="5" y1="0" x2="5" y2="20" />
+    </g>
+    <g id="AssemblyConnectorMark">
+      <path class="node" style="stroke-width: 1.001;" d="M-10,0 a10,10 0 1 0 20,0" />
+      <circle cx="0" cy="0" r="7" class="fillBeige" />
+    </g>
+    <g id="RealizesArrow">
+      <polyline points="0,10 5,0 10,10 0,10" style="fill:black" />
+    </g>
+    <linearGradient id="gradStandardObject" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(253,250,247);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(245,234,223);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradEnumeration" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(234,253,228);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(213,249,200);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDeepHistory" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradRequirement" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(242,251,239);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,243,215);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradInterface" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(241,236,250);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,212,242);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradProperty" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(218,234,252);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(189,217,249);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradState" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(244,237,217);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(236,225,192);stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropshadow" height="140%" width="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <!-- stdDeviation is how much to blur -->
+      <feOffset dx="3" dy="3" result="offsetblur" />
+      <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic" />
+        <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <g id="compositeDiagramIcon">
+      <ellipse cx="0" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <ellipse cx="15" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <polyline class="node" points="5,0 10,0" />
+    </g>
+    <filter id="highlighter">
+      <feFlood flood-color="rgb(0,0,255)" result="flood" />
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1" />
+      <feOffset dx=" 1" dy=" 1" in="composite1" result="offset1" />
+      <feOffset dx="-1" dy="-1" in="composite1" result="offset2" />
+      <feOffset dx=" 1" dy="-1" in="composite1" result="offset3" />
+      <feOffset dx="-1" dy=" 1" in="composite1" result="offset4" />
+      <feMerge result="merge">
+        <feMergeNode in="offset1" />
+        <feMergeNode in="offset2" />
+        <feMergeNode in="offset3" />
+        <feMergeNode in="offset4" />
+      </feMerge>
+      <feGaussianBlur in="merge" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="doubleStroke" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feMorphology in="SourceGraphic" result="a" operator="dilate" radius="1" />
+      <feComposite in="SourceGraphic" in2="a" result="xx" operator="xor" />
+    </filter>
+    <radialGradient id="gradNotePin" cx="35%" cy="35%" r="70%" fx="35%" fy="35%">
+      <stop offset="20%" style="stop-color:white;" />
+      <stop offset="100%" style="stop-color:gray;" />
+    </radialGradient>
+    <g id="NotePin">
+      <circle cx="0" cy="0" r="9" stroke="gray" fill="url(#gradNotePin)" />
+    </g>
+  </defs>
+  <g id="viewport" transform="translate(-1.5,-5.5)">
+    <g style="" id="{CD29FCAF-B15E-44d8-9FD2-71E918F202D0}" transform="translate(368, 369)" class="element uml-Class" data-diagram-object-guid="{0bb31b8a-36c4-c196-811a-ffcd11f64a72}">
+      <rect x="0" y="0" width="130" height="137" style="" class="main-shape" />
+      <foreignObject width="130" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>FlowingCharge</b>
+          </p>
+          <div class="part-object-sysmlblock">
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>«PhSVariable»</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">i:Current</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">v:Voltage</p>
+            </div>
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>values</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">i:Current</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">v:Voltage</p>
+            </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C52D9172-8AE4-4f2c-9D02-FF6FC764A683}" transform="translate(715, 491)" class="element uml-Class" data-diagram-object-guid="{24f3718f-76a9-7774-3cb8-e474b530831f}">
+      <rect x="0" y="0" width="134" height="89" style="" class="main-shape" />
+      <foreignObject width="134" height="89" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">InterfaceBlock</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>EntropyFlowElement</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-interfaceblock-flowproperty part-separator">
+            <p class="text-center" style="margin:0; margin-top:4px;">
+              <i>flow properties</i>
+            </p>
+            <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">inout sF</p>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{46EBD2B9-CE52-45b0-A14D-CA0476FDFFDF}" transform="translate(26, 369)" class="element uml-Class" data-diagram-object-guid="{284d62b0-f96e-d1bf-4a46-cbd8ffa1dd43}">
+      <rect x="0" y="0" width="120" height="137" style="" class="main-shape" />
+      <foreignObject width="120" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>FlowingLMom</b>
+          </p>
+          <div class="part-object-sysmlblock">
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>«PhSVariable»</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">lV:Velocity</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">f:Force</p>
+            </div>
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>values</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">lV:Velocity</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">f:Force</p>
+            </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5413EC09-8BB3-4ac8-B6FF-FBBB0A03B8D3}" transform="translate(703, 369)" class="element uml-Class" data-diagram-object-guid="{2910cb5b-7fee-3d58-0206-7c3adae5e39d}">
+      <rect x="0" y="0" width="157" height="137" style="" class="main-shape" />
+      <foreignObject width="157" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>FlowingEntropy</b>
+          </p>
+          <div class="part-object-sysmlblock">
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>«PhSVariable»</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">sFR:EntropyFlowRate</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">t:Temperature</p>
+            </div>
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>values</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">sFR:EntropyFlowRate</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">t:Temperature</p>
+            </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{277402BF-5243-4e11-8897-55EE0BAAD66A}" transform="translate(376, 16)" class="element uml-Class" data-diagram-object-guid="{3d0b4d3f-c7d1-6c78-7efd-219691ae5a79}">
+      <rect x="0" y="0" width="115" height="98" style="" class="main-shape" />
+      <foreignObject width="115" height="98" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>QuantityKind</b>
+          </p>
+          <div class="part-attribute-container part-separator">
+            <ul class="properties-list">
+              <li id="{469E73CF-A733-4198-8774-51943DCB7F67}" class="main-shape text-ellipsis part-attribute private uml-Property">
+                <span style="">
+                  <span class="part-attribute-name">definitionURI: </span>
+                  <span class="part-attribute-type">String</span>
+                  <span class="part-attribute-multiplicity"> [1]</span>
+                  <span class="part-attribute-value"></span>
+                  <span class="part-attribute-subsredef"></span>
+                </span>
+              </li>
+              <li id="{336D31CE-2511-41c9-A6B3-E101AC11038C}" class="main-shape text-ellipsis part-attribute private uml-Property">
+                <span style="">
+                  <span class="part-attribute-name">description: </span>
+                  <span class="part-attribute-type">String</span>
+                  <span class="part-attribute-multiplicity"> [1]</span>
+                  <span class="part-attribute-value"></span>
+                  <span class="part-attribute-subsredef"></span>
+                </span>
+              </li>
+              <li id="{CC6C2110-F313-4012-AFC5-7E5124931FB6}" class="main-shape text-ellipsis part-attribute private uml-Property">
+                <span style="">
+                  <span class="part-attribute-name">symbol: </span>
+                  <span class="part-attribute-type">String</span>
+                  <span class="part-attribute-multiplicity"> [1]</span>
+                  <span class="part-attribute-value"></span>
+                  <span class="part-attribute-subsredef"></span>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="part-object-sysmlblock">
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>properties</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">symbol:String</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">description:String</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">definitionURI:String</p>
+            </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C3BFAA87-985F-4e93-AF71-47247DE054ED}" transform="translate(12, 491)" class="element uml-Class" data-diagram-object-guid="{62e65c8e-0e5c-4d56-d369-9313c0bb01a5}">
+      <rect x="0" y="0" width="148" height="89" style="" class="main-shape" />
+      <foreignObject width="148" height="89" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">InterfaceBlock</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>LMomFlowElement</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-interfaceblock-flowproperty part-separator">
+            <p class="text-center" style="margin:0; margin-top:4px;">
+              <i>flow properties</i>
+            </p>
+            <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">inout lMomF</p>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{102528F8-55B9-45ff-BB96-23BE712CC7F0}" transform="translate(558, 286)" class="element uml-Class" data-diagram-object-guid="{6519900b-41ab-2a1e-b63f-e018cc3d628d}">
+      <rect x="0" y="0" width="100" height="54" style="" class="main-shape" />
+      <foreignObject width="100" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Value Types and Units::<wbr />Volume</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{4CC3DC96-AC2F-4953-A8A8-1AEF10FE8A08}" transform="translate(533, 369)" class="element uml-Class" data-diagram-object-guid="{7ea693e7-6218-378f-5314-b952a4c3fae5}">
+      <rect x="0" y="0" width="149" height="137" style="" class="main-shape" />
+      <foreignObject width="149" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>FlowingVolume</b>
+          </p>
+          <div class="part-object-sysmlblock">
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>«PhSVariable»</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">q:VolumeFlowRate</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">p:Pressure</p>
+            </div>
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>values</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">q:VolumeFlowRate</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">p:Pressure</p>
+            </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{414989AD-542B-42f8-88FE-425089D83A29}" transform="translate(36, 286)" class="element uml-Class" data-diagram-object-guid="{7fba1f18-8ac7-aeb9-6f6e-475dbd121576}">
+      <rect x="0" y="0" width="100" height="54" style="" class="main-shape" />
+      <foreignObject width="100" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>LinearMomentum</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A8897EE0-8863-4a15-A0A6-21EF66649132}" transform="translate(369, 157)" class="element uml-Class" data-diagram-object-guid="{802e97d1-dcf0-693c-22b4-c56f6bea3a16}">
+      <rect x="0" y="0" width="129" height="54" style="" class="main-shape" />
+      <foreignObject width="129" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>ConservedQuantityKind</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1696EDEE-91CD-4e78-B275-61C41560576E}" transform="translate(732, 286)" class="element uml-Class" data-diagram-object-guid="{86e14b81-e0af-2ccb-6e37-89658d7214cc}">
+      <rect x="0" y="0" width="100" height="54" style="" class="main-shape" />
+      <foreignObject width="100" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Entropy</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EF27A460-863E-4cda-B46D-00D83EB68EDC}" transform="translate(384, 286)" class="element uml-Class" data-diagram-object-guid="{ace91d8b-77af-1b0f-9ed6-1e834da78add}">
+      <rect x="0" y="0" width="100" height="54" style="" class="main-shape" />
+      <foreignObject width="100" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Charge</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B9C3A2BF-8C9E-4c28-9920-5E4C01D25227}" transform="translate(210, 286)" class="element uml-Class" data-diagram-object-guid="{bdcf35fc-f236-f3f2-f34f-7c7dcd00469a}">
+      <rect x="0" y="0" width="100" height="54" style="" class="main-shape" />
+      <foreignObject width="100" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>AngularMomentum</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{9A48DAC2-7B6F-45aa-8B04-1776DE03B765}" transform="translate(184, 491)" class="element uml-Class" data-diagram-object-guid="{c36bb4ea-4bfd-c67b-b9f1-2ad6c0df39b3}">
+      <rect x="0" y="0" width="152" height="89" style="" class="main-shape" />
+      <foreignObject width="152" height="89" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">InterfaceBlock</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>AMomFlowElement</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-interfaceblock-flowproperty part-separator">
+            <p class="text-center" style="margin:0; margin-top:4px;">
+              <i>flow properties</i>
+            </p>
+            <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">inout aMomF</p>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{068002E9-CB67-4d0a-A512-EF6186DC08A4}" transform="translate(541, 491)" class="element uml-Class" data-diagram-object-guid="{c6766d65-9952-39d4-557b-4e9cd1148f9b}">
+      <rect x="0" y="0" width="133" height="89" style="" class="main-shape" />
+      <foreignObject width="133" height="89" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">InterfaceBlock</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>VolumeFlowElement</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-interfaceblock-flowproperty part-separator">
+            <p class="text-center" style="margin:0; margin-top:4px;">
+              <i>flow properties</i>
+            </p>
+            <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">inout vF</p>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{6E2085C4-D68C-4009-AB88-5125DFE5C58B}" transform="translate(368, 491)" class="element uml-Class" data-diagram-object-guid="{d1b227c3-1c10-cdcf-e0b8-3b8d0cfc05d9}">
+      <rect x="0" y="0" width="131" height="89" style="" class="main-shape" />
+      <foreignObject width="131" height="89" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">InterfaceBlock</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>ChargeFlowElement</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-interfaceblock-flowproperty part-separator">
+            <p class="text-center" style="margin:0; margin-top:4px;">
+              <i>flow properties</i>
+            </p>
+            <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">inout cF</p>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{886079ED-D595-4b68-90B8-807940F4AED7}" transform="translate(191, 369)" class="element uml-Class" data-diagram-object-guid="{fae9061b-0be2-3739-7589-fb1384a6b4d2}">
+      <rect x="0" y="0" width="139" height="137" style="" class="main-shape" />
+      <foreignObject width="139" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">block</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>FlowingAMom</b>
+          </p>
+          <div class="part-object-sysmlblock">
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>«PhSVariable»</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">aV:AngularVelocity</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">trq:Torque</p>
+            </div>
+            <div class="part-separator">
+              <p class="text-center" style="margin:0; margin-top:4px;">
+                <i>values</i>
+              </p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">aV:AngularVelocity</p>
+              <p class="text-ellipsis" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">trq:Torque</p>
+            </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g id="{ACA04400-BF99-4e68-87B4-64D5B4BEDFBE}" class="element uml-Generalization" data-diagram-object-guid="{2da6c5f4-5b33-9c9f-e07e-20f5e842d563}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="607,286 607,261 433,261 433,211" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,211) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{6E7165D9-CD2D-48cf-905A-AF33B431CBC7}" class="element uml-Generalization" data-diagram-object-guid="{3ecff013-10df-bd4b-e15d-e63b15aa36be}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="85,286 85,261 433,261 433,211" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,211) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{24DEFC75-F515-426f-8278-39599266DCB5}" class="element uml-Generalization" data-diagram-object-guid="{453796cd-6b05-d5d0-1e57-f74b57c72765}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="259,286 259,261 433,261 433,211" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,211) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{D79DE1E3-9C05-40d2-BAC8-92B3EE19C275}" class="element uml-Generalization" data-diagram-object-guid="{4cd18c7e-67d1-8cc3-7b16-805fe01c6f58}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="260,369 260,340" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(255,340) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{30C6BB0F-2056-4af2-B6F2-4BC21EB7A9E9}" class="element uml-Generalization" data-diagram-object-guid="{54d3a1d1-e284-0ae7-6d94-6a7b94633d7d}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="433,369 433,340" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,340) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{D90D9E5F-F610-4db4-952C-403B6F5F32B3}" class="element uml-Generalization" data-diagram-object-guid="{72459b18-5702-249c-a269-740ec9a31f90}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="433,157 433,114" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,114) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{9EECDA2E-6960-41ae-A9EB-2DD5E2837DD0}" class="element uml-Generalization" data-diagram-object-guid="{7ae352d4-a963-fdcb-5a3e-76369da7521e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="607,369 607,340" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(602,340) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{45309F9E-8122-47ec-BC1B-5CC3FF6F2911}" class="element uml-Generalization" data-diagram-object-guid="{912da5cd-7af4-b645-38eb-f9fcf4d78567}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="86,369 86,340" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(81,340) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{12CA09E1-433F-481f-B0A1-24C490245DC7}" class="element uml-Generalization" data-diagram-object-guid="{d23d2b33-a5b9-4e11-e9c8-2aa1122886ba}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="433,286 433,261 433,261 433,211" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,211) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{DB0BC18B-44AF-49de-9E8E-B7CD91A6DB89}" class="element uml-Generalization" data-diagram-object-guid="{e3ac7799-2080-d8cf-792d-6fe739386e68}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="782,286 782,261 433,261 433,211" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(428,211) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{2B62A87A-93E5-4560-8350-16E16C0404DD}" class="element uml-Generalization" data-diagram-object-guid="{e83497d6-9235-4ff0-2e08-012c0e38e9f8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="781,369 781,340" />
+        <use style="" xlink:href="#_EAArrowFull" transform="translate(776,340) rotate(0,5,0)" />
+      </g>
+    </g>
+  </g>
+</svg>

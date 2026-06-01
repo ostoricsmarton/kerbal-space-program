@@ -1,0 +1,30 @@
+name: lta-render
+
+on:
+  push:
+
+concurrency:
+  group: lta-render-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lta-render:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+      - name: GetLTA
+        uses: ftsrg-rete/download-lta@main
+        id: GetLTA
+      - run: echo "${{ secrets.LTA_LICENSE }}" | base64 -d > lta.lic
+      - name: Render
+        run: |
+          mkdir svg
+          ${{ steps.GetLTA.outputs.LTA }} SvgExport --Model "model.qeax" --FilenamePattern 1 --DiagramDirectory ./svg 
+      
+      - name: Deploy svgs
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
+        with:
+          branch: ${{ github.ref_name }}
+          folder: svg
+          target-folder: renders
+          attempt-limit: 5

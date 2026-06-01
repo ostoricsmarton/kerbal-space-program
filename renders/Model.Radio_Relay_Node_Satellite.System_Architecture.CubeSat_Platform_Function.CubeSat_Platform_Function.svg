@@ -1,0 +1,2005 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mainSvg" width="1502" height="1185" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+		#viewport {
+			margin:0;
+			font-family:"Arial";
+			font-size: 10px;
+			text-rendering: optimizeLegibility;
+			image-rendering: optimizeQuality;
+			buffered-rendering: static;
+			color:rgb(109,112,114);
+		}
+		
+		#viewport tab { padding-left: 4em; }
+		
+		.fo-body { margin:0; }
+		
+		.stereotype::before { content: '\00AB'; }
+		.stereotype::after { content: '\00BB'; }
+		.text-stereotype { padding-top: 6px; }
+		
+		.visible { display:block; }
+		.invisible { display:none; }
+		
+		.text-center { text-align:center; }
+		.text-ellipsis {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	
+				g.element				{ fill: url(#gradStandardObject);stroke:rgb(157,139,141);stroke-width:1px;}
+				g.uml-Enumeration		{ fill: url(#gradEnumeration) }
+				g.element rect		{ filter:url(#dropshadow)}
+				g.element circle		{ filter:url(#dropshadow)}
+				g.element ellipse		{ filter:url(#dropshadow)}
+				.fillBeige			{ fill: #fcf2e3; }
+	 
+		g.element text {
+			stroke: rgb(253,250,247);
+			stroke-width:2px;
+			paint-order:stroke;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			fill: rgb(109,112,114);
+		}
+
+		#mainSvg { 
+			background: #aab9dc;
+			background: -moz-linear-gradient(top, #aab9dc 0%, #eff1f8 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aab9dc), color-stop(100%,#eff1f8));
+			background: -webkit-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -o-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -ms-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: linear-gradient(to bottom, #aab9dc 0%,#eff1f8 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab9dc', endColorstr='#eff1f8',GradientType=0 );
+			
+			background:white;
+		}
+		
+		.node					{ fill:none; }
+		.connector				{ fill:none;pointer-events:visibleStroke; }
+		.connectorPointerTarget { fill:none;pointer-events:stroke;visibility:hidden;stroke-width:17;stroke-linejoin:miter;stroke-linecap:butt; }
+		.connector-dash			{ fill:none; stroke-dasharray:7 4; pointer-events:visibleStroke; }
+		.part-notelink			{ fill:none; stroke-dasharray:3; pointer-events:visibleStroke; }
+		.part-associationclass	{ fill:none; stroke-dasharray:6 3; pointer-events:visibleStroke; }
+		.partition-splitter		{ fill:none; stroke-dasharray:3; }
+		.line-dash				{ stroke-dasharray: 7 4; }
+		
+		.action					{ text-anchor:middle; }
+		.actionpin				{ text-anchor:middle; }
+		.text-middle			{ text-anchor:middle; }
+		
+		.fill-gray				{ fill:#3f3f3f; }
+		.text-members			{ fill:#696969;stroke:none;text-anchor:start; }
+		.text-transition		{ fill:black;stroke:none;text-anchor:middle; }
+		.text-object-name		{ fill:black;stroke:none;text-anchor:middle;font-weight:bold; }
+		.text-stereotypes		{ fill:black;stroke:none;text-anchor:start; }
+		.connector-label		{ text-anchor:middle; alignment-baseline:hanging; }
+		.controlflow-label		{ text-anchor:end; alignment-baseline:baseline; }
+		.message-label			{ text-anchor:middle; }
+		.opaque-action-body		{ color:grey }
+	 
+		.partition-name			{ text-anchor:start;alignment-baseline:hanging; }
+		
+		.childelement-icon		{ display:inline-block;width:20px;height:16px;vertical-align:middle; }
+		.component-icon			{ fill:rgb(252,242,227); }
+		.template-arg-box		{ fill:rgb(252,242,227); stroke-dasharray: 7 4; }
+		.template-arg-text		{ text-anchor:start; alignment-baseline:hanging; }
+		
+		.hyperlink-text			{ color:blue; text-decoration:underline; margin:0 }
+		
+		.enumliterals-list {
+			list-style-type: none;
+			margin: 3px 0px 3px 24px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list {
+			list-style-type: none;
+			margin: 3px 0px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list li::before {
+			padding: 0px 8px 0px 5px
+		}
+		.properties-list li.private::before {
+			content: '-'; padding-right: 11px;
+		}
+		.properties-list li.protected::before {
+			content: '#';
+		}
+		.properties-list li.public::before {
+			content: '+';
+		}
+		.properties-list li.internal::before {
+			content: '~';
+		}
+		.properties-list li.package::before {
+			content: '~';
+		}
+	 
+		g.element .partitionHeader {
+			fill: none;
+			filter: none;
+		}
+		
+		.highlighted { filter:url(#highlighter)}
+		
+		.part-object-parent {
+			margin: 0px;
+			padding-top: 4px;
+			padding-right: 3px;
+			text-align: right;
+			font-style: italic;
+		}
+		
+		.part-object-rootleaf {
+			margin: 0px;
+			padding-right: 6px;
+			text-align: right;
+		}
+		
+		.part-object-tests {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			border-top: 2px solid red;
+		}
+		
+		.part-usecase-extensionpoints {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 3px;
+			padding-left: 12%;
+			vertical-align: top;
+			border-top: 2px solid red;
+		}
+		
+		.part-diagram-details { border:0; color:blue }
+		.part-diagram-details td { padding:0 }
+		
+		.part-diagram-notes { border:0 }
+		.part-diagram-notes td { padding:0 }		
+	    
+		.part-state-operation { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 71, 136) }
+		.part-state-operation-method { margin:0px; padding-left:10px; color:gray }
+		.part-state-operation-method p { margin: 2px 0px 2px 0px; }
+		.part-state-asframe-name { fill:#f7f3f7 }
+		.part-internal-transition-do { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 30, 30) }
+		.part-internal-transition-behavior { margin:2px 0 0 0; padding-left:15px; color:rgb(0, 71, 136) }
+		
+		.part-timeline-timelabel-container { fill:white }
+    
+	    .connected-feature_mark { fill:none; stroke-width:1 }
+	    
+	    .part-note { line-height:125%; }
+	    .part-note ul { margin:0; padding-left:17px; }
+	    .part-note ol { margin:0; padding-left:12px; }
+	    .part-note ul li { padding-left:10px; }
+	    .part-note ol li { padding-left:15px; }
+	    .part-note ntab { white-space:pre; tab-size:4em; }
+	    .part-note ntab::before { content: '	'; }
+	    
+	    .part-constraint { line-height:125%; }
+	    .part-constraint ul { margin:0; padding-left:5px; list-style-type: none; display: inline-block; }
+	    .part-constraint ol { margin:0; padding-left:5px; display: inline-block; }
+		.part-constraint ul li::before { content: '-'; padding: 0px 2px 0px 0px; }
+	    .part-constraint ntab { white-space:pre; tab-size:4em; }
+	    .part-constraint ntab::before { content: '	'; }
+    
+		.part-decision-label	{ text-anchor:middle;alignment-baseline:central }
+		
+		/*==============================*/
+		
+		.shapescript-errors {
+			border: 0;
+			color: red;
+			width: auto;
+			margin-top: 3px;
+			margin-right: 3px;
+			margin-left: auto;
+			background-color: #e5e5e5a3;
+		}
+		.shapescript-errors caption { text-align: left; font-weight: bold; background-color: inherit }
+		
+		.part-separator { border-top: 1px solid rgb(157,139,141); margin:0px; margin-top:5px }
+		.connector { fill:none; stroke:rgb(107,115,139) }
+		
+		.element.base-Action { fill:rgb(251,241,218) }
+		.element.base-Requirement { fill:url(#gradRequirement) }
+		.element.uml-Activity { fill:rgb(250,247,220) }
+		.element.uml-ActivityParameterNode { fill:rgb(247,197,195) }
+		.element.uml-Class.requirement { fill:rgb(242,251,239) }
+		.element.uml-Interface { fill:url(#gradInterface) }
+		.element.uml-Property, .element.uml-Port { fill:url(#gradProperty) }
+		.element.uml-DataType { fill:rgb(250,249,230) }
+		.element.uml-StateMachine { fill:rgb(245,247,240) }
+		.element.uml-State { fill:url(#gradState) }
+		.element.uml-InstanceSpecification { fill:rgb(224,244,245) }
+		.element.uml-Package { fill:rgb(249,243,240) }
+		.element.uml-Signal { fill:rgb(249,249,249) } /*rgb(255,255,255) - rgb(239,239,239)*/
+		.element.uml-Gate { fill:rgb(032,032,032) }
+		.element.uml-Trigger { fill:rgb(253,240,245) }
+		.element.uml-UseCase { fill:rgb(231,242,253) }
+		.element.uml-Comment { fill:white; stroke:rgb(131,181,190) }
+		
+		.element.uml-InitialNode, .element.uml-JoinNode, .element.uml-ForkNode { fill:rgb(152,132,132) }
+		.element.uml-Pseudostate.kind-Initial, .element.uml-Pseudostate.kind-Join, .element.uml-Pseudostate.kind-Fork, .element.uml-Pseudostate.kind-Junction { fill:rgb(152,132,132) }
+		.element.uml-DecisionNode, .element.uml-MergeNode, .element.uml-ActivityFinalNode, .element.uml-FinalState { fill:rgb(206,225,163) }				
+		.element.uml-Pseudostate.kind-DeepHistory,
+		.element.uml-Pseudostate.kind-ShallowHistory,
+		.element.uml-Pseudostate.kind-Choice,
+		.element.uml-Pseudostate.kind-ExitPoint,		
+		.element.uml-Pseudostate.kind-EntryPoint { fill:rgb(206,225,163) }
+		
+		.part-attribute-container { color:rgb(123,82,86) }
+		.part-operation-container { color:rgb(0, 71, 136) }
+		.part-taggedvalue-container { padding-top:4px }
+		.part-occurrence-specifications { color:rgb(123,82,86); padding-top:2px; padding-left:14px }
+		.part-object-notes { color:#a0a0a0; padding-top:10px; padding-left:11px; padding-right:2px; line-height:110% }
+		.part-timeline-container { fill:#f3fcfc }
+		
+		.requirement-text { white-space:break-spaces }
+
+		a.disabled { pointer-events:none; cursor:not-allowed; color:currentColor; text-decoration:auto }
+
+	]]></style>
+  <defs>
+    <g id="_EAArrow">
+      <polyline points="0,15 5,0 10,15" style="fill:none" />
+    </g>
+    <g id="_EAArrow2">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:black" />
+    </g>
+    <g id="_EAArrow3">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:rgb(252, 242, 227)" />
+    </g>
+    <g id="_EAArrowFull">
+      <polyline points="0,15 5,0 10,15 0,15" class="fillBeige" />
+    </g>
+    <g id="_EAArrowFullBlack">
+      <polyline points="0,15 5,0 10,15 0,15" style="fill:black" />
+    </g>
+    <g id="NestingArrow">
+      <circle cx="5" cy="8" r="8" class="fillBeige" />
+      <line x1="-3" y1="8" x2="13" y2="8" />
+      <line x1="5" y1="0" x2="5" y2="16" />
+    </g>
+    <g id="NestingArrowBigger">
+      <circle cx="5" cy="10" r="10" class="fillBeige" />
+      <line x1="-5" y1="10" x2="15" y2="10" />
+      <line x1="5" y1="0" x2="5" y2="20" />
+    </g>
+    <g id="AssemblyConnectorMark">
+      <path class="node" style="stroke-width: 1.001;" d="M-10,0 a10,10 0 1 0 20,0" />
+      <circle cx="0" cy="0" r="7" class="fillBeige" />
+    </g>
+    <g id="RealizesArrow">
+      <polyline points="0,10 5,0 10,10 0,10" style="fill:black" />
+    </g>
+    <linearGradient id="gradStandardObject" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(253,250,247);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(245,234,223);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradEnumeration" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(234,253,228);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(213,249,200);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDeepHistory" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradRequirement" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(242,251,239);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,243,215);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradInterface" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(241,236,250);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,212,242);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradProperty" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(218,234,252);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(189,217,249);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradState" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(244,237,217);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(236,225,192);stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropshadow" height="140%" width="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <!-- stdDeviation is how much to blur -->
+      <feOffset dx="3" dy="3" result="offsetblur" />
+      <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic" />
+        <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <g id="compositeDiagramIcon">
+      <ellipse cx="0" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <ellipse cx="15" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <polyline class="node" points="5,0 10,0" />
+    </g>
+    <filter id="highlighter">
+      <feFlood flood-color="rgb(0,0,255)" result="flood" />
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1" />
+      <feOffset dx=" 1" dy=" 1" in="composite1" result="offset1" />
+      <feOffset dx="-1" dy="-1" in="composite1" result="offset2" />
+      <feOffset dx=" 1" dy="-1" in="composite1" result="offset3" />
+      <feOffset dx="-1" dy=" 1" in="composite1" result="offset4" />
+      <feMerge result="merge">
+        <feMergeNode in="offset1" />
+        <feMergeNode in="offset2" />
+        <feMergeNode in="offset3" />
+        <feMergeNode in="offset4" />
+      </feMerge>
+      <feGaussianBlur in="merge" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="doubleStroke" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feMorphology in="SourceGraphic" result="a" operator="dilate" radius="1" />
+      <feComposite in="SourceGraphic" in2="a" result="xx" operator="xor" />
+    </filter>
+    <radialGradient id="gradNotePin" cx="35%" cy="35%" r="70%" fx="35%" fy="35%">
+      <stop offset="20%" style="stop-color:white;" />
+      <stop offset="100%" style="stop-color:gray;" />
+    </radialGradient>
+    <g id="NotePin">
+      <circle cx="0" cy="0" r="9" stroke="gray" fill="url(#gradNotePin)" />
+    </g>
+  </defs>
+  <g id="viewport" transform="translate(-9.5,0.5)">
+    <g style="" id="{68489846-2A08-4b6f-9B84-7D1FA9E08960}" transform="translate(20, 10)" class="element uml-Class" data-diagram-object-guid="{582f05e0-04d5-b245-862d-003da521f831}">
+      <rect x="0" y="0" width="1482" height="1163" style="fill:none" class="main-shape" />
+      <polygon points="0,0 211.03223,0 211.03223,5 198.03223,19 0,19" />
+      <text x="3" y="12" style="font-weight: bold; fill:black; stroke:none">[block] CubeSat Platform Function</text>
+    </g>
+    <g style="" id="{614EC4E9-D460-46b7-935B-22232059E8C6}" transform="translate(945, 100)" class="element uml-Property" data-diagram-object-guid="{134cfb8b-0f58-bff3-f445-8800b9f45d31}">
+      <rect x="0" y="0" width="499" height="399" style="" class="main-shape" />
+      <foreignObject width="499" height="399" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cc: Command &amp; Controll</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{97086B95-08C7-45f9-9A7A-E6C3547D2FD7}" transform="translate(1090, 896)" class="element uml-Property" data-diagram-object-guid="{3efb0bcf-b980-abc0-ace2-6639627b0b7b}">
+      <rect x="0" y="0" width="305" height="240" style="" class="main-shape" />
+      <foreignObject width="305" height="240" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>pm: Power Management</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{74F596EB-AB97-4121-9E30-2E30B9A17B76}" transform="translate(83, 695)" class="element uml-Property" data-diagram-object-guid="{5523acff-c440-7a3e-99ba-9fa34a630c7d}">
+      <rect x="0" y="0" width="272" height="232" style="" class="main-shape" />
+      <foreignObject width="272" height="232" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>tm: Temperature Management</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B9C30141-4056-403d-AD53-E3731FFD201B}" transform="translate(72, 173)" class="element uml-Property" data-diagram-object-guid="{7633c343-30ef-4967-df67-5d9ca4b640fb}">
+      <rect x="0" y="0" width="196" height="236" style="" class="main-shape" />
+      <foreignObject width="196" height="236" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cm: Communication Management</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{618477B0-1020-45eb-AC08-DE8572000D53}" transform="translate(1197, 621)" class="element uml-Property" data-diagram-object-guid="{79bf2d0d-620c-a2fc-2c3e-ea4d01d0e6f3}">
+      <rect x="0" y="0" width="182" height="145" style="" class="main-shape" />
+      <foreignObject width="182" height="145" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>dm: Deployment Management</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5B5F19E3-4678-4916-9F26-3F7192CBD8D2}" transform="translate(441, 101)" class="element uml-Property" data-diagram-object-guid="{a4245c37-9ac3-2ec9-d07c-d91aa59a3324}">
+      <rect x="0" y="0" width="444" height="432" style="" class="main-shape" />
+      <foreignObject width="444" height="432" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>pdm: Payload Data Management</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{4B73A866-31DD-4074-A306-30C01541EB21}" transform="translate(416, 581)" class="element uml-Property" data-diagram-object-guid="{d041ac2c-9a2d-d01e-a8d9-b4ce8fc0fae1}">
+      <rect x="0" y="0" width="532" height="521" style="" class="main-shape" />
+      <foreignObject width="532" height="521" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>thm: Telemetry &amp; Health monitoring</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{30B3B11D-4EDF-4ade-94AA-F89DF52BEB72}" transform="translate(1144, 965)" class="element uml-Property" data-diagram-object-guid="{040c8575-8d84-b3d3-10ac-6195138a6ef5}">
+      <rect x="0" y="0" width="85" height="56" style="" class="main-shape" />
+      <foreignObject width="85" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>da: Decide Action</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{07922522-F738-45e3-BB8C-A93D92C9227D}" transform="translate(1234, 699)" class="element uml-Property" data-diagram-object-guid="{08e6e2bc-3a08-7947-3d0b-b1dae0c3b835}">
+      <rect x="0" y="0" width="110" height="56" style="" class="main-shape" />
+      <foreignObject width="110" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>dd: Deploy Deployables</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5926C88E-ABB9-483e-95C2-0DA1F07BD9E9}" transform="translate(1118, 385)" class="element uml-Property" data-diagram-object-guid="{0ee01c99-72b7-dedf-d2bc-9b8955ba346a}">
+      <rect x="0" y="0" width="69" height="69" style="" class="main-shape" />
+      <foreignObject width="69" height="69" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>rots: Rotate Satellite</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{26E71162-A9C1-46de-B657-5E8686676DEF}" transform="translate(125, 321)" class="element uml-Property" data-diagram-object-guid="{15112a9d-1c5d-a814-0446-e6c80a3bf50e}">
+      <rect x="0" y="0" width="89" height="56" style="" class="main-shape" />
+      <foreignObject width="89" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>send: Send RF Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EABD794A-5478-44f6-B7B6-AA8F9A5AE854}" transform="translate(779, 374)" class="element uml-Property" data-diagram-object-guid="{1afaffde-594a-ae0a-2a41-5596b82e8d2e}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>sm: Store Message</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{43029980-F771-4bc2-BB49-278613D3612D}" transform="translate(1276, 1073)" class="element uml-Property" data-diagram-object-guid="{27d5c645-9282-bdbe-bf59-fbde30f64309}">
+      <rect x="0" y="0" width="113" height="56" style="" class="main-shape" />
+      <foreignObject width="113" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cms: Change Main Source</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C03193FB-6F29-4f15-9392-AD4FB892F6A7}" transform="translate(642, 186)" class="element uml-Property" data-diagram-object-guid="{2d3bdf93-1470-807d-1432-d0f6fe196232}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Decode Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F6CDB999-8D3A-45eb-9CC2-98B2E7212A1F}" transform="translate(607, 639)" class="element uml-Property" data-diagram-object-guid="{39e7e591-4dcc-42be-fa25-86aaadb33293}">
+      <rect x="0" y="0" width="174" height="66" style="" class="main-shape" />
+      <foreignObject width="174" height="66" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>ta: Telemetry Aggregation</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A2DDDD1A-C3A6-49a1-A7E6-744A6EF202EE}" transform="translate(1126, 1073)" class="element uml-Property" data-diagram-object-guid="{3ae6e131-0842-c4ae-a8a1-de8be27fd846}">
+      <rect x="0" y="0" width="96" height="56" style="" class="main-shape" />
+      <foreignObject width="96" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>top: Turn off Payload</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{484EB8E6-580F-4d35-8470-CF249FD21E1F}" transform="translate(796, 741)" class="element uml-Property" data-diagram-object-guid="{3dec623e-863c-0787-c502-37cb012fd3b4}">
+      <rect x="0" y="0" width="111" height="56" style="" class="main-shape" />
+      <foreignObject width="111" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>mt1: Measure Temperature</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{D70AA7F7-5B52-45ed-87A3-7BFE1301E522}" transform="translate(675, 453)" class="element uml-Property" data-diagram-object-guid="{49734ba4-d22f-5550-c8f3-43b37a945143}">
+      <rect x="0" y="0" width="113" height="56" style="" class="main-shape" />
+      <foreignObject width="113" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>tm: Telemetry Message to Ground Station</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{310CCECC-2DCC-4cc3-8F65-B20980254A86}" transform="translate(655, 313)" class="element uml-Property" data-diagram-object-guid="{59382cbc-8961-92ac-b850-6584ab774515}">
+      <rect x="0" y="0" width="70" height="57" style="" class="main-shape" />
+      <foreignObject width="70" height="57" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>encs: Encode Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{32FD7B0C-E1CA-4813-97AD-F565D52ADC57}" transform="translate(648, 1008)" class="element uml-Property" data-diagram-object-guid="{684a8ca8-ae16-d4e7-9553-2e6c3357184f}">
+      <rect x="0" y="0" width="133" height="56" style="" class="main-shape" />
+      <foreignObject width="133" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cbp1: Check Battery Percentage</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7B6A548D-3469-4842-8203-B1E9E94794B4}" transform="translate(565, 870)" class="element uml-Property" data-diagram-object-guid="{6dc92803-3b73-5a12-fe38-25f407b18edb}">
+      <rect x="0" y="0" width="124" height="41" style="" class="main-shape" />
+      <foreignObject width="124" height="41" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cr2: Calculate Rotation</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{56A0240E-E516-4022-B17C-7AFBCBF588CF}" transform="translate(1134, 263)" class="element uml-Property" data-diagram-object-guid="{6ff4b3fa-5af9-c0bf-d30a-401b08b0a829}">
+      <rect x="0" y="0" width="88" height="49" style="" class="main-shape" />
+      <foreignObject width="88" height="49" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>scp: Set Configurable Parameters</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{15B52349-3A41-4622-9D2E-9E3EB68DE966}" transform="translate(242, 811)" class="element uml-Property" data-diagram-object-guid="{722952d2-91c6-b358-0f03-e9df8e19aac1}">
+      <rect x="0" y="0" width="102" height="56" style="" class="main-shape" />
+      <foreignObject width="102" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>da: Decide Action If Needed</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{73CDD370-4F15-46a3-99D5-B307DC6F69AA}" transform="translate(797, 1029)" class="element uml-Property" data-diagram-object-guid="{7deea336-51e5-cc80-1670-4189a257f54e}">
+      <rect x="0" y="0" width="133" height="56" style="" class="main-shape" />
+      <foreignObject width="133" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cbp2: Check Battery Percentage</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A301F7AA-9412-4eaf-A000-C10201514B61}" transform="translate(108, 863)" class="element uml-Property" data-diagram-object-guid="{83c68e98-7b27-b333-5031-d6dbc85c309e}">
+      <rect x="0" y="0" width="125" height="56" style="" class="main-shape" />
+      <foreignObject width="125" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>tp: Turn off Payload</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7334E6E1-7E8D-40ae-B14E-5AF170151B3D}" transform="translate(108, 766)" class="element uml-Property" data-diagram-object-guid="{8c590bff-0d35-c82d-d4d6-9f6702ff49d1}">
+      <rect x="0" y="0" width="125" height="56" style="" class="main-shape" />
+      <foreignObject width="125" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>tbh: Turn on Battery Heaters</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{8D411A8B-A417-4523-8C6D-18412DDEC319}" transform="translate(457, 676)" class="element uml-Property" data-diagram-object-guid="{8f1cb0c3-6c98-8294-4e78-e4df85273bb6}">
+      <rect x="0" y="0" width="123" height="56" style="" class="main-shape" />
+      <foreignObject width="123" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cps2: Calculate Position and Speed</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{17F2389D-E35C-412d-9525-D7678384C0AA}" transform="translate(1255, 380)" class="element uml-Property" data-diagram-object-guid="{9b28fe94-2bd8-ed74-a7ca-557cc2aaa988}">
+      <rect x="0" y="0" width="136" height="56" style="" class="main-shape" />
+      <foreignObject width="136" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b> dir: Deploy Inhibitors Released</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{89D2789F-661F-4fac-91DE-F1967CD8C16E}" transform="translate(791, 819)" class="element uml-Property" data-diagram-object-guid="{9ce9320e-3696-fbf3-b828-f1fff6074450}">
+      <rect x="0" y="0" width="121" height="54" style="" class="main-shape" />
+      <foreignObject width="121" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>mt2: Measure Temperature</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{331D1AE3-AD54-488b-AD8A-03E3E6E8A319}" transform="translate(1247, 155)" class="element uml-Property" data-diagram-object-guid="{a5be1b4b-15d1-0c26-6011-cde054982906}">
+      <rect x="0" y="0" width="69" height="56" style="" class="main-shape" />
+      <foreignObject width="69" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>log: Log Command</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{61ECC689-A7F6-46be-BCB4-74C441A86C03}" transform="translate(540, 420)" class="element uml-Property" data-diagram-object-guid="{a996b594-4a6f-bd99-e9ff-e60a8cdcda65}">
+      <rect x="0" y="0" width="71" height="55" style="" class="main-shape" />
+      <foreignObject width="71" height="55" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>enct: Encode Telemetry</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{46D5784C-3149-4d4e-B805-FEDBB9598747}" transform="translate(468, 761)" class="element uml-Property" data-diagram-object-guid="{c84115c5-1860-fb21-e358-d349bfbf3970}">
+      <rect x="0" y="0" width="100" height="82" style="" class="main-shape" />
+      <foreignObject width="100" height="82" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cps1: Calculate Position and Speed</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{78A1DBA7-C331-4634-B220-E0F152BBD890}" transform="translate(766, 189)" class="element uml-Property" data-diagram-object-guid="{d4d48a88-d2d4-2cdf-d95d-c3783cf5180d}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>sd: Source Decide</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{783FB91C-16BD-433e-9D0B-C53AA3C4E0B9}" transform="translate(120, 243)" class="element uml-Property" data-diagram-object-guid="{d692ff0e-7409-8266-33cb-9835f913ba4e}">
+      <rect x="0" y="0" width="100" height="56" style="" class="main-shape" />
+      <foreignObject width="100" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>send: Receive RF Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{E90B988C-2A29-4dea-9C02-D920F436288D}" transform="translate(505, 314)" class="element uml-Property" data-diagram-object-guid="{da5c077c-c5a9-6376-6ff9-aa75da678174}">
+      <rect x="0" y="0" width="70" height="82" style="" class="main-shape" />
+      <foreignObject width="70" height="82" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>send: Send Radio Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FF9C1775-9A6B-4463-B7D2-D4C79EC88AD0}" transform="translate(497, 170)" class="element uml-Property" data-diagram-object-guid="{e6ddc6c1-d9bf-f330-3ac8-2607a5ad6a5b}">
+      <rect x="0" y="0" width="112" height="56" style="" class="main-shape" />
+      <foreignObject width="112" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>rec: Recieve Radio Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C7B7AA35-188D-4690-870C-BB6DC7D694EE}" transform="translate(1026, 154)" class="element uml-Property" data-diagram-object-guid="{e8476584-3112-c6ef-fa04-144dd6b64574}">
+      <rect x="0" y="0" width="85" height="82" style="" class="main-shape" />
+      <foreignObject width="85" height="82" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>auth: Authenticate Command</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{8511849D-2BCC-41df-AF77-AFD2DDEE8EAB}" transform="translate(648, 926)" class="element uml-Property" data-diagram-object-guid="{ec4c7fd6-c591-c43f-aad8-e9bbf298ca0c}">
+      <rect x="0" y="0" width="124" height="53" style="" class="main-shape" />
+      <foreignObject width="124" height="53" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cr1: Calculate Rotation</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A6AA984F-28BD-4249-AB33-4BE1AA26632E}" transform="translate(986, 305)" class="element uml-Property" data-diagram-object-guid="{ff53b15f-d730-f3b8-c4a6-6a6bd19c9dd3}">
+      <rect x="0" y="0" width="71" height="108" style="" class="main-shape" />
+      <foreignObject width="71" height="108" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Send Message When inRange of Recipient</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{4510E010-F9BE-44c4-AFC0-8A2BC44D9F21}" transform="translate(1356, 494)" class="element uml-Port" data-diagram-object-guid="{182afc36-d32e-8030-f1e8-6908554726b5}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="92" height="14" transform="translate(-35,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> dep: Deployment Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{0A86670B-1145-4b18-9290-9B071AF29310}" transform="translate(1372, 651)" class="element uml-Port" data-diagram-object-guid="{22505217-be31-b973-3f26-73bcf77701c8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="92" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> dep: Deployment Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{17823653-E1E8-4620-9198-5E14B95C1C5A}" transform="translate(1176, 926)" class="element uml-Port" data-diagram-object-guid="{275fa424-4e09-5cfc-7441-cd92f3166a83}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="94" height="14" transform="translate(-36,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curper: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{678D4688-6C5E-497a-9CF3-65D5F87AFBB1}" transform="translate(937, 395)" class="element uml-Port" data-diagram-object-guid="{36231ccf-66c8-41eb-415a-a0499bf73f6e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="119" height="14" transform="translate(-64,-19) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uloc: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{080261E3-161E-48ce-836A-6E74F0E6E751}" transform="translate(879, 467)" class="element uml-Port" data-diagram-object-guid="{37e73ec2-8fe9-21e0-d114-79e287599d12}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="68" height="14" transform="translate(-14,16) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uid: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FA5741C9-96D2-48c3-ADD0-1F373026E51F}" transform="translate(410, 645)" class="element uml-Port" data-diagram-object-guid="{4577b596-57e1-b17a-50aa-669e6abf5d6f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="103" height="14" transform="translate(-91,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> ttp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{06E7B73B-508D-447b-862F-41E9B0A26026}" transform="translate(692, 574)" class="element uml-Port" data-diagram-object-guid="{55f5afa5-38a9-e26c-0c12-ab66a16c2db2}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="79" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tel: Telemetry Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A391F913-2AAF-4119-87F5-E5881ECE1955}" transform="translate(942, 681)" class="element uml-Port" data-diagram-object-guid="{678603b1-3d05-13a7-df8a-023c3800d210}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> currot: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{688A72F6-90E4-4a7e-8E06-0F1FAC0EB1B0}" transform="translate(1146, 493)" class="element uml-Port" data-diagram-object-guid="{6a525777-f87a-06f8-44bd-e145c7f3ffba}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="14" transform="translate(-31,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> currot: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2E3EA83D-4CE4-4867-9076-67B88D5AD318}" transform="translate(937, 187)" class="element uml-Port" data-diagram-object-guid="{79c0e8b4-e32f-85bc-381f-ba4835568347}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="57" height="27" transform="translate(-48,-41) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> com: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{17284051-5DF4-4be9-A025-BBF40482591B}" transform="translate(348, 797)" class="element uml-Port" data-diagram-object-guid="{94c69249-d7f9-f1d3-2f4c-d3814bd35024}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="103" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> ttp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FDF66375-B0DD-45b7-A217-410FA7278460}" transform="translate(1007, 492)" class="element uml-Port" data-diagram-object-guid="{9b1d76d2-3bf3-e3b4-1de0-e24169bb3f7d}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="113" height="27" transform="translate(-53,42) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curpos: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FC3817BD-5BDF-4ec8-8D23-3EFF978CE08D}" transform="translate(879, 204)" class="element uml-Port" data-diagram-object-guid="{a65e7ddb-cfea-ab80-48fd-9eb15d7015dc}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="73" height="14" transform="translate(-15,51) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> com: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3BBD5A46-BBA5-4ae0-A210-3E71EB2BC55A}" transform="translate(937, 464)" class="element uml-Port" data-diagram-object-guid="{aba07ff8-9095-f5e4-5309-0120d6ae6585}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="68" height="14" transform="translate(-4,30) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uid: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C8D2E59C-8D59-418e-8107-EA59EE272830}" transform="translate(435, 300)" class="element uml-Port" data-diagram-object-guid="{ad5c9647-3a8c-332b-e5aa-208195b5fd2c}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="93" height="27" transform="translate(-98,24) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfout: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F9D7F6BD-2EB8-484e-8EF9-7728EE4EDC7D}" transform="translate(942, 609)" class="element uml-Port" data-diagram-object-guid="{b11b7eca-8a65-a00d-2713-0fb70db2a2c7}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="113" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curpos: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AEC36A89-EABE-409e-B09D-F76E004C12FA}" transform="translate(435, 159)" class="element uml-Port" data-diagram-object-guid="{ce362e01-ac06-2d0c-d97e-c773d5bdd9c8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="92" height="27" transform="translate(-76,7) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfrec: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{13B3BBE7-DC4E-41da-A8D8-9B6AD3B4793C}" transform="translate(261, 228)" class="element uml-Port" data-diagram-object-guid="{d91918bb-57f5-599b-deb1-10917b8f8e6e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="92" height="27" transform="translate(15,-46) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfrec: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3AD79E81-55AF-4a43-AE07-3018E4BFBB9E}" transform="translate(261, 331)" class="element uml-Port" data-diagram-object-guid="{eaff01a7-d5fa-5ec3-bdd6-8b1b7a1dd602}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="93" height="27" transform="translate(-4,32) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfout: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{230E6611-17F1-4586-9A71-958C34B7C740}" transform="translate(696, 527)" class="element uml-Port" data-diagram-object-guid="{ed2a8450-65f6-9bad-ed31-e18b6b5b1608}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="79" height="14" transform="translate(-29,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tel: Telemetry Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B470C8F5-0BD3-4ace-9081-782758629D9A}" transform="translate(942, 752)" class="element uml-Port" data-diagram-object-guid="{f8c99323-193f-06ae-f5b6-9356232b1a12}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="94" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curper: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{05335714-27C9-4aac-9665-F032E0097D01}" transform="translate(879, 396)" class="element uml-Port" data-diagram-object-guid="{fa865a70-409f-d232-7480-d2493334677d}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="119" height="14" transform="translate(-52,31) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uloc: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5F893727-B270-409e-8E82-61D00C485BAA}" transform="translate(701, 918)" class="element uml-Port" data-diagram-object-guid="{0211b5c6-a3e8-cae4-17c0-1b4d58e5fadc}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="53" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rp: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1AD11FEC-A4FF-4ecb-B19D-2340B4B24F89}" transform="translate(1240, 191)" class="element uml-Port" data-diagram-object-guid="{0d48b685-50ae-6ab4-cda9-ab7876341b20}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="74" height="14" transform="translate(-60,-15) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> auth: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1E8F4703-3DDA-4969-B0E8-95EEA7743333}" transform="translate(1188, 958)" class="element uml-Port" data-diagram-object-guid="{180484f3-4f2b-1459-8bc3-6a0d7741f85c}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="94" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curper: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{0DD76151-3D3D-4aef-8373-67B15A83FC00}" transform="translate(684, 631)" class="element uml-Port" data-diagram-object-guid="{1b61424c-59c9-b3ca-3980-a365dd1ccd42}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="77" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: Telemetry Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AB694F24-C6FA-4a0b-87F4-C88F73FE2BD5}" transform="translate(491, 189)" class="element uml-Port" data-diagram-object-guid="{1cbeed42-6216-38ed-2644-2feccaf4254c}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="108" height="14" transform="translate(-96,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfrec: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{18FC9245-898B-4ce4-B83C-BB00D9E987A0}" transform="translate(797, 812)" class="element uml-Port" data-diagram-object-guid="{1efdeecd-b9bb-d328-d4bf-2ba54867568d}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{E6C18FD5-1332-473e-9E1E-6CDA23F0AE73}" transform="translate(649, 863)" class="element uml-Port" data-diagram-object-guid="{268fbc19-ffb4-d537-c6a8-04c3b4e53780}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="53" height="27" transform="translate(-30,-30) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rp: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{8603FD4C-0F63-421c-8E0C-21A80B673B29}" transform="translate(1149, 448)" class="element uml-Port" data-diagram-object-guid="{2b9e4734-e5fe-b529-b7a6-43e80bed4fbf}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="14" transform="translate(-31,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> currot: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{0733EF83-5FCD-461a-A33A-C90626B46E24}" transform="translate(1131, 256)" class="element uml-Port" data-diagram-object-guid="{2d451143-e9f9-1bec-254f-898c0572e036}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="74" height="14" transform="translate(-62,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> auth: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{22543336-E649-4998-B189-FFCB76951A86}" transform="translate(635, 211)" class="element uml-Port" data-diagram-object-guid="{3033992b-f83e-9071-d328-64f4148f25f1}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="63" height="27" transform="translate(-11,-51) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rsrec: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B9272712-2A7F-4cb0-A1B9-B9E000498B5F}" transform="translate(573, 689)" class="element uml-Port" data-diagram-object-guid="{422c13a4-28ed-64b0-0021-0647c181c341}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="67" height="27" transform="translate(-45,40) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> psp: Telemetry Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{49A844C0-13E9-4f6a-BA38-31679A171FCD}" transform="translate(207, 359)" class="element uml-Port" data-diagram-object-guid="{424837fe-7d48-5810-d994-2522c5cbd5c4}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="109" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfout: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A432AF7F-391D-439c-A7C3-69578314454C}" transform="translate(668, 476)" class="element uml-Port" data-diagram-object-guid="{42fc92a0-7531-ae32-e80b-09064ba87313}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="55" height="27" transform="translate(-44,-26) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tm: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C7569510-8952-4711-BFF6-235BB3309602}" transform="translate(858, 734)" class="element uml-Port" data-diagram-object-guid="{45a80900-f41c-9808-ede6-e65166f5014a}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="27" transform="translate(-18,-21) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{603D2D38-DE66-4939-9CD6-22EF5E5A0D42}" transform="translate(775, 669)" class="element uml-Port" data-diagram-object-guid="{46539211-b8ad-cf32-1138-e7a2e545d26f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="94" height="14" transform="translate(17,4) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curper: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{22C3C17F-B0B2-49cf-914B-D15FD71711DE}" transform="translate(226, 780)" class="element uml-Port" data-diagram-object-guid="{4914cee4-7e44-ce1f-6289-8712221c9c43}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="88" height="14" transform="translate(6,-15) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: Temperature Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{87AE09DA-59D1-4119-BEC7-20537901196A}" transform="translate(987, 297)" class="element uml-Port" data-diagram-object-guid="{4ca5b370-eeb7-3622-bdd0-adb3214813df}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="65" height="27" transform="translate(-9,-21) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> upos: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A355ED5A-4E90-4ef2-BD60-4799BE83EBE7}" transform="translate(648, 336)" class="element uml-Port" data-diagram-object-guid="{4d283465-8c93-9c9d-ae9e-9c8eadc4ed0a}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="58" height="27" transform="translate(-38,-36) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> enc: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A5A08646-D717-4650-9B93-28D1B19B1F52}" transform="translate(568, 336)" class="element uml-Port" data-diagram-object-guid="{58d2f2da-b120-2f81-c480-42edb900e6d3}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="58" height="27" transform="translate(-78,-92) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> enc: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C10615F8-272C-438f-B0AC-CC18916A2D16}" transform="translate(497, 336)" class="element uml-Port" data-diagram-object-guid="{5b249f88-3588-12c6-4c3c-99f0823ceff0}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="93" height="27" transform="translate(-43,-38) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfout: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{ECC3D897-471B-40c3-9D7E-81F77FB28C13}" transform="translate(759, 191)" class="element uml-Port" data-diagram-object-guid="{6176bd94-690c-8443-0406-f09153d7df21}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="58" height="27" transform="translate(-5,-32) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> dec: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{34FA6BCF-DA0F-4767-B767-046F719D2510}" transform="translate(742, 698)" class="element uml-Port" data-diagram-object-guid="{6331b112-d837-235c-4aaa-d3f6f25ebe2b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="82" height="14" transform="translate(-40,36) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> btp: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{42D6D3E1-3127-4a30-B60E-8D0C13BB0B29}" transform="translate(772, 396)" class="element uml-Port" data-diagram-object-guid="{6ad9c0a6-f600-abdc-071f-df1ca919afd1}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="77" height="14" transform="translate(-48,25) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> mes: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{931DE312-B4BD-45a0-9C55-15344282DF3F}" transform="translate(1177, 1014)" class="element uml-Port" data-diagram-object-guid="{6dfec45b-a47a-afac-e103-7109e5551e90}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="128" height="14" transform="translate(-53,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> pmp: Power Management Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C31F7913-BD3E-4fbb-B912-8B118A870BC8}" transform="translate(212, 264)" class="element uml-Port" data-diagram-object-guid="{6e058310-d1f6-fcfd-89a2-f690cf888712}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="108" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rfrec: Communication Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{9DA7C0BC-3DE5-4542-8967-2D1826C4AB80}" transform="translate(601, 683)" class="element uml-Port" data-diagram-object-guid="{6e4f9a8c-7ef2-fb09-6aec-3874972f8d48}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="117" height="14" transform="translate(-95,-19) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> psp: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FB65401E-B0BE-4e0c-AB5A-07290DF9DA9E}" transform="translate(550, 753)" class="element uml-Port" data-diagram-object-guid="{6edd4d73-80d3-1cbb-a917-9ea4d62f855f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="57" height="40" transform="translate(18,-21) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> psp: Position and Speed Interface</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C249EC42-7A87-4323-839D-DBC7030A5924}" transform="translate(557, 413)" class="element uml-Port" data-diagram-object-guid="{6edfd5e4-b726-26b0-8b6c-ef805ebc388d}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="74" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> enc: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{562A77AB-0CC0-458e-864B-55F7FE3D3ACD}" transform="translate(603, 201)" class="element uml-Port" data-diagram-object-guid="{72bf168b-9a83-3d67-7291-176197bcc36e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="79" height="14" transform="translate(-41,31) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rsrec: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EA28F4EB-58F2-479e-9015-783DC240F3FE}" transform="translate(831, 423)" class="element uml-Port" data-diagram-object-guid="{7bd962f0-a585-6343-98c4-b5d0e9fa32ba}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="52" height="27" transform="translate(-15,33) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uid: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{79E31787-25CF-4166-B06C-DEF15B068100}" transform="translate(1337, 736)" class="element uml-Port" data-diagram-object-guid="{7d1cf734-cc11-c783-f0eb-50ca5411c74d}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="87" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> dp: Deployment Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EDEA190F-EDCB-445e-ACE3-60FB5B44C08D}" transform="translate(604, 467)" class="element uml-Port" data-diagram-object-guid="{80e48748-b519-0e34-cf00-2cf3e71939a8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="71" height="14" transform="translate(-15,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tm: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{87A5CFE3-B689-4a5f-B4CE-14DD01F05CBB}" transform="translate(1019, 175)" class="element uml-Port" data-diagram-object-guid="{8385d8b6-6519-eef2-8198-50b4eeffb3ce}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="57" height="27" transform="translate(-45,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> com: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AB9263FF-281F-41ea-8285-460585EB06AE}" transform="translate(1023, 380)" class="element uml-Port" data-diagram-object-guid="{87972958-99de-1023-ebbc-bfd982b05f09}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="69" height="27" transform="translate(0,9) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curpos: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F45EC273-B606-416f-956B-8D67643FAC2D}" transform="translate(698, 698)" class="element uml-Port" data-diagram-object-guid="{90dc6bff-7499-000f-c44c-b857b5d5d639}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="69" height="14" transform="translate(-68,-6) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> rp: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{816F7C4A-1121-47ac-B255-A5828A0AA14B}" transform="translate(1104, 203)" class="element uml-Port" data-diagram-object-guid="{94de51a2-f125-694c-1b94-d79a17651af8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="58" height="27" transform="translate(12,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> auth: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{66D509B4-C79B-43b3-9DC3-C58643D74991}" transform="translate(1355, 429)" class="element uml-Port" data-diagram-object-guid="{981dec31-aa9f-ff32-7030-58daaa4d3e1f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="71" height="14" transform="translate(-25,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> dep: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B2FA89B5-676C-4ccd-BB32-752AB888B35E}" transform="translate(808, 367)" class="element uml-Port" data-diagram-object-guid="{a6f55976-5e39-cead-5941-008a1e52400e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="61" height="27" transform="translate(-20,-32) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> mes: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{74529601-0AC8-40be-BFB8-900BD57C7EEE}" transform="translate(705, 216)" class="element uml-Port" data-diagram-object-guid="{a74f422d-81c4-9bac-2854-2501e3b984e6}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="74" height="14" transform="translate(-13,-33) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> dec: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{76D842B3-0644-493a-A457-C081AD577D93}" transform="translate(881, 1022)" class="element uml-Port" data-diagram-object-guid="{b2f74d59-ddee-c665-93a6-45cbf0a1febe}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="82" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> btp: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FBAF17A1-6994-43c6-A47E-616EABCC00B4}" transform="translate(979, 352)" class="element uml-Port" data-diagram-object-guid="{b5098a79-77ff-10a2-b3d5-8db8ed44b3eb}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="68" height="14" transform="translate(-38,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uid: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F1A7293E-41EF-4561-A727-D23196A2913C}" transform="translate(235, 832)" class="element uml-Port" data-diagram-object-guid="{b7eb4db4-078b-41f5-c039-43c15ec3f9c8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="88" height="14" transform="translate(-76,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: Temperature Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{83822BB9-C44C-46ff-AEFB-BB8C8C4E1F11}" transform="translate(735, 501)" class="element uml-Port" data-diagram-object-guid="{b82dce48-dea3-b547-888e-a77875d723d0}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="79" height="14" transform="translate(-2,21) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tel: Telemetry Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{4C261697-5CA7-4c29-9E7E-8F2419A4E7B8}" transform="translate(717, 336)" class="element uml-Port" data-diagram-object-guid="{b8fd6b12-7e2e-853c-63cb-344deb4e660e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="61" height="27" transform="translate(9,-19) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> mes: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{44348B7D-D7D1-4894-AE8B-98760B51E4FA}" transform="translate(780, 237)" class="element uml-Port" data-diagram-object-guid="{c42ab974-bd8e-bc21-7aaf-623f7d50192e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="77" height="14" transform="translate(-20,25) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> mes: Payload Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A06660F2-1A19-404d-8259-1EBF94E27038}" transform="translate(614, 631)" class="element uml-Port" data-diagram-object-guid="{c43578dd-081c-ef68-3417-2a246cda2733}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="103" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> ttp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{58DF61EA-F58A-48a0-AFD4-7533AE27E56B}" transform="translate(775, 697)" class="element uml-Port" data-diagram-object-guid="{c5270316-1332-e9b2-8ada-27d38b32cbf8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="27" transform="translate(-15,14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{12337633-7F96-488c-AF17-505AC6EB9358}" transform="translate(775, 1001)" class="element uml-Port" data-diagram-object-guid="{c7b9284b-7528-1e3a-c7f4-298da986f5e9}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="82" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> btp: BatteryTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{860C2A74-96E6-4478-AAB4-AF9D588B2CEB}" transform="translate(226, 884)" class="element uml-Port" data-diagram-object-guid="{cc5936bd-e640-7ad8-7f5b-b038ac8d701b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="88" height="14" transform="translate(-47,35) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> tp: Temperature Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C223AE27-9344-4422-936F-92DC879146F3}" transform="translate(829, 196)" class="element uml-Port" data-diagram-object-guid="{d22e9236-5681-b499-3f72-183f1ad173b3}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="73" height="14" transform="translate(-34,-23) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> com: Control Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C17455F7-264C-4079-889B-EFF625085A71}" transform="translate(1167, 1066)" class="element uml-Port" data-diagram-object-guid="{d3e272db-87a4-32cd-88ec-f80f9f5de86f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="128" height="14" transform="translate(-12,-10) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> pmp: Power Management Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{CB29AD65-1F41-4f5b-B12A-2A8A4CBB2378}" transform="translate(1311, 1066)" class="element uml-Port" data-diagram-object-guid="{de7b0ef3-a5b0-6677-47e6-61c9d9d4f51b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="128" height="14" transform="translate(16,-5) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> pmp: Power Management Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{136550F8-9814-4266-83D5-6F40B3395D96}" transform="translate(337, 841)" class="element uml-Port" data-diagram-object-guid="{e186e410-baa1-430e-9b4a-e3eeb8c289a5}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="103" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> ttp: TemperatureTel Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F99A5614-D378-4cb8-9888-9D29FB45FCC3}" transform="translate(841, 380)" class="element uml-Port" data-diagram-object-guid="{eb6d263a-9046-1873-d2eb-7c607bada913}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="59" height="40" transform="translate(3,-34) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> uloc: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{360B3C8E-29E0-4268-9D9E-FB4C12882734}" transform="translate(775, 646)" class="element uml-Port" data-diagram-object-guid="{f17401da-eeeb-1320-1bba-9b9032bca8f7}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="84" height="14" transform="translate(0,7) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> currot: Rotation Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AE1878C9-82B9-4983-BE41-87D3F449F787}" transform="translate(759, 631)" class="element uml-Port" data-diagram-object-guid="{9c849a7f-2715-c21e-46c4-4b89c3461105}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="113" height="27" transform="translate(16,-6) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> curpos: Position and Speed Port</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g id="{67CA0DE3-1855-4bcf-A875-4240BB0EF99E}" class="element uml-Connector" data-diagram-object-guid="{09000392-c3a5-a639-b893-af95ecee3db5}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="699,631 699,589" />
+      </g>
+    </g>
+    <g id="{24268F99-54D2-4a69-8433-C7E33E51FE19}" class="element uml-Connector" data-diagram-object-guid="{14dc2194-93fd-1185-292a-f61098eeea0d}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="793,252 793,369 808,369" />
+      </g>
+    </g>
+    <g id="{3589DC09-BAD6-443b-99E4-CD4A3ABCD1AC}" class="element uml-Connector" data-diagram-object-guid="{23276380-1523-12a0-da29-a116098afc5a}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="985,367 985,465 952,465" />
+      </g>
+    </g>
+    <g id="{CB8B6DAC-320F-43f4-B6DE-18E8FD48BE84}" class="element uml-Connector" data-diagram-object-guid="{299a5500-6db9-4f2c-815c-203a39811914}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="614,646 614,650 425,650" />
+      </g>
+    </g>
+    <g id="{8CBBE9FC-B4A4-408f-8270-2636E112ED26}" class="element uml-Connector" data-diagram-object-guid="{30c2b564-d812-f7bf-e9c9-517c19015deb}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="773,631 773,616 942,616" />
+      </g>
+    </g>
+    <g id="{17A3CA6B-18D6-47f8-9143-07F58793D34F}" class="element uml-Connector" data-diagram-object-guid="{37f29bd4-0f89-9c90-8329-5d07ee46379c}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="240,795 240,832" />
+      </g>
+    </g>
+    <g id="{2BC0FA1D-AE7F-4a23-8B6E-510282C5D633}" class="element uml-Connector" data-diagram-object-guid="{43798d8a-158b-26c2-61bb-25644578ec38}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="894,471 937,471" />
+      </g>
+    </g>
+    <g id="{90A26618-0412-4cf2-9AD4-36E639705668}" class="element uml-Connector" data-diagram-object-guid="{448a7b81-8927-67cb-f353-d7984f639d2b}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="268,331 268,306 435,306" />
+      </g>
+    </g>
+    <g id="{701430C4-AC4E-4a17-8A9F-8A49810070D4}" class="element uml-Connector" data-diagram-object-guid="{496cf997-dcf3-a36b-bad5-382a420bb31f}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="846,438 846,467 879,467" />
+      </g>
+    </g>
+    <g id="{EBB63B33-7F7F-47a5-97BA-82013F043580}" class="element uml-Connector" data-diagram-object-guid="{56a7032b-a84d-5a82-dae2-66d20c41424c}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="656,863 656,708 698,708" />
+      </g>
+    </g>
+    <g id="{6144AF20-DDB6-4e40-A304-10328B0BEDFA}" class="element uml-Connector" data-diagram-object-guid="{5f1486b1-ac2c-006e-386e-44bb37f39ded}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="714,216 714,203 759,203" />
+      </g>
+    </g>
+    <g id="{66B91321-DE5B-4f53-9C0E-1A2352D3E297}" class="element uml-Connector" data-diagram-object-guid="{6179299f-2b7a-9797-b3f5-135e6b6f105c}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="951,187 951,176 1019,176" />
+      </g>
+    </g>
+    <g id="{9EBABD02-2888-491d-BA5E-CB1CC43E2D0B}" class="element uml-Connector" data-diagram-object-guid="{63d5c72c-cca8-3b6d-44e2-ef1a24118ffb}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="619,482 668,482" />
+      </g>
+    </g>
+    <g id="{604F9174-C9F6-4bf1-8C8D-38179F1C9BAC}" class="element uml-Connector" data-diagram-object-guid="{68c18a39-dbc2-abab-d332-77304372e1f8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1362,494 1362,444" />
+      </g>
+    </g>
+    <g id="{2595E9B5-37A0-40ea-89A4-066D55BFB3FF}" class="element uml-Connector" data-diagram-object-guid="{69f07e32-75bf-94f4-97e6-8960a1021ee2}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1007,492 1007,391 1023,391" />
+      </g>
+    </g>
+    <g id="{49487F2D-2884-45e6-B0CD-9BE3421C6CED}" class="element uml-Connector" data-diagram-object-guid="{6c14fa0a-210f-f49a-3f3e-8fe41daf09fa}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="491,189 491,170 450,170" />
+      </g>
+    </g>
+    <g id="{73DF2EDA-78CE-4bca-83CA-425378151A25}" class="element uml-Connector" data-diagram-object-guid="{6e99f774-1f19-b1aa-ca3a-ed0a45c90ba1}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1183,926 1183,825 949,825 949,767" />
+      </g>
+    </g>
+    <g id="{9BB334E7-6BEA-43ea-AD2A-7B153F2627F4}" class="element uml-Connector" data-diagram-object-guid="{6fa1ea2e-1883-901e-f219-fc98e24892fe}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="790,648 945,648 945,681" />
+      </g>
+    </g>
+    <g id="{82D92AAA-539D-49ae-BD39-0BD42CFF86A0}" class="element uml-Connector" data-diagram-object-guid="{71d69d8a-5c8a-9729-b7d1-769012868f3e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="957,681 1146,681 1146,508" />
+      </g>
+    </g>
+    <g id="{49B957AB-116E-4c2d-9AEA-8F9CB7395C79}" class="element uml-Connector" data-diagram-object-guid="{7288dea8-e2a5-3fad-d719-0390fecb82a3}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="711,527 711,509 735,509" />
+      </g>
+    </g>
+    <g id="{CAAC4633-5171-413f-B924-ED073D271425}" class="element uml-Connector" data-diagram-object-guid="{7312f9b6-ac7e-47b5-6a7c-3d3d7b0b5463}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="609,210 635,210 635,211" />
+      </g>
+    </g>
+    <g id="{042332D7-9EE7-44a5-BD61-0CC2DADEF9EC}" class="element uml-Connector" data-diagram-object-guid="{75c18fa3-2d6d-6d61-e651-e94468dceb13}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="858,734 858,706 790,706" />
+      </g>
+    </g>
+    <g id="{C5BBCF08-ED10-43e6-876A-BE2507847860}" class="element uml-Connector" data-diagram-object-guid="{7a227cab-0449-3a5c-305d-6af8de58a3c5}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="728,351 728,396 772,396" />
+      </g>
+    </g>
+    <g id="{841044EE-9D9C-4572-93F0-5D79E0C435DA}" class="element uml-Connector" data-diagram-object-guid="{806a0e0d-2d80-f817-b8a8-4448a6f8ea1b}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="363,797 412,797 412,660" />
+      </g>
+    </g>
+    <g id="{A316B908-BFDD-41b7-A4D8-C8A2528417D6}" class="element uml-Connector" data-diagram-object-guid="{837de5c8-1493-1543-0bad-163d4d3d0b1b}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="565,754 601,754 601,698" />
+      </g>
+    </g>
+    <g id="{4D5D535C-8218-4c51-8226-0A6967EA0D05}" class="element uml-Connector" data-diagram-object-guid="{84643fbb-e6ce-8952-8478-0683f0db82ca}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="707,713 707,918" />
+      </g>
+    </g>
+    <g id="{41867599-1EA3-45ab-A14F-7D28E7C7C1A1}" class="element uml-Connector" data-diagram-object-guid="{860bc789-f34d-9f3a-f891-62d84d64a786}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="892,204 892,200 937,200" />
+      </g>
+    </g>
+    <g id="{AC815087-3859-4cfb-820E-2C6755E954D7}" class="element uml-Connector" data-diagram-object-guid="{875ddde6-db6e-3a91-431a-c7b760776117}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="704,574 704,542" />
+      </g>
+    </g>
+    <g id="{64D26C46-0F3B-47e6-8D12-B9590CBE2AB4}" class="element uml-Connector" data-diagram-object-guid="{8dcd034e-7adc-466e-fae1-8cec751f3c63}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="227,264 227,240 261,240" />
+      </g>
+    </g>
+    <g id="{7AF2E7AF-DFBF-4a4b-8EEC-33229D029BED}" class="element uml-Connector" data-diagram-object-guid="{93ca1046-db6a-5311-de95-3dc3dc11dae8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="952,395 952,305 987,305" />
+      </g>
+    </g>
+    <g id="{32A42991-C7E1-487d-915F-A57A4F80E12A}" class="element uml-Connector" data-diagram-object-guid="{98818a9b-9e95-06af-2e59-e50d8c6cd18e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="786,684 786,690 920,690 920,752 942,752" />
+      </g>
+    </g>
+    <g id="{A7F02E11-A980-496b-80D9-A8A0BAF2A7D0}" class="element uml-Connector" data-diagram-object-guid="{9975ea9f-2cf4-536c-4947-9afc54866a25}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="448,315 448,338 497,338" />
+      </g>
+    </g>
+    <g id="{8F28439B-0EE7-4b16-9239-9B29228DF056}" class="element uml-Connector" data-diagram-object-guid="{9d133575-1b8f-8724-fed9-a8a5fa22f7fc}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1177,1029 1176,1029 1176,1066" />
+      </g>
+    </g>
+    <g id="{50095347-9C50-4b0a-AA4D-1D32B642CD43}" class="element uml-Connector" data-diagram-object-guid="{9fcffda8-bdce-ddaa-956e-9422a1890f9e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1311,1066 1311,1024 1192,1024" />
+      </g>
+    </g>
+    <g id="{E223D0C2-C15B-4e32-8628-C2B886795B22}" class="element uml-Connector" data-diagram-object-guid="{9fdb6edb-512d-7118-c629-9d36985e834c}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1104,203 1104,197 1240,197" />
+      </g>
+    </g>
+    <g id="{2F6E3C28-DF75-4419-AB21-6290819F84E6}" class="element uml-Connector" data-diagram-object-guid="{aa656a88-bfe1-486e-d274-d8f8b8051f18}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="946,609 946,492 1007,492" />
+      </g>
+    </g>
+    <g id="{F8C72486-113C-4bae-8B03-658A734C4DB4}" class="element uml-Connector" data-diagram-object-guid="{ac27b914-a05d-6290-501c-d2ae6cdde81d}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="276,229 440,229 440,174" />
+      </g>
+    </g>
+    <g id="{6A40F18F-BD6C-4ec7-AD3C-A331356C1B74}" class="element uml-Connector" data-diagram-object-guid="{ae3a86db-d77c-6b11-ff2e-57786053aff8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="240,884 240,847" />
+      </g>
+    </g>
+    <g id="{F5E72CF6-43D2-43c2-BA25-826A6BF4B830}" class="element uml-Connector" data-diagram-object-guid="{aef56f58-26f4-81a1-308c-7617a39203bd}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="222,359 222,341 261,341" />
+      </g>
+    </g>
+    <g id="{48DE1BC3-02F5-4a7d-B014-6AB391AF318D}" class="element uml-Connector" data-diagram-object-guid="{b25e5fc3-4f13-5f92-15d9-3086e3c6899a}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="351,841 351,812" />
+      </g>
+    </g>
+    <g id="{6B1E5A15-A0C8-4d02-B004-2EE2A08B51CC}" class="element uml-Connector" data-diagram-object-guid="{b6f600a6-e33e-8b6e-3802-0ba6fc6e4ee8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1352,736 1374,736 1374,666" />
+      </g>
+    </g>
+    <g id="{DC1AFED2-267B-4c0c-9E78-790683D39165}" class="element uml-Connector" data-diagram-object-guid="{bea912f9-8139-6547-b325-faa67fefd2ab}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="787,1001 787,885 755,885 755,713" />
+      </g>
+    </g>
+    <g id="{4112AC03-B625-4ff7-9C39-2C354B3C9031}" class="element uml-Connector" data-diagram-object-guid="{c1616268-5c58-8c28-cdf4-f7bdb90858d7}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="844,210 879,210" />
+      </g>
+    </g>
+    <g id="{9B8A306B-83FF-43eb-A077-03E006EDBD43}" class="element uml-Connector" data-diagram-object-guid="{c85d12db-8cce-ec87-895d-31a8e4279109}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="885,1022 885,885 756,885 756,713" />
+      </g>
+    </g>
+    <g id="{65B9F3F2-1CF7-4401-B7AC-F648855F8E23}" class="element uml-Connector" data-diagram-object-guid="{d3956291-eecc-fd57-c7e5-1a85507560e9}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="797,813 781,813 781,712" />
+      </g>
+    </g>
+    <g id="{4D6B48DD-A8CF-4554-AB7F-13DC98757085}" class="element uml-Connector" data-diagram-object-guid="{d60bdfbc-aea0-6c03-5f45-26b5a8ddc724}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="894,402 937,402" />
+      </g>
+    </g>
+    <g id="{D37E6148-9894-4465-A50E-E83917A99F74}" class="element uml-Connector" data-diagram-object-guid="{dc72af01-295d-0b50-778d-1bc4641ef70d}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1190,941 1190,958" />
+      </g>
+    </g>
+    <g id="{A303939C-7DCB-4389-9E8E-234D72D0EE95}" class="element uml-Connector" data-diagram-object-guid="{e0646825-fada-1506-9d22-18a49a429467}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="583,345 648,345" />
+      </g>
+    </g>
+    <g id="{1009B002-79CA-47af-AF21-D1592F2E6EE7}" class="element uml-Connector" data-diagram-object-guid="{e64a1d8d-502d-bf2b-b3c2-27c5f127c18b}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="568,351 564,351 564,413" />
+      </g>
+    </g>
+    <g id="{5CEC4E8A-BE9B-4bee-A8F9-44FC0623C900}" class="element uml-Connector" data-diagram-object-guid="{f27010b0-3c3c-8ea1-6f15-cb65de79c662}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1149,493 1149,463" />
+      </g>
+    </g>
+    <g id="{B187CE5A-BA03-41fe-A1EF-84C745D8BA89}" class="element uml-Connector" data-diagram-object-guid="{f387ce4c-9271-17e3-33aa-d58cc67fee34}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="856,395 856,396 879,396" />
+      </g>
+    </g>
+    <g id="{780873CA-07D8-4010-8F29-1776585284F9}" class="element uml-Connector" data-diagram-object-guid="{f73dd60b-4f5a-35d2-934d-e1ce995d2889}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1104,218 1104,258 1131,258" />
+      </g>
+    </g>
+    <g id="{235099B1-0C71-47d0-8EA1-339E3BECA2C6}" class="element uml-Connector" data-diagram-object-guid="{fd8ada65-e68b-6ff2-0b73-1dc8b9df4904}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="1372,654 1361,654 1361,509" />
+      </g>
+    </g>
+    <g id="{BECA4052-FAB3-49ed-85FA-9BFBE7EDD7F2}" class="element uml-Connector" data-diagram-object-guid="{fef1cd79-5f75-5e9e-fcad-3e91d9c9aed3}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="588,689 601,689" />
+      </g>
+    </g>
+  </g>
+</svg>

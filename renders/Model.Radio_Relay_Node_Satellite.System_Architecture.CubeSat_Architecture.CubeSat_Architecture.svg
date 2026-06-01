@@ -1,0 +1,2392 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mainSvg" width="1295" height="1141" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+		#viewport {
+			margin:0;
+			font-family:"Arial";
+			font-size: 10px;
+			text-rendering: optimizeLegibility;
+			image-rendering: optimizeQuality;
+			buffered-rendering: static;
+			color:rgb(109,112,114);
+		}
+		
+		#viewport tab { padding-left: 4em; }
+		
+		.fo-body { margin:0; }
+		
+		.stereotype::before { content: '\00AB'; }
+		.stereotype::after { content: '\00BB'; }
+		.text-stereotype { padding-top: 6px; }
+		
+		.visible { display:block; }
+		.invisible { display:none; }
+		
+		.text-center { text-align:center; }
+		.text-ellipsis {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	
+				g.element				{ fill: url(#gradStandardObject);stroke:rgb(157,139,141);stroke-width:1px;}
+				g.uml-Enumeration		{ fill: url(#gradEnumeration) }
+				g.element rect		{ filter:url(#dropshadow)}
+				g.element circle		{ filter:url(#dropshadow)}
+				g.element ellipse		{ filter:url(#dropshadow)}
+				.fillBeige			{ fill: #fcf2e3; }
+	 
+		g.element text {
+			stroke: rgb(253,250,247);
+			stroke-width:2px;
+			paint-order:stroke;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			fill: rgb(109,112,114);
+		}
+
+		#mainSvg { 
+			background: #aab9dc;
+			background: -moz-linear-gradient(top, #aab9dc 0%, #eff1f8 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aab9dc), color-stop(100%,#eff1f8));
+			background: -webkit-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -o-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -ms-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: linear-gradient(to bottom, #aab9dc 0%,#eff1f8 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab9dc', endColorstr='#eff1f8',GradientType=0 );
+			
+			background:white;
+		}
+		
+		.node					{ fill:none; }
+		.connector				{ fill:none;pointer-events:visibleStroke; }
+		.connectorPointerTarget { fill:none;pointer-events:stroke;visibility:hidden;stroke-width:17;stroke-linejoin:miter;stroke-linecap:butt; }
+		.connector-dash			{ fill:none; stroke-dasharray:7 4; pointer-events:visibleStroke; }
+		.part-notelink			{ fill:none; stroke-dasharray:3; pointer-events:visibleStroke; }
+		.part-associationclass	{ fill:none; stroke-dasharray:6 3; pointer-events:visibleStroke; }
+		.partition-splitter		{ fill:none; stroke-dasharray:3; }
+		.line-dash				{ stroke-dasharray: 7 4; }
+		
+		.action					{ text-anchor:middle; }
+		.actionpin				{ text-anchor:middle; }
+		.text-middle			{ text-anchor:middle; }
+		
+		.fill-gray				{ fill:#3f3f3f; }
+		.text-members			{ fill:#696969;stroke:none;text-anchor:start; }
+		.text-transition		{ fill:black;stroke:none;text-anchor:middle; }
+		.text-object-name		{ fill:black;stroke:none;text-anchor:middle;font-weight:bold; }
+		.text-stereotypes		{ fill:black;stroke:none;text-anchor:start; }
+		.connector-label		{ text-anchor:middle; alignment-baseline:hanging; }
+		.controlflow-label		{ text-anchor:end; alignment-baseline:baseline; }
+		.message-label			{ text-anchor:middle; }
+		.opaque-action-body		{ color:grey }
+	 
+		.partition-name			{ text-anchor:start;alignment-baseline:hanging; }
+		
+		.childelement-icon		{ display:inline-block;width:20px;height:16px;vertical-align:middle; }
+		.component-icon			{ fill:rgb(252,242,227); }
+		.template-arg-box		{ fill:rgb(252,242,227); stroke-dasharray: 7 4; }
+		.template-arg-text		{ text-anchor:start; alignment-baseline:hanging; }
+		
+		.hyperlink-text			{ color:blue; text-decoration:underline; margin:0 }
+		
+		.enumliterals-list {
+			list-style-type: none;
+			margin: 3px 0px 3px 24px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list {
+			list-style-type: none;
+			margin: 3px 0px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list li::before {
+			padding: 0px 8px 0px 5px
+		}
+		.properties-list li.private::before {
+			content: '-'; padding-right: 11px;
+		}
+		.properties-list li.protected::before {
+			content: '#';
+		}
+		.properties-list li.public::before {
+			content: '+';
+		}
+		.properties-list li.internal::before {
+			content: '~';
+		}
+		.properties-list li.package::before {
+			content: '~';
+		}
+	 
+		g.element .partitionHeader {
+			fill: none;
+			filter: none;
+		}
+		
+		.highlighted { filter:url(#highlighter)}
+		
+		.part-object-parent {
+			margin: 0px;
+			padding-top: 4px;
+			padding-right: 3px;
+			text-align: right;
+			font-style: italic;
+		}
+		
+		.part-object-rootleaf {
+			margin: 0px;
+			padding-right: 6px;
+			text-align: right;
+		}
+		
+		.part-object-tests {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			border-top: 2px solid red;
+		}
+		
+		.part-usecase-extensionpoints {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 3px;
+			padding-left: 12%;
+			vertical-align: top;
+			border-top: 2px solid red;
+		}
+		
+		.part-diagram-details { border:0; color:blue }
+		.part-diagram-details td { padding:0 }
+		
+		.part-diagram-notes { border:0 }
+		.part-diagram-notes td { padding:0 }		
+	    
+		.part-state-operation { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 71, 136) }
+		.part-state-operation-method { margin:0px; padding-left:10px; color:gray }
+		.part-state-operation-method p { margin: 2px 0px 2px 0px; }
+		.part-state-asframe-name { fill:#f7f3f7 }
+		.part-internal-transition-do { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 30, 30) }
+		.part-internal-transition-behavior { margin:2px 0 0 0; padding-left:15px; color:rgb(0, 71, 136) }
+		
+		.part-timeline-timelabel-container { fill:white }
+    
+	    .connected-feature_mark { fill:none; stroke-width:1 }
+	    
+	    .part-note { line-height:125%; }
+	    .part-note ul { margin:0; padding-left:17px; }
+	    .part-note ol { margin:0; padding-left:12px; }
+	    .part-note ul li { padding-left:10px; }
+	    .part-note ol li { padding-left:15px; }
+	    .part-note ntab { white-space:pre; tab-size:4em; }
+	    .part-note ntab::before { content: '	'; }
+	    
+	    .part-constraint { line-height:125%; }
+	    .part-constraint ul { margin:0; padding-left:5px; list-style-type: none; display: inline-block; }
+	    .part-constraint ol { margin:0; padding-left:5px; display: inline-block; }
+		.part-constraint ul li::before { content: '-'; padding: 0px 2px 0px 0px; }
+	    .part-constraint ntab { white-space:pre; tab-size:4em; }
+	    .part-constraint ntab::before { content: '	'; }
+    
+		.part-decision-label	{ text-anchor:middle;alignment-baseline:central }
+		
+		/*==============================*/
+		
+		.shapescript-errors {
+			border: 0;
+			color: red;
+			width: auto;
+			margin-top: 3px;
+			margin-right: 3px;
+			margin-left: auto;
+			background-color: #e5e5e5a3;
+		}
+		.shapescript-errors caption { text-align: left; font-weight: bold; background-color: inherit }
+		
+		.part-separator { border-top: 1px solid rgb(157,139,141); margin:0px; margin-top:5px }
+		.connector { fill:none; stroke:rgb(107,115,139) }
+		
+		.element.base-Action { fill:rgb(251,241,218) }
+		.element.base-Requirement { fill:url(#gradRequirement) }
+		.element.uml-Activity { fill:rgb(250,247,220) }
+		.element.uml-ActivityParameterNode { fill:rgb(247,197,195) }
+		.element.uml-Class.requirement { fill:rgb(242,251,239) }
+		.element.uml-Interface { fill:url(#gradInterface) }
+		.element.uml-Property, .element.uml-Port { fill:url(#gradProperty) }
+		.element.uml-DataType { fill:rgb(250,249,230) }
+		.element.uml-StateMachine { fill:rgb(245,247,240) }
+		.element.uml-State { fill:url(#gradState) }
+		.element.uml-InstanceSpecification { fill:rgb(224,244,245) }
+		.element.uml-Package { fill:rgb(249,243,240) }
+		.element.uml-Signal { fill:rgb(249,249,249) } /*rgb(255,255,255) - rgb(239,239,239)*/
+		.element.uml-Gate { fill:rgb(032,032,032) }
+		.element.uml-Trigger { fill:rgb(253,240,245) }
+		.element.uml-UseCase { fill:rgb(231,242,253) }
+		.element.uml-Comment { fill:white; stroke:rgb(131,181,190) }
+		
+		.element.uml-InitialNode, .element.uml-JoinNode, .element.uml-ForkNode { fill:rgb(152,132,132) }
+		.element.uml-Pseudostate.kind-Initial, .element.uml-Pseudostate.kind-Join, .element.uml-Pseudostate.kind-Fork, .element.uml-Pseudostate.kind-Junction { fill:rgb(152,132,132) }
+		.element.uml-DecisionNode, .element.uml-MergeNode, .element.uml-ActivityFinalNode, .element.uml-FinalState { fill:rgb(206,225,163) }				
+		.element.uml-Pseudostate.kind-DeepHistory,
+		.element.uml-Pseudostate.kind-ShallowHistory,
+		.element.uml-Pseudostate.kind-Choice,
+		.element.uml-Pseudostate.kind-ExitPoint,		
+		.element.uml-Pseudostate.kind-EntryPoint { fill:rgb(206,225,163) }
+		
+		.part-attribute-container { color:rgb(123,82,86) }
+		.part-operation-container { color:rgb(0, 71, 136) }
+		.part-taggedvalue-container { padding-top:4px }
+		.part-occurrence-specifications { color:rgb(123,82,86); padding-top:2px; padding-left:14px }
+		.part-object-notes { color:#a0a0a0; padding-top:10px; padding-left:11px; padding-right:2px; line-height:110% }
+		.part-timeline-container { fill:#f3fcfc }
+		
+		.requirement-text { white-space:break-spaces }
+
+		a.disabled { pointer-events:none; cursor:not-allowed; color:currentColor; text-decoration:auto }
+
+	]]></style>
+  <defs>
+    <g id="_EAArrow">
+      <polyline points="0,15 5,0 10,15" style="fill:none" />
+    </g>
+    <g id="_EAArrow2">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:black" />
+    </g>
+    <g id="_EAArrow3">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:rgb(252, 242, 227)" />
+    </g>
+    <g id="_EAArrowFull">
+      <polyline points="0,15 5,0 10,15 0,15" class="fillBeige" />
+    </g>
+    <g id="_EAArrowFullBlack">
+      <polyline points="0,15 5,0 10,15 0,15" style="fill:black" />
+    </g>
+    <g id="NestingArrow">
+      <circle cx="5" cy="8" r="8" class="fillBeige" />
+      <line x1="-3" y1="8" x2="13" y2="8" />
+      <line x1="5" y1="0" x2="5" y2="16" />
+    </g>
+    <g id="NestingArrowBigger">
+      <circle cx="5" cy="10" r="10" class="fillBeige" />
+      <line x1="-5" y1="10" x2="15" y2="10" />
+      <line x1="5" y1="0" x2="5" y2="20" />
+    </g>
+    <g id="AssemblyConnectorMark">
+      <path class="node" style="stroke-width: 1.001;" d="M-10,0 a10,10 0 1 0 20,0" />
+      <circle cx="0" cy="0" r="7" class="fillBeige" />
+    </g>
+    <g id="RealizesArrow">
+      <polyline points="0,10 5,0 10,10 0,10" style="fill:black" />
+    </g>
+    <linearGradient id="gradStandardObject" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(253,250,247);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(245,234,223);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradEnumeration" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(234,253,228);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(213,249,200);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDeepHistory" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradRequirement" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(242,251,239);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,243,215);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradInterface" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(241,236,250);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,212,242);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradProperty" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(218,234,252);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(189,217,249);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradState" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(244,237,217);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(236,225,192);stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropshadow" height="140%" width="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <!-- stdDeviation is how much to blur -->
+      <feOffset dx="3" dy="3" result="offsetblur" />
+      <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic" />
+        <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <g id="compositeDiagramIcon">
+      <ellipse cx="0" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <ellipse cx="15" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <polyline class="node" points="5,0 10,0" />
+    </g>
+    <filter id="highlighter">
+      <feFlood flood-color="rgb(0,0,255)" result="flood" />
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1" />
+      <feOffset dx=" 1" dy=" 1" in="composite1" result="offset1" />
+      <feOffset dx="-1" dy="-1" in="composite1" result="offset2" />
+      <feOffset dx=" 1" dy="-1" in="composite1" result="offset3" />
+      <feOffset dx="-1" dy=" 1" in="composite1" result="offset4" />
+      <feMerge result="merge">
+        <feMergeNode in="offset1" />
+        <feMergeNode in="offset2" />
+        <feMergeNode in="offset3" />
+        <feMergeNode in="offset4" />
+      </feMerge>
+      <feGaussianBlur in="merge" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="doubleStroke" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feMorphology in="SourceGraphic" result="a" operator="dilate" radius="1" />
+      <feComposite in="SourceGraphic" in2="a" result="xx" operator="xor" />
+    </filter>
+    <radialGradient id="gradNotePin" cx="35%" cy="35%" r="70%" fx="35%" fy="35%">
+      <stop offset="20%" style="stop-color:white;" />
+      <stop offset="100%" style="stop-color:gray;" />
+    </radialGradient>
+    <g id="NotePin">
+      <circle cx="0" cy="0" r="9" stroke="gray" fill="url(#gradNotePin)" />
+    </g>
+  </defs>
+  <g id="viewport" transform="translate(-9.5,-9.5)">
+    <g style="" id="{B7E9FC7D-FAE0-4b2c-9356-8404AE9D4AAC}" transform="translate(20, 20)" class="element uml-Class" data-diagram-object-guid="{446a7e54-75ff-edd6-2810-ff77672467b2}">
+      <rect x="0" y="0" width="1272" height="1119" style="fill:none" class="main-shape" />
+      <polygon points="0,0 181.02734,0 181.02734,5 168.02734,19 0,19" />
+      <text x="3" y="12" style="font-weight: bold; fill:black; stroke:none">[block] CubeSat Architecture</text>
+    </g>
+    <g style="" id="{5E87EB62-667D-4e3e-80E4-D32D54AEAEC5}" transform="translate(39, 67)" class="element uml-Property" data-diagram-object-guid="{43fa31a4-b4b9-f3df-f4e6-7b5be99fc42d}">
+      <rect x="0" y="0" width="219" height="239" style="" class="main-shape" />
+      <foreignObject width="219" height="239" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>antenna: Antenna System: NanoCom ANT430</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{77745CF5-9134-4887-8D29-7CA2A4F25600}" transform="translate(574, 784)" class="element uml-Property" data-diagram-object-guid="{51d3c4d0-7a85-186c-e189-cd03bd95dd9f}">
+      <rect x="0" y="0" width="183" height="108" style="" class="main-shape" />
+      <foreignObject width="183" height="108" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Rotation Sensor1: NanoSense FSS</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{38A5B3DE-7340-435b-8C59-2D36ABDE7DC4}" transform="translate(698, 43)" class="element uml-Property" data-diagram-object-guid="{71da2cb9-5b5e-afe3-9a64-a4fe2ff4f6be}">
+      <rect x="0" y="0" width="557" height="573" style="" class="main-shape" />
+      <foreignObject width="557" height="573" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>obc: On Board Computer: NanoMind A3200</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BA6A3B4F-15EA-4ff7-BCC4-9F07C1E6C588}" transform="translate(916, 768)" class="element uml-Property" data-diagram-object-guid="{9e0284c9-5005-5642-7a00-54d223777c25}">
+      <rect x="0" y="0" width="183" height="149" style="" class="main-shape" />
+      <foreignObject width="183" height="149" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>GPS1: Position and Speed Sensor1: NovAtel OEM719</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{14318E4D-BB71-4296-A972-4AF70C59BF0D}" transform="translate(40, 387)" class="element uml-Property" data-diagram-object-guid="{a7fea2ff-8d26-b698-2b30-4c6f07db2345}">
+      <rect x="0" y="0" width="469" height="393" style="" class="main-shape" />
+      <foreignObject width="469" height="393" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>EPS: Electrical Power Subsystem</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2C63FFBF-61E9-445b-9063-C1B72FE8D69D}" transform="translate(332, 63)" class="element uml-Property" data-diagram-object-guid="{ab937bd5-16a0-2397-6c00-5999d60cfbc2}">
+      <rect x="0" y="0" width="242" height="247" style="" class="main-shape" />
+      <foreignObject width="242" height="247" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>RT: Radio Transceiver: NanoCom AX100</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C13C850E-D453-4a30-906E-C2CFA0BCCB74}" transform="translate(916, 940)" class="element uml-Property" data-diagram-object-guid="{b7b91c52-18c4-4131-f69f-de3d14690145}">
+      <rect x="0" y="0" width="183" height="147" style="" class="main-shape" />
+      <foreignObject width="183" height="147" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>GPS2: Position and Speed Sensor2: NovAtel OEM719</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{676930AE-EE98-43ac-95F7-549D390FB933}" transform="translate(570, 964)" class="element uml-Property" data-diagram-object-guid="{ee4e287d-923d-a35f-fc1c-481bdfa711cd}">
+      <rect x="0" y="0" width="183" height="101" style="" class="main-shape" />
+      <foreignObject width="183" height="101" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Rotation Sensor2: NanoSense FSS</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B9C018C3-25FC-4c0b-B250-AC5F010FFFC3}" transform="translate(819, 98)" class="element uml-Property" data-diagram-object-guid="{00cf32d9-028a-2be8-b305-98e508519d49}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Decode Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2B33AEC0-1C7D-4ccb-9BF1-FD4EFA843065}" transform="translate(1055, 400)" class="element uml-Property" data-diagram-object-guid="{2595a646-30d2-15ee-c50b-d0efd56cf842}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Rotate Satellite</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3615BD16-AD79-40aa-9674-C9B3C65130F8}" transform="translate(418, 117)" class="element uml-Property" data-diagram-object-guid="{2b12ebbe-4658-ea63-9c8d-eb982e85aff8}">
+      <rect x="0" y="0" width="70" height="62" style="" class="main-shape" />
+      <foreignObject width="70" height="62" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Recieve Radio Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{87EB089C-8694-440e-B84D-D46793E4632C}" transform="translate(921, 182)" class="element uml-Property" data-diagram-object-guid="{2bf5b999-180c-f6a2-e7d9-b34c839b7dad}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Store Message</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{6286EBE7-9681-4680-A599-F7B112B1D2DE}" transform="translate(418, 203)" class="element uml-Property" data-diagram-object-guid="{3b257162-d300-75ae-6fbe-f1f2dffe2251}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Send Radio Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FA845DFD-35C8-4333-B067-8FA4F7666255}" transform="translate(850, 328)" class="element uml-Property" data-diagram-object-guid="{4c82d9d7-c003-36ff-ea66-2c14dd7908f3}">
+      <rect x="0" y="0" width="104" height="95" style="" class="main-shape" />
+      <foreignObject width="104" height="95" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Send Message When inRange of Recipient</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{8E1895D2-E42B-4bbf-B484-E556F20CF6E6}" transform="translate(841, 522)" class="element uml-Property" data-diagram-object-guid="{569f5a40-934a-651c-25b2-cf94f9debdfe}">
+      <rect x="0" y="0" width="83" height="56" style="" class="main-shape" />
+      <foreignObject width="83" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>ta: Telemetry Aggregation</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{75D6F075-4F37-4663-BF4F-6519F64C0C62}" transform="translate(997, 328)" class="element uml-Property" data-diagram-object-guid="{59e4bf6a-632a-9614-715f-ea10434b80bf}">
+      <rect x="0" y="0" width="88" height="60" style="" class="main-shape" />
+      <foreignObject width="88" height="60" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Set Configurable Parameters</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C0E614B2-DB86-466c-92E4-414AF38EAA2D}" transform="translate(263, 532)" class="element uml-Property" data-diagram-object-guid="{6c93ed25-816d-ebdc-e5c3-c33b0430c6d4}">
+      <rect x="0" y="0" width="189" height="185" style="" class="main-shape" />
+      <foreignObject width="189" height="185" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>EPS: Power Supply: NanoPower P31u</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EA2DAB7D-01DB-48f8-ADFF-A8882DA358EA}" transform="translate(630, 831)" class="element uml-Property" data-diagram-object-guid="{765f8b08-fa01-b472-23b3-878aa6c181b2}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cr1: Calculate Rotation</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A1FF89CB-BD87-4c2c-99C9-A237B794FE58}" transform="translate(52, 451)" class="element uml-Property" data-diagram-object-guid="{8339f4f8-34f2-1ca2-3f29-f31f6dddc388}">
+      <rect x="0" y="0" width="170" height="54" style="" class="main-shape" />
+      <foreignObject width="170" height="54" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>SP: Solar Panel: GomSpace NanoPower 3U Panels.</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AF632E90-75E6-4115-9EE7-5861BE9AB26D}" transform="translate(982, 839)" class="element uml-Property" data-diagram-object-guid="{88499d0c-3ef9-0375-c6d9-c33da1131766}">
+      <rect x="0" y="0" width="87" height="69" style="" class="main-shape" />
+      <foreignObject width="87" height="69" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cps1: Calculate Position and Speed</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{44481418-E47E-44fb-8668-695C7649BB70}" transform="translate(98, 120)" class="element uml-Property" data-diagram-object-guid="{b25dd755-61a5-4c9d-6f8b-ef0fb0773bf1}">
+      <rect x="0" y="0" width="100" height="56" style="" class="main-shape" />
+      <foreignObject width="100" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Receive RF Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BDF8C429-AEEC-41ba-A226-61AA1E009777}" transform="translate(1012, 86)" class="element uml-Property" data-diagram-object-guid="{b272af97-dc03-664e-25b9-ce12437a52ef}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Source Decide</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{6C50D961-1E15-4a7a-94E5-ED4BA65B06EF}" transform="translate(757, 167)" class="element uml-Property" data-diagram-object-guid="{bf220d8c-ab75-c5bc-117a-9c9432d051f7}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Encode Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A541593E-B534-4bc1-8BD8-FBA8A0FAF64E}" transform="translate(977, 1007)" class="element uml-Property" data-diagram-object-guid="{c4285d9b-21e1-4c96-82f8-435dabe27e8b}">
+      <rect x="0" y="0" width="70" height="95" style="" class="main-shape" />
+      <foreignObject width="70" height="95" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cps2: Calculate Position and Speed</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FCBD0F6B-EEB2-44be-AFB2-6BCD6511132A}" transform="translate(1150, 330)" class="element uml-Property" data-diagram-object-guid="{d0bfd16e-8592-1aff-d3e9-dbcf30fe823c}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Log Command</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BD5D9EFB-AB04-40b0-8642-01A3DB6942D2}" transform="translate(98, 207)" class="element uml-Property" data-diagram-object-guid="{d40a0a05-f54e-7697-86bb-3c5c704ce07f}">
+      <rect x="0" y="0" width="89" height="56" style="" class="main-shape" />
+      <foreignObject width="89" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Send RF Signal</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BB060D34-1684-4545-A49D-BFA2FE066077}" transform="translate(1078, 207)" class="element uml-Property" data-diagram-object-guid="{dd9a9066-fded-67b8-1bbb-e84969b6bbff}">
+      <rect x="0" y="0" width="85" height="56" style="" class="main-shape" />
+      <foreignObject width="85" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Authenticate Command</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{8840EF31-66E3-40b8-9044-98BFF9641F22}" transform="translate(717, 376)" class="element uml-Property" data-diagram-object-guid="{e85e44e2-5147-4072-d44f-7ec605eec77a}">
+      <rect x="0" y="0" width="97" height="82" style="" class="main-shape" />
+      <foreignObject width="97" height="82" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>: Telemetry Message to Ground Station</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B8CA76F9-2150-43fd-977F-51DEEFA608F9}" transform="translate(52, 658)" class="element uml-Property" data-diagram-object-guid="{f25c626f-c09f-35aa-6957-24a40add60ee}">
+      <rect x="0" y="0" width="149" height="56" style="" class="main-shape" />
+      <foreignObject width="149" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>BP: Battery Pack: NanoPower BP4</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AF14DF4E-BF0B-40f7-BE51-2F17637064D9}" transform="translate(622, 1004)" class="element uml-Property" data-diagram-object-guid="{f7597968-2fb4-6a57-d9de-c5ac6f0640b1}">
+      <rect x="0" y="0" width="70" height="56" style="" class="main-shape" />
+      <foreignObject width="70" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>cr1: Calculate Rotation</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{78DFECA5-64AA-4aa8-A13C-348782D04BCE}" transform="translate(328, 581)" class="element uml-Property" data-diagram-object-guid="{86910f4b-39fe-8d32-67f2-038cd9d6c1da}">
+      <rect x="0" y="0" width="70" height="78" style="" class="main-shape" />
+      <foreignObject width="70" height="78" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;"></p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Power Distributor</b>
+          </p>
+          <div class="part-attribute-container"></div>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-object-behaviors"></div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FE7BCFE2-80F1-4de6-B5A0-148BD010D183}" transform="translate(325, 208)" class="element uml-Port" data-diagram-object-guid="{014e6401-be01-d111-e219-75bd90f0c229}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="46" height="14" transform="translate(-28,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: COAX</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{E9BEE376-757D-474e-A14C-25507A7A9E40}" transform="translate(690, 957)" class="element uml-Port" data-diagram-object-guid="{214ec6cb-1408-3c5a-7ba6-09bf578ff775}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B5880CF6-0D8C-4d1c-95B1-6AA5FD018146}" transform="translate(691, 139)" class="element uml-Port" data-diagram-object-guid="{5966fbf3-3ea6-bd6f-1817-fc61df98bc25}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="22" height="27" transform="translate(-10,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FEC59BF9-BDC4-48c0-9E31-9342FC3A90AA}" transform="translate(1091, 761)" class="element uml-Port" data-diagram-object-guid="{5e9c9faf-7603-ca06-ac0e-f61c3fb5f85b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> In: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{CC517FC9-4E05-46a2-B330-7E8BBB9EF6E3}" transform="translate(501, 576)" class="element uml-Port" data-diagram-object-guid="{686a8498-5c92-3b85-25d9-84b48bf217e4}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3338A44D-7AF9-45ae-84AC-ABF927CBD63A}" transform="translate(567, 214)" class="element uml-Port" data-diagram-object-guid="{7113bb09-dfe3-5925-97ad-3edf27742c5c}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="22" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: CAN </span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F198DFA2-0771-4463-97FF-1466180328ED}" transform="translate(251, 141)" class="element uml-Port" data-diagram-object-guid="{77c3c709-6d2d-1a56-88d8-3aacb807d665}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="28" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: COAX</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A6D6563C-D4B5-4e18-B366-5FD437D83900}" transform="translate(605, 957)" class="element uml-Port" data-diagram-object-guid="{7e598679-bb64-2298-1c13-dce12768340e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{99F99191-4F8A-4cf8-8B1F-81768F82C2BC}" transform="translate(325, 141)" class="element uml-Port" data-diagram-object-guid="{82ff440d-e497-7bbb-e263-2c72341d0a57}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="28" height="27" transform="translate(-27,-31) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: COAX</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{757C9525-EF5B-4eff-B032-3E2A7C3C84EF}" transform="translate(879, 609)" class="element uml-Port" data-diagram-object-guid="{884a00de-2f20-937f-7210-bb24ca287ea6}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="34" height="14" transform="translate(-42,29) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{ED0E4ED0-8F8A-4989-98B2-41DD7E0217EA}" transform="translate(909, 1000)" class="element uml-Port" data-diagram-object-guid="{94185105-12f7-884e-5acd-da9d75dbc1e4}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(-11,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{700C1BD1-0C90-40ca-A740-9FF0D696C951}" transform="translate(567, 141)" class="element uml-Port" data-diagram-object-guid="{95abb258-00f5-3300-0e59-18ae858d8b1e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(13,12) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F6415049-C61D-4b80-BA9B-698985C42B9E}" transform="translate(909, 843)" class="element uml-Port" data-diagram-object-guid="{99f1a337-c6bf-cdac-29ab-35efc9ca374d}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(-11,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{48F86F37-CD6C-4131-8B8B-6DA06260018D}" transform="translate(501, 684)" class="element uml-Port" data-diagram-object-guid="{a4548428-51a2-f514-7b2d-d2c83bed686c}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{D700C352-5537-4960-9332-6FC77DCF6879}" transform="translate(691, 516)" class="element uml-Port" data-diagram-object-guid="{c0fe3bb1-8225-e485-4c2e-5fd0ed4f275a}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(-18,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{26115C24-39BA-447a-9787-6C14B044E9C4}" transform="translate(1092, 959)" class="element uml-Port" data-diagram-object-guid="{ddfff567-06fe-e242-9e59-adc8e0548c26}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1605C184-ADA5-4cc0-B8DF-1AEE5AA587A6}" transform="translate(691, 208)" class="element uml-Port" data-diagram-object-guid="{e02dbf26-e16b-9e80-d365-6236582be75e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(-11,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{D311B4F8-D5D6-4432-A4B5-409E804C40EC}" transform="translate(696, 778)" class="element uml-Port" data-diagram-object-guid="{ed22078c-9bfe-625b-8676-c41162f3a840}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="23" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: CAN</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BCA1AE14-0DBE-4952-BB14-5DC6D9DC940E}" transform="translate(522, 303)" class="element uml-Port" data-diagram-object-guid="{f2655811-0b29-aeac-21cd-687a9f298409}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(25,6) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C7D32E5F-2AC1-4715-96D1-571B7D6DD830}" transform="translate(604, 778)" class="element uml-Port" data-diagram-object-guid="{f379d958-bd10-4e28-b849-8f9bf631d335}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A11658B9-418B-4d10-941C-2D36AAE1C199}" transform="translate(251, 207)" class="element uml-Port" data-diagram-object-guid="{f4d061b1-18f5-a04e-6e9f-bf5f33c617c3}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="38" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in.COAX</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3044E74A-5E1E-442a-8958-BCE8F0998108}" transform="translate(761, 451)" class="element uml-Port" data-diagram-object-guid="{0084a98b-ef81-e949-b209-ef0b827d1c9e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(4,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F25CC5F5-9EE2-4a89-B7F9-6786B06E5BB7}" transform="translate(771, 369)" class="element uml-Port" data-diagram-object-guid="{04fe138c-687e-7bdb-5332-d789f48986ac}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="48" height="40" transform="translate(18,-21) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Telemetry Messages</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{30E7C942-D3FA-458d-8FFC-3F9799AC9E58}" transform="translate(191, 147)" class="element uml-Port" data-diagram-object-guid="{06cfb05a-d7a2-1583-9505-23ab2898a028}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{9BF4593B-9DF6-496a-AB08-061E07FC886F}" transform="translate(914, 223)" class="element uml-Port" data-diagram-object-guid="{0dc445d4-9a13-9644-2efc-69cadca2073f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="40" height="27" transform="translate(-39,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: user identifier</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{08515674-EE4F-43a8-801A-81AD56D8AAA7}" transform="translate(953, 231)" class="element uml-Port" data-diagram-object-guid="{1642cfa9-1653-c268-d4d9-1519f4e6fec9}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="43" height="40" transform="translate(10,7) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Recipient Location</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{33FEE114-585C-4ac7-8BFD-E45BCA2FB509}" transform="translate(986, 832)" class="element uml-Port" data-diagram-object-guid="{201bd20b-9225-e3be-4aee-013d4e6fcf85}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(15,-4) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C3218FA9-5CDF-4f95-A63D-BC29BBD57525}" transform="translate(685, 1027)" class="element uml-Port" data-diagram-object-guid="{21a72f72-4dfe-bbd1-c0b2-3b9026efcef1}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BCE1F106-E716-42f6-8439-E465C10D47A0}" transform="translate(1075, 105)" class="element uml-Port" data-diagram-object-guid="{2c2b400a-eb32-06e3-74ad-0afeddffffb8}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(11,-28) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7D45BE08-CA34-4163-B76A-5CFF78682325}" transform="translate(481, 215)" class="element uml-Port" data-diagram-object-guid="{2f50ce33-cd0b-83cb-2a81-04e57cc4c854}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{D810EBC8-48D0-4716-96CA-90FF88960761}" transform="translate(481, 143)" class="element uml-Port" data-diagram-object-guid="{31be2e48-eeab-ea56-39da-95e24f9dddbd}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{174BC031-BE04-4533-A2DF-461502AA2550}" transform="translate(138, 651)" class="element uml-Port" data-diagram-object-guid="{37436a17-a347-1651-4315-d243f7004ec7}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(-34,-28) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7C8C1438-8BB3-45d2-B564-002163000EB2}" transform="translate(820, 174)" class="element uml-Port" data-diagram-object-guid="{3f644dc1-9980-d50e-7636-748a3126ee62}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FB6E6F76-8A57-4f8b-8F8C-68555A5EC427}" transform="translate(87, 707)" class="element uml-Port" data-diagram-object-guid="{3fa1f679-b3b6-dc32-4172-8cf3af64cef1}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="24" height="27" transform="translate(-24,17) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Data</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{87AB3245-9B24-473b-91E1-F31551379257}" transform="translate(812, 124)" class="element uml-Port" data-diagram-object-guid="{4d7ae553-c721-a91f-4b3c-28d04f477b35}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(0,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FF3ECFFC-CD96-47f1-AD0F-E62899026740}" transform="translate(865, 321)" class="element uml-Port" data-diagram-object-guid="{54b2c3b1-3c5f-c8fb-7599-c4dbcdd0b07c}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="52" height="40" transform="translate(-55,-16) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: In Range User id</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{98C2B02D-3A66-47da-B496-F33D34DBDD90}" transform="translate(1005, 107)" class="element uml-Port" data-diagram-object-guid="{5caf7ed8-d20c-ff3c-1214-b425fb6e2808}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(0,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3C90523A-3A7D-4b97-91CF-9EC81BECF16C}" transform="translate(445, 581)" class="element uml-Port" data-diagram-object-guid="{6dabc84b-792d-0101-51fe-81633c0ddf87}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="25" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> Out: data</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{547D1880-280D-4bac-AA75-112FD09C5082}" transform="translate(411, 221)" class="element uml-Port" data-diagram-object-guid="{6f5daed6-88ac-c09e-2ee9-1f290b7ce889}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(-6,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{85B7F08D-43CA-4523-9B92-2EE85C1D441E}" transform="translate(180, 234)" class="element uml-Port" data-diagram-object-guid="{703a18e8-4c28-4f00-d29f-cf8daa2776f2}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{0C439CD2-1C60-4685-9EE8-7E90F27C2DD8}" transform="translate(882, 124)" class="element uml-Port" data-diagram-object-guid="{707469a5-96e3-8263-13e6-fa69b8cbf24b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2A9437A4-E010-42d7-8088-D25B419DBA36}" transform="translate(145, 707)" class="element uml-Port" data-diagram-object-guid="{70c08343-25a5-0be6-b3de-f7fb9762255a}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="24" height="27" transform="translate(-11,13) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Data</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5FF17E92-F349-409d-B443-3E1C125E5894}" transform="translate(693, 852)" class="element uml-Port" data-diagram-object-guid="{861f6f95-ca1b-0313-4a05-943d4afe982b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1040E1AA-A046-4847-8F1E-914ADAA1044F}" transform="translate(1111, 256)" class="element uml-Port" data-diagram-object-guid="{8e1543f7-3cc2-880e-1525-53464b5aa631}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(2,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{21FF2C77-FE5F-4454-89D9-95CD2B68DEDF}" transform="translate(914, 187)" class="element uml-Port" data-diagram-object-guid="{8fc7cc0d-25aa-dad2-7fa4-094fe295a953}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="72" height="27" transform="translate(-35,-24) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Message to send down </span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C0FAEBAE-C3B9-416c-BAF3-611A113CFB0E}" transform="translate(1111, 200)" class="element uml-Port" data-diagram-object-guid="{90d3b0d9-1523-8c36-3b9c-148dd63eef89}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{17DE3A81-BA3D-40c5-BB4F-AE3D65EB1158}" transform="translate(1189, 323)" class="element uml-Port" data-diagram-object-guid="{9b56c0c5-1c49-925b-f774-8ebcaefd7d04}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{03032BFD-CD65-48b2-82DA-EA1DFBF29BE5}" transform="translate(307, 710)" class="element uml-Port" data-diagram-object-guid="{a301de07-5339-e78a-96ef-8e8376254d23}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="24" height="27" transform="translate(20,11) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in : Data</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{ED2DB0BD-6050-432e-BA88-39C0D426F426}" transform="translate(193, 691)" class="element uml-Port" data-diagram-object-guid="{a6a59ee3-dc24-fe06-f308-8eb89217c103}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{987E3AEF-2875-47d6-B8C2-6FEEE9D198AD}" transform="translate(445, 562)" class="element uml-Port" data-diagram-object-guid="{a898d6c1-eb38-ce62-57d9-a1e19ce02e86}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out:Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{0355D1C5-F0FB-408d-95DA-3141E686324E}" transform="translate(1038, 135)" class="element uml-Port" data-diagram-object-guid="{b38608c2-5eb4-5fcf-c70f-5d4e059dc0f6}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(2,11) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C8DDE18B-D8A6-4210-B2C2-B3986C2C7759}" transform="translate(1085, 449)" class="element uml-Port" data-diagram-object-guid="{b695d284-aa6a-f86b-5ff4-ce491452007a}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(21,10) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F97A3B72-D726-4367-85BC-B8DCCC8D248F}" transform="translate(1039, 321)" class="element uml-Port" data-diagram-object-guid="{b8e2aa77-c752-cdd3-6472-dbfa3a2442f6}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2CCCA976-438F-4eba-BF38-9AD561BBE145}" transform="translate(256, 562)" class="element uml-Port" data-diagram-object-guid="{ba6f2928-8d6d-9e2e-67fd-c291f57cedfc}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(-18,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BE2686CF-652D-487d-8AB5-36554C951EFE}" transform="translate(881, 417)" class="element uml-Port" data-diagram-object-guid="{cf9ff432-8d4e-074c-0ba8-7a08ca41393f}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(4,20) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AD713896-9431-4fc1-84F5-28D621E21DD0}" transform="translate(389, 710)" class="element uml-Port" data-diagram-object-guid="{d0bde3da-761e-dfc6-88dd-ba2f2a58cce6}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="24" height="27" transform="translate(17,17) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Data</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3A8E8080-C5BE-4c59-A5B9-F9401F544B83}" transform="translate(750, 174)" class="element uml-Port" data-diagram-object-guid="{d61f4933-4d45-c100-434e-ec31659f918e}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(-6,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{9AE4EED3-23CC-404c-B2D9-745D7FA0992B}" transform="translate(962, 175)" class="element uml-Port" data-diagram-object-guid="{d7bf5e77-f79d-e862-8697-d6b00dc01c92}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(-9,-32) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C5837DE6-C2A3-4e8e-8CAC-709134E0F551}" transform="translate(996, 1000)" class="element uml-Port" data-diagram-object-guid="{da318a51-e705-439b-e563-0357f6ea7360}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{22CBAB8C-16C4-4fe2-B0F5-644E7E48884F}" transform="translate(909, 321)" class="element uml-Port" data-diagram-object-guid="{db6e0b16-31a6-891b-4311-e2f01ebb1279}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="42" height="27" transform="translate(18,-14) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Locations</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5F3D0293-8D68-45c8-ABC4-EBBD3BBE275E}" transform="translate(869, 515)" class="element uml-Port" data-diagram-object-guid="{eb632245-6fa5-e3ab-9e11-59af9b12c258}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="18" height="14" transform="translate(18,-8) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7E2C657F-1BB5-413e-9A8E-4CF5B56AAB94}" transform="translate(411, 143)" class="element uml-Port" data-diagram-object-guid="{f1528bbd-1a4c-c61a-ee17-6a90d5d7613b}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(0,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A33AADFA-8539-4122-A514-CC65C259C38A}" transform="translate(869, 571)" class="element uml-Port" data-diagram-object-guid="{f7615efe-0422-9057-4798-1226e8753e56}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="12" height="14" transform="translate(33,13) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{0DF6D099-D5A8-429a-8414-93F17E9E2323}" transform="translate(155, 498)" class="element uml-Port" data-diagram-object-guid="{fc7d22d6-a7d0-1ccf-ccd6-915b3ea90d76}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="42" height="40" transform="translate(-10,46) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Raw Solar Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{A1A7A630-A16C-4395-9A15-A9D2EBFC74A9}" transform="translate(323, 574)" class="element uml-Port" data-diagram-object-guid="{0a1ec8c5-a9c0-5f56-ebe1-7d757b087183}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(-7,-32) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> in: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{D619E680-225E-49fb-BD0E-6E132C5657B4}" transform="translate(256, 568)" class="element uml-Port" data-diagram-object-guid="{32869ecf-f063-216b-d51b-692b22636f26}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(11,16) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AC1609B4-B2BF-4dd6-B479-0D53B4CFB923}" transform="translate(391, 574)" class="element uml-Port" data-diagram-object-guid="{eb659f00-32b0-a8f3-aef6-46368b46e762}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(17,18) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{43D1F9DB-E778-4330-96D6-D6FFE235338A}" transform="translate(323, 574)" class="element uml-Port" data-diagram-object-guid="{5b44343d-636c-5cb5-6a9b-dab17ae0d284}">
+      <rect x="0" y="0" width="15" height="15" class="main-shape" />
+      <foreignObject width="30" height="27" transform="translate(-35,-6) " style="overflow:visible;">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="padding:0px; margin:0px; font-size:0.95em; font-weight:bold;">
+            <span> out: Power</span>
+          </p>
+        </div>
+      </foreignObject>
+    </g>
+    <g id="{99AC4A4C-52CF-449d-B964-A2850567F6F2}" class="element uml-Abstraction" data-diagram-object-guid="{04ef1fc0-aefa-7321-9284-975c5a75144a}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="256,583 256,697 208,697" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(203,697) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(232,683)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Charging Power</text>
+          </g>
+        </g>
+        <g transform="translate(208,668)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{BDE1696B-3E09-4681-9223-3782353D6B9A}" class="element uml-Abstraction" data-diagram-object-guid="{0f68c110-37fb-a90a-cb4b-de51736271cb}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="496,148 567,148" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(562,148) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(531,148)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Radio Message</text>
+          </g>
+        </g>
+        <g transform="translate(512,166)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{0B3C23D3-08ED-4abd-A41C-77B3FB72A452}" class="element uml-Abstraction" data-diagram-object-guid="{132f0a93-36d3-5b48-9455-9567ece53408}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="271,577 323,577" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(318,577) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(269,595)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{7B893A0A-D8BA-4fb8-AC03-6515E2D15024}" class="element uml-Abstraction" data-diagram-object-guid="{1f1c3ece-2be6-d945-d430-27a04acc5468}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="755,189 755,209 706,209" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(701,209) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(731,203)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Coded Messages</text>
+          </g>
+        </g>
+        <g transform="translate(699,229)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{15D05A21-A85A-4f26-B227-11555271D1A4}" class="element uml-Abstraction" data-diagram-object-guid="{1f77cbb0-594e-46e1-4181-95a1ece6214a}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="996,1007 924,1007" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(919,1007) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(960,1007)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">GPS Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(944,1027)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{E2985ABA-D668-4b8c-B406-AEA2117F5FEE}" class="element uml-Abstraction" data-diagram-object-guid="{290575cf-945a-b991-c904-cef4ed972045}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="508,684 508,674 886,674 886,624" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(881,624) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(924,671)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Battery, Temperature Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(828,636)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{4F28F1C2-90EB-41b5-8497-B1E9D2FC5E46}" class="element uml-Connector" data-diagram-object-guid="{2f7cd50c-1327-4d6a-fd7e-ced694c4fe81}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="510,591 510,632 1095,632 1095,761" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1090,761) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(802,632)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Power</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{9B0D50FD-8723-40fa-BBA0-40BFEEBE9F0C}" class="element uml-Abstraction" data-diagram-object-guid="{30cc3fb8-ae36-412e-ea0e-275696445edb}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="953,246 953,296 921,296 921,321" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(916,321) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(937,296)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">User Locations</text>
+          </g>
+        </g>
+        <g transform="translate(916,308)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{D25A1473-95F6-41e9-80A8-EC001E662D41}" class="element uml-Abstraction" data-diagram-object-guid="{40539557-355f-8ef1-79ff-6f512ff7ba33}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="412,221 412,216 340,216" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(335,216) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(379,214)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">RF Signal</text>
+          </g>
+        </g>
+        <g transform="translate(356,239)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{6711BC64-01B3-4eab-BE71-8F4AC0474F36}" class="element uml-Abstraction" data-diagram-object-guid="{43d1a22a-56e7-91fd-18cd-f9ec7bd6b5ee}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="1111,262 1049,262 1049,321" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1044,321) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1031,294)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Authenticated Command</text>
+          </g>
+        </g>
+        <g transform="translate(1049,304)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{6B0E02C6-2D37-4796-BBCE-574BD2B8FF5F}" class="element uml-Abstraction" data-diagram-object-guid="{4a67a1ca-73bf-3c20-3ff0-c3da0fbd03e8}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="702,778 702,644 886,644 886,624" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(881,624) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(718,738)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Rotation Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(759,723)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{E71E1C44-3A90-4e30-AC28-0AE163198852}" class="element uml-Abstraction" data-diagram-object-guid="{4dea6c8d-9ebf-cc3e-b349-d2072dd03e24}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="884,520 1090,520 1090,464" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1085,464) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1044,527)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Aggregated Rotation</text>
+          </g>
+        </g>
+        <g transform="translate(1090,505)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{EC946216-2D1E-4c89-BC22-D125964E7C8C}" class="element uml-Abstraction" data-diagram-object-guid="{561e0e57-95a1-89c3-bcce-310b04af6612}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="706,139 706,130 812,130" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(807,130) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(775,115)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Coded Message</text>
+          </g>
+        </g>
+        <g transform="translate(743,151)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{FB4CB995-DDD5-4ac7-83B6-DF623EB18C16}" class="element uml-Abstraction" data-diagram-object-guid="{5991ed04-305a-5179-c956-967b21a37366}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="340,146 411,146" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(406,146) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(373,171)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">RF Signal</text>
+          </g>
+        </g>
+        <g transform="translate(354,134)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{FBC373B0-E577-4960-AEC1-7AF422030DB4}" class="element uml-Connector" data-diagram-object-guid="{5db4b3cb-99fb-6449-a31b-5b37f5fddf6e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="582,143 691,143" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(686,143) rotate(90,5,0)" />
+      </g>
+    </g>
+    <g id="{960B4FB3-4E3C-45ff-8635-AF2654065AF6}" class="element uml-Abstraction" data-diagram-object-guid="{684543e0-ad4a-7447-9820-b124c0198768}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="909,1000 886,1000 886,624" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(881,624) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(870,973)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">GPS Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(886,825)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{EF28A8B0-2C94-4f89-BCEE-B62B3ED8E250}" class="element uml-Connector" data-diagram-object-guid="{691d236f-73f5-1b44-ac57-88f885be84d0}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="516,576 526,576 526,318" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(521,318) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(526,447)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Power</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{340A2D60-8A5F-4f9b-AE5C-27E4B21FF937}" class="element uml-Abstraction" data-diagram-object-guid="{6baccba6-2a76-ca2c-dc93-8998e9bf9b93}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="884,515 887,515 887,432" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(882,432) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(887,473)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Aggregated Location</text>
+          </g>
+        </g>
+        <g transform="translate(887,486)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{7A2D8D63-7680-4394-9F33-8F4F6B16700C}" class="element uml-Abstraction" data-diagram-object-guid="{6d20156f-2a2f-d9a2-0aa0-ff3dbd78f03e}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="914,187 914,182 835,182" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(830,182) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(863,213)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Messages</text>
+          </g>
+        </g>
+        <g transform="translate(828,166)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{A26FC0B7-D69C-44aa-9858-222008BEFB90}" class="element uml-Connector" data-diagram-object-guid="{6f22db82-2bb1-18ec-95d2-c0521ac336ce}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="691,221 582,221" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(577,221) rotate(270,5,0)" />
+      </g>
+    </g>
+    <g id="{EAB8E350-D4CF-4524-8BCA-C129AA14FF13}" class="element uml-Abstraction" data-diagram-object-guid="{74059f7a-4667-f5cf-67c4-6a6224e0692c}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="1126,264 1195,264 1195,323" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1190,323) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1195,293)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Authenticated Command</text>
+          </g>
+        </g>
+        <g transform="translate(1195,306)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{A9C8AB36-D92A-4607-9F3A-AEB3602E8C46}" class="element uml-Abstraction" data-diagram-object-guid="{85da76cf-1c3b-ea12-6128-898dfb76e010}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="865,321 865,272 914,272 914,238" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(909,238) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(889,285)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{E9A2FEF4-F381-4718-A4A8-2DB0D942BC68}" class="element uml-Abstraction" data-diagram-object-guid="{86db5518-71ca-7adf-47ba-7cbe0ebc5fac}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="458,577 458,582 501,582" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(496,582) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(479,595)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{23B074E5-E421-4c7d-B18B-B2505F560CA0}" class="element uml-Abstraction" data-diagram-object-guid="{873e9ab9-ad4e-840f-4384-9525263c02ed}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="453,596 453,686 501,686" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(496,686) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(463,701)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{9A96638C-26D1-4b35-A447-E070A4AD75BC}" class="element uml-Abstraction" data-diagram-object-guid="{8a34aad6-aec1-2057-e65d-869897c16da5}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="697,1027 697,972" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(692,972) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(697,999)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Rotation Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(697,1012)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{1E9557BF-21C0-43e1-88AF-7AEF45EC79A6}" class="element uml-Abstraction" data-diagram-object-guid="{8da4b147-23b1-c7c4-8559-8e1da043b2c3}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="155,722 155,751 307,751 307,725" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(302,725) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(231,751)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Battery Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(231,764)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{C1E3C668-EBA6-4114-BF66-2A2C684F0668}" class="element uml-Abstraction" data-diagram-object-guid="{94b2447d-edc4-7b68-7de5-e8615b97b93a}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="323,574 323,573 271,573" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(266,573) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(305,573)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Charging Battery</text>
+          </g>
+        </g>
+        <g transform="translate(286,590)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{91116DB8-6C25-4fc9-8FF0-CC5213E96DA2}" class="element uml-Connector" data-diagram-object-guid="{9890b6a9-eec0-a311-6f2c-ce9684e0a299}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="332,207 266,207" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(261,207) rotate(270,5,0)" />
+      </g>
+    </g>
+    <g id="{16DF1F9F-C17F-4c6f-9620-DEB22B0406BB}" class="element uml-Abstraction" data-diagram-object-guid="{9be0db3e-d960-3a2b-523d-869c4458d04a}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="986,840 924,848" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(919,848) rotate(262.648,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(952,833)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">GPS Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(932,870)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{C414FE69-8F14-4c75-88DE-DE889ABB795D}" class="element uml-Connector" data-diagram-object-guid="{a0e84585-9b87-f9ba-0c8c-fdbb5953aaf6}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="516,591 552,591 552,927 605,927 605,957" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(600,957) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(578,927)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Power</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{458CFB72-854F-4f1b-9F4A-84414CCF6CA0}" class="element uml-Abstraction" data-diagram-object-guid="{a1ddfc20-614c-80aa-53b7-3614aa330302}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="869,522 769,522 769,466" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(764,466) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(769,494)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Aggregated Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(769,507)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{5CB8F2CC-5B07-4e0d-8BDB-B8C813ACDDFC}" class="element uml-Abstraction" data-diagram-object-guid="{a56e2671-a62c-e9ef-1cb5-7e9d8c150b66}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="786,374 841,374 841,182 962,182" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(957,182) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(794,269)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Telemetry Message</text>
+          </g>
+        </g>
+        <g transform="translate(788,239)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{E3DDA487-15FA-4b23-82C0-81478356DE7F}" class="element uml-Abstraction" data-diagram-object-guid="{a6ca91d2-b9ae-f038-9652-c08db9b19b3c}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="909,843 886,843 886,624" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(881,624) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(929,771)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">GPS Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(905,736)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{B48A493B-90C9-4f70-BFB7-FDB7DB3687C3}" class="element uml-Connector" data-diagram-object-guid="{a7feecc2-633a-c67a-0b3d-033b4d6a49f8}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="510,576 510,524 691,524" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(686,524) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(600,524)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Power</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{AFB36ED2-3B73-4841-AD87-C828A990F2D4}" class="element uml-Connector" data-diagram-object-guid="{a95a14ec-2e79-e96c-e2a2-2ef38c66df45}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="266,150 325,150" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(320,150) rotate(90,5,0)" />
+      </g>
+    </g>
+    <g id="{57ADD076-5C99-4d86-87AE-2DB4D7CA78D5}" class="element uml-Abstraction" data-diagram-object-guid="{aaa80270-3305-31e4-bec6-0ebdfe842ab0}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="206,148 251,148" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(246,148) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(228,148)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">RF Signal</text>
+          </g>
+        </g>
+        <g transform="translate(194,171)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{2190CDA0-1A71-44f6-B02F-DA520E527142}" class="element uml-Connector" data-diagram-object-guid="{ae7d437f-f1a8-35e7-f532-2e6f1441643e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="511,591 511,632 1137,632 1137,959 1107,959" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1102,959) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1137,795)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Power</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{C657175D-DCB5-4686-8D03-F2DFA9A9AC07}" class="element uml-Abstraction" data-diagram-object-guid="{b89f9ec2-34fa-1216-68de-c884b2693d81}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="892,124 892,115 1005,115" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1000,115) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(948,115)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Decoded Message</text>
+          </g>
+        </g>
+        <g transform="translate(948,128)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{D41880EC-86BE-4960-AD52-C9FAC2F5EFE7}" class="element uml-Abstraction" data-diagram-object-guid="{bcdfd36f-07dc-d730-3110-52c86febb48f}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="170,512 256,512 256,562" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(251,562) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(225,515)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Solar Power</text>
+          </g>
+        </g>
+        <g transform="translate(207,527)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{7B37B297-0113-457f-82EA-7B4B4D382B1B}" class="element uml-Abstraction" data-diagram-object-guid="{c47fc283-99ec-5a32-6e2a-7e01c268db19}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="146,651 146,568 256,568" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(251,568) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(190,568)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Battery Power</text>
+          </g>
+        </g>
+        <g transform="translate(172,586)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{C16BC78D-DD27-4183-9574-B609D394CF0F}" class="element uml-Abstraction" data-diagram-object-guid="{c4a337c9-4d29-ec5c-56fe-24a5bf4c0c12}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="251,222 251,237 195,237" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(190,237) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(223,237)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">RF Signal</text>
+          </g>
+        </g>
+        <g transform="translate(223,250)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{01DF7933-145C-4244-B8A6-AB29D102E0DF}" class="element uml-Abstraction" data-diagram-object-guid="{c7954900-78a6-e45d-e19b-a0a31bdd05ac}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="1038,150 1038,176 977,176" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(972,176) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1037,177)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">User Messages</text>
+          </g>
+        </g>
+        <g transform="translate(1007,189)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{85365EFC-CFDB-453d-A191-0831C3153D38}" class="element uml-Abstraction" data-diagram-object-guid="{ca552ffe-411e-a79a-3cd5-ba032bd7f1c0}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="101,722 101,771 389,771 389,725" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(96,722) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(245,771)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Battery Commands</text>
+          </g>
+        </g>
+        <g transform="translate(247,790)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{ED54D635-D7B8-4efd-9A0F-FF0E044488D1}" class="element uml-Connector" data-diagram-object-guid="{d3a89788-44e7-ef48-67d2-d134311f4d70}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="516,591 610,591 610,778" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(605,778) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(610,684)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Power</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{1740949C-F73B-4109-B959-68734BEABF1A}" class="element uml-Abstraction" data-diagram-object-guid="{d8abdac1-9864-dc25-6a5f-ea3f4a66d5b7}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="879,609 878,609 878,586" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(873,586) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(852,602)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(886,610)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{24256704-E346-433c-B57A-CA7D967C863F}" class="element uml-Abstraction" data-diagram-object-guid="{e8da608c-dd80-0321-5c02-9500674c9662}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="406,574 406,562 445,562" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(440,562) rotate(90,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(425,575)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{602D2CB8-3C02-445f-A20D-7054F6424902}" class="element uml-Abstraction" data-diagram-object-guid="{ecc55296-d613-d937-0c4c-7cf99080631b}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="567,222 496,222" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(491,222) rotate(270,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(531,222)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Radio Message</text>
+          </g>
+        </g>
+        <g transform="translate(511,244)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{D15D951F-869A-4b49-9549-6DD613B3AB4D}" class="element uml-Abstraction" data-diagram-object-guid="{ee4cba02-25b9-77ed-0a1e-93947d4af41b}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="1090,111 1116,111 1116,200" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1111,200) rotate(180,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1116,155)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Commands</text>
+          </g>
+        </g>
+        <g transform="translate(1116,168)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{2355036D-8392-4e44-B169-F979710BE9B3}" class="element uml-Abstraction" data-diagram-object-guid="{f0fe4eeb-95e3-55d1-d293-f8c97d380877}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="705,962 814,962 814,643 886,643 886,624" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(881,624) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(851,698)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Rotation Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(837,904)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{F75C61B4-EE0C-4bfd-8FF8-22F5775FA6C1}" class="element uml-Abstraction" data-diagram-object-guid="{f8c2259e-72ca-ca1d-40d8-72fce5e27c6c}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="702,852 702,793" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(697,793) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(704,828)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Rotation Telemetry</text>
+          </g>
+        </g>
+        <g transform="translate(702,835)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«allocate»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

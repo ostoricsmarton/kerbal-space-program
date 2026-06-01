@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mainSvg" width="534" height="949" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+		#viewport {
+			margin:0;
+			font-family:"Arial";
+			font-size: 10px;
+			text-rendering: optimizeLegibility;
+			image-rendering: optimizeQuality;
+			buffered-rendering: static;
+			color:rgb(109,112,114);
+		}
+		
+		#viewport tab { padding-left: 4em; }
+		
+		.fo-body { margin:0; }
+		
+		.stereotype::before { content: '\00AB'; }
+		.stereotype::after { content: '\00BB'; }
+		.text-stereotype { padding-top: 6px; }
+		
+		.visible { display:block; }
+		.invisible { display:none; }
+		
+		.text-center { text-align:center; }
+		.text-ellipsis {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	
+				g.element				{ fill: url(#gradStandardObject);stroke:rgb(157,139,141);stroke-width:1px;}
+				g.uml-Enumeration		{ fill: url(#gradEnumeration) }
+				g.element rect		{ filter:url(#dropshadow)}
+				g.element circle		{ filter:url(#dropshadow)}
+				g.element ellipse		{ filter:url(#dropshadow)}
+				.fillBeige			{ fill: #fcf2e3; }
+	 
+		g.element text {
+			stroke: rgb(253,250,247);
+			stroke-width:2px;
+			paint-order:stroke;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			fill: rgb(109,112,114);
+		}
+
+		#mainSvg { 
+			background: #aab9dc;
+			background: -moz-linear-gradient(top, #aab9dc 0%, #eff1f8 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aab9dc), color-stop(100%,#eff1f8));
+			background: -webkit-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -o-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -ms-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: linear-gradient(to bottom, #aab9dc 0%,#eff1f8 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab9dc', endColorstr='#eff1f8',GradientType=0 );
+			
+			background:white;
+		}
+		
+		.node					{ fill:none; }
+		.connector				{ fill:none;pointer-events:visibleStroke; }
+		.connectorPointerTarget { fill:none;pointer-events:stroke;visibility:hidden;stroke-width:17;stroke-linejoin:miter;stroke-linecap:butt; }
+		.connector-dash			{ fill:none; stroke-dasharray:7 4; pointer-events:visibleStroke; }
+		.part-notelink			{ fill:none; stroke-dasharray:3; pointer-events:visibleStroke; }
+		.part-associationclass	{ fill:none; stroke-dasharray:6 3; pointer-events:visibleStroke; }
+		.partition-splitter		{ fill:none; stroke-dasharray:3; }
+		.line-dash				{ stroke-dasharray: 7 4; }
+		
+		.action					{ text-anchor:middle; }
+		.actionpin				{ text-anchor:middle; }
+		.text-middle			{ text-anchor:middle; }
+		
+		.fill-gray				{ fill:#3f3f3f; }
+		.text-members			{ fill:#696969;stroke:none;text-anchor:start; }
+		.text-transition		{ fill:black;stroke:none;text-anchor:middle; }
+		.text-object-name		{ fill:black;stroke:none;text-anchor:middle;font-weight:bold; }
+		.text-stereotypes		{ fill:black;stroke:none;text-anchor:start; }
+		.connector-label		{ text-anchor:middle; alignment-baseline:hanging; }
+		.controlflow-label		{ text-anchor:end; alignment-baseline:baseline; }
+		.message-label			{ text-anchor:middle; }
+		.opaque-action-body		{ color:grey }
+	 
+		.partition-name			{ text-anchor:start;alignment-baseline:hanging; }
+		
+		.childelement-icon		{ display:inline-block;width:20px;height:16px;vertical-align:middle; }
+		.component-icon			{ fill:rgb(252,242,227); }
+		.template-arg-box		{ fill:rgb(252,242,227); stroke-dasharray: 7 4; }
+		.template-arg-text		{ text-anchor:start; alignment-baseline:hanging; }
+		
+		.hyperlink-text			{ color:blue; text-decoration:underline; margin:0 }
+		
+		.enumliterals-list {
+			list-style-type: none;
+			margin: 3px 0px 3px 24px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list {
+			list-style-type: none;
+			margin: 3px 0px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list li::before {
+			padding: 0px 8px 0px 5px
+		}
+		.properties-list li.private::before {
+			content: '-'; padding-right: 11px;
+		}
+		.properties-list li.protected::before {
+			content: '#';
+		}
+		.properties-list li.public::before {
+			content: '+';
+		}
+		.properties-list li.internal::before {
+			content: '~';
+		}
+		.properties-list li.package::before {
+			content: '~';
+		}
+	 
+		g.element .partitionHeader {
+			fill: none;
+			filter: none;
+		}
+		
+		.highlighted { filter:url(#highlighter)}
+		
+		.part-object-parent {
+			margin: 0px;
+			padding-top: 4px;
+			padding-right: 3px;
+			text-align: right;
+			font-style: italic;
+		}
+		
+		.part-object-rootleaf {
+			margin: 0px;
+			padding-right: 6px;
+			text-align: right;
+		}
+		
+		.part-object-tests {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			border-top: 2px solid red;
+		}
+		
+		.part-usecase-extensionpoints {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 3px;
+			padding-left: 12%;
+			vertical-align: top;
+			border-top: 2px solid red;
+		}
+		
+		.part-diagram-details { border:0; color:blue }
+		.part-diagram-details td { padding:0 }
+		
+		.part-diagram-notes { border:0 }
+		.part-diagram-notes td { padding:0 }		
+	    
+		.part-state-operation { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 71, 136) }
+		.part-state-operation-method { margin:0px; padding-left:10px; color:gray }
+		.part-state-operation-method p { margin: 2px 0px 2px 0px; }
+		.part-state-asframe-name { fill:#f7f3f7 }
+		.part-internal-transition-do { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 30, 30) }
+		.part-internal-transition-behavior { margin:2px 0 0 0; padding-left:15px; color:rgb(0, 71, 136) }
+		
+		.part-timeline-timelabel-container { fill:white }
+    
+	    .connected-feature_mark { fill:none; stroke-width:1 }
+	    
+	    .part-note { line-height:125%; }
+	    .part-note ul { margin:0; padding-left:17px; }
+	    .part-note ol { margin:0; padding-left:12px; }
+	    .part-note ul li { padding-left:10px; }
+	    .part-note ol li { padding-left:15px; }
+	    .part-note ntab { white-space:pre; tab-size:4em; }
+	    .part-note ntab::before { content: '	'; }
+	    
+	    .part-constraint { line-height:125%; }
+	    .part-constraint ul { margin:0; padding-left:5px; list-style-type: none; display: inline-block; }
+	    .part-constraint ol { margin:0; padding-left:5px; display: inline-block; }
+		.part-constraint ul li::before { content: '-'; padding: 0px 2px 0px 0px; }
+	    .part-constraint ntab { white-space:pre; tab-size:4em; }
+	    .part-constraint ntab::before { content: '	'; }
+    
+		.part-decision-label	{ text-anchor:middle;alignment-baseline:central }
+		
+		/*==============================*/
+		
+		.shapescript-errors {
+			border: 0;
+			color: red;
+			width: auto;
+			margin-top: 3px;
+			margin-right: 3px;
+			margin-left: auto;
+			background-color: #e5e5e5a3;
+		}
+		.shapescript-errors caption { text-align: left; font-weight: bold; background-color: inherit }
+		
+		.part-separator { border-top: 1px solid rgb(157,139,141); margin:0px; margin-top:5px }
+		.connector { fill:none; stroke:rgb(107,115,139) }
+		
+		.element.base-Action { fill:rgb(251,241,218) }
+		.element.base-Requirement { fill:url(#gradRequirement) }
+		.element.uml-Activity { fill:rgb(250,247,220) }
+		.element.uml-ActivityParameterNode { fill:rgb(247,197,195) }
+		.element.uml-Class.requirement { fill:rgb(242,251,239) }
+		.element.uml-Interface { fill:url(#gradInterface) }
+		.element.uml-Property, .element.uml-Port { fill:url(#gradProperty) }
+		.element.uml-DataType { fill:rgb(250,249,230) }
+		.element.uml-StateMachine { fill:rgb(245,247,240) }
+		.element.uml-State { fill:url(#gradState) }
+		.element.uml-InstanceSpecification { fill:rgb(224,244,245) }
+		.element.uml-Package { fill:rgb(249,243,240) }
+		.element.uml-Signal { fill:rgb(249,249,249) } /*rgb(255,255,255) - rgb(239,239,239)*/
+		.element.uml-Gate { fill:rgb(032,032,032) }
+		.element.uml-Trigger { fill:rgb(253,240,245) }
+		.element.uml-UseCase { fill:rgb(231,242,253) }
+		.element.uml-Comment { fill:white; stroke:rgb(131,181,190) }
+		
+		.element.uml-InitialNode, .element.uml-JoinNode, .element.uml-ForkNode { fill:rgb(152,132,132) }
+		.element.uml-Pseudostate.kind-Initial, .element.uml-Pseudostate.kind-Join, .element.uml-Pseudostate.kind-Fork, .element.uml-Pseudostate.kind-Junction { fill:rgb(152,132,132) }
+		.element.uml-DecisionNode, .element.uml-MergeNode, .element.uml-ActivityFinalNode, .element.uml-FinalState { fill:rgb(206,225,163) }				
+		.element.uml-Pseudostate.kind-DeepHistory,
+		.element.uml-Pseudostate.kind-ShallowHistory,
+		.element.uml-Pseudostate.kind-Choice,
+		.element.uml-Pseudostate.kind-ExitPoint,		
+		.element.uml-Pseudostate.kind-EntryPoint { fill:rgb(206,225,163) }
+		
+		.part-attribute-container { color:rgb(123,82,86) }
+		.part-operation-container { color:rgb(0, 71, 136) }
+		.part-taggedvalue-container { padding-top:4px }
+		.part-occurrence-specifications { color:rgb(123,82,86); padding-top:2px; padding-left:14px }
+		.part-object-notes { color:#a0a0a0; padding-top:10px; padding-left:11px; padding-right:2px; line-height:110% }
+		.part-timeline-container { fill:#f3fcfc }
+		
+		.requirement-text { white-space:break-spaces }
+
+		a.disabled { pointer-events:none; cursor:not-allowed; color:currentColor; text-decoration:auto }
+
+	]]></style>
+  <defs>
+    <g id="_EAArrow">
+      <polyline points="0,15 5,0 10,15" style="fill:none" />
+    </g>
+    <g id="_EAArrow2">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:black" />
+    </g>
+    <g id="_EAArrow3">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:rgb(252, 242, 227)" />
+    </g>
+    <g id="_EAArrowFull">
+      <polyline points="0,15 5,0 10,15 0,15" class="fillBeige" />
+    </g>
+    <g id="_EAArrowFullBlack">
+      <polyline points="0,15 5,0 10,15 0,15" style="fill:black" />
+    </g>
+    <g id="NestingArrow">
+      <circle cx="5" cy="8" r="8" class="fillBeige" />
+      <line x1="-3" y1="8" x2="13" y2="8" />
+      <line x1="5" y1="0" x2="5" y2="16" />
+    </g>
+    <g id="NestingArrowBigger">
+      <circle cx="5" cy="10" r="10" class="fillBeige" />
+      <line x1="-5" y1="10" x2="15" y2="10" />
+      <line x1="5" y1="0" x2="5" y2="20" />
+    </g>
+    <g id="AssemblyConnectorMark">
+      <path class="node" style="stroke-width: 1.001;" d="M-10,0 a10,10 0 1 0 20,0" />
+      <circle cx="0" cy="0" r="7" class="fillBeige" />
+    </g>
+    <g id="RealizesArrow">
+      <polyline points="0,10 5,0 10,10 0,10" style="fill:black" />
+    </g>
+    <linearGradient id="gradStandardObject" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(253,250,247);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(245,234,223);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradEnumeration" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(234,253,228);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(213,249,200);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDeepHistory" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradRequirement" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(242,251,239);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,243,215);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradInterface" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(241,236,250);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,212,242);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradProperty" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(218,234,252);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(189,217,249);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradState" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(244,237,217);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(236,225,192);stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropshadow" height="140%" width="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <!-- stdDeviation is how much to blur -->
+      <feOffset dx="3" dy="3" result="offsetblur" />
+      <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic" />
+        <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <g id="compositeDiagramIcon">
+      <ellipse cx="0" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <ellipse cx="15" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <polyline class="node" points="5,0 10,0" />
+    </g>
+    <filter id="highlighter">
+      <feFlood flood-color="rgb(0,0,255)" result="flood" />
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1" />
+      <feOffset dx=" 1" dy=" 1" in="composite1" result="offset1" />
+      <feOffset dx="-1" dy="-1" in="composite1" result="offset2" />
+      <feOffset dx=" 1" dy="-1" in="composite1" result="offset3" />
+      <feOffset dx="-1" dy=" 1" in="composite1" result="offset4" />
+      <feMerge result="merge">
+        <feMergeNode in="offset1" />
+        <feMergeNode in="offset2" />
+        <feMergeNode in="offset3" />
+        <feMergeNode in="offset4" />
+      </feMerge>
+      <feGaussianBlur in="merge" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="doubleStroke" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feMorphology in="SourceGraphic" result="a" operator="dilate" radius="1" />
+      <feComposite in="SourceGraphic" in2="a" result="xx" operator="xor" />
+    </filter>
+    <radialGradient id="gradNotePin" cx="35%" cy="35%" r="70%" fx="35%" fy="35%">
+      <stop offset="20%" style="stop-color:white;" />
+      <stop offset="100%" style="stop-color:gray;" />
+    </radialGradient>
+    <g id="NotePin">
+      <circle cx="0" cy="0" r="9" stroke="gray" fill="url(#gradNotePin)" />
+    </g>
+  </defs>
+  <g id="viewport" transform="translate(-121.5,0.5)">
+    <g style="" id="{084921AA-09DE-4be0-8D0B-E8E5BB91CEBD}" transform="translate(160, 787)" class="element uml-CallBehaviorAction base-Action" data-diagram-object-guid="{48fd897e-b1d7-07af-8e66-0ed71078b718}">
+      <rect x="0" y="0" rx="10" ry="10" width="135" height="75" class="main-shape" />
+      <foreignObject width="135" height="75" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:3px;"></p>
+          <p class="text-center" style="padding-top:5px">
+            <b>Ground confirms operational state from telemetry</b>
+          </p>
+        </div>
+      </foreignObject>
+      <polyline points="125,53 125,70" />
+      <polyline points="121,61 129,61" />
+      <polyline points="121,61 121,70" />
+      <polyline points="129,61 129,70" />
+    </g>
+    <g style="" id="{F9748A85-8DD7-48b4-A2FB-8AB55427864B}" transform="translate(217, 911)" class="element uml-ActivityFinalNode" data-diagram-object-guid="{4cd1c7fd-d040-3a86-3adf-d449b76fb6b3}">
+      <circle cx="10" cy="10" r="10" class="main-shape" />
+      <circle cx="10" cy="10" r="4" style="fill:rgb(152,132,132)" />
+      <text x="10" y="30" class="text-transition">End</text>
+      <!--Label></-Label-->
+    </g>
+    <g style="" id="{68E8C48F-E11D-4ace-AF27-C65FD72F5433}" transform="translate(548, 917)" class="element uml-ActivityFinalNode" data-diagram-object-guid="{4d011465-c2fd-4340-f342-df38da779cd3}">
+      <circle cx="10" cy="10" r="10" class="main-shape" />
+      <circle cx="10" cy="10" r="4" style="fill:rgb(152,132,132)" />
+      <text x="10" y="30" class="text-transition">exception end</text>
+      <!--Label></-Label-->
+    </g>
+    <g style="" id="{86562617-E7FA-4032-A8CF-D5304B93511E}" transform="translate(491, 842)" class="element uml-OpaqueAction base-Action" data-diagram-object-guid="{4dd73858-0ce0-98f3-dc4b-4302476c2a12}">
+      <rect x="0" y="0" rx="10" ry="10" width="155" height="35" class="main-shape" />
+      <foreignObject width="155" height="35" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="text-align:left; margin:0px; padding-top:2px; padding-left:5px;">
+            <b>Opaque</b>
+          </p>
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;">
+            <b></b>
+          </p>
+          <p class="text-center" style="margin:0px;padding-top:-5px">
+            <b>Telemetry Report about fallback and failed update</b>
+          </p>
+          <p class="text-center opaque-action-body" style="margin:0px;display:none"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{81259D2F-889A-4ec2-83D2-A2C2F0D9DDBB}" transform="translate(160, 370)" class="element uml-CallBehaviorAction base-Action" data-diagram-object-guid="{50c9fc9c-4a32-0f42-49e2-0138b97fd451}">
+      <rect x="0" y="0" rx="10" ry="10" width="135" height="75" class="main-shape" />
+      <foreignObject width="135" height="75" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:3px;"></p>
+          <p class="text-center" style="padding-top:5px">
+            <b>Spacecraft verifies integrity (and signature if applicable)</b>
+          </p>
+        </div>
+      </foreignObject>
+      <polyline points="125,53 125,70" />
+      <polyline points="121,61 129,61" />
+      <polyline points="121,61 121,70" />
+      <polyline points="129,61 129,70" />
+    </g>
+    <g style="" id="{DBBF4C5E-27BB-47c2-BB2D-9C99E8EB2DBE}" transform="translate(476, 752)" class="element uml-OpaqueAction base-Action" data-diagram-object-guid="{5ca26db3-ee27-ebbe-d442-69c1978ebe00}">
+      <rect x="0" y="0" rx="10" ry="10" width="165" height="56" class="main-shape" />
+      <foreignObject width="165" height="56" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="text-align:left; margin:0px; padding-top:2px; padding-left:5px;">
+            <b>Opaque</b>
+          </p>
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:0px;">
+            <b></b>
+          </p>
+          <p class="text-center" style="margin:0px;padding-top:6px">
+            <b>Automatic fallback to previous image</b>
+          </p>
+          <p class="text-center opaque-action-body" style="margin:0px;display:none"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{627A0EB5-9D73-4a1c-9FB8-F790A56843CF}" transform="translate(215, 10)" class="element uml-InitialNode" data-diagram-object-guid="{7285508f-dfa1-964a-dd55-d6541d02e3d6}">
+      <circle cx="10" cy="10" r="10" class="main-shape" />
+      <text x="10" y="30" class="text-transition">Start</text>
+      <!--Label></-Label-->
+    </g>
+    <g style="" id="{EFB46957-0C20-416d-81CF-0D70BC37AEAC}" transform="translate(160, 250)" class="element uml-CallBehaviorAction base-Action" data-diagram-object-guid="{73a92816-710d-8635-594c-00ca2f6dd47e}">
+      <rect x="0" y="0" rx="10" ry="10" width="135" height="75" class="main-shape" />
+      <foreignObject width="135" height="75" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:3px;"></p>
+          <p class="text-center" style="padding-top:5px">
+            <b>Image uplinked in segments with acknowledgements</b>
+          </p>
+        </div>
+      </foreignObject>
+      <polyline points="125,53 125,70" />
+      <polyline points="121,61 129,61" />
+      <polyline points="121,61 121,70" />
+      <polyline points="129,61 129,70" />
+    </g>
+    <g style="" id="{3F312D51-DE0C-4c59-84FD-439A61F6A39D}" transform="translate(160, 610)" class="element uml-CallBehaviorAction base-Action" data-diagram-object-guid="{7c40739b-50ad-c24f-35ff-467692c9069b}">
+      <rect x="0" y="0" rx="10" ry="10" width="135" height="75" class="main-shape" />
+      <foreignObject width="135" height="75" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:3px;"></p>
+          <p class="text-center" style="padding-top:5px">
+            <b>Post-boot health checks; status in telemetry</b>
+          </p>
+        </div>
+      </foreignObject>
+      <polyline points="125,53 125,70" />
+      <polyline points="121,61 129,61" />
+      <polyline points="121,61 121,70" />
+      <polyline points="129,61 129,70" />
+    </g>
+    <g style="" id="{6437778E-4764-4d5e-B320-AD139312C5DE}" transform="translate(158, 90)" class="element uml-CallBehaviorAction base-Action" data-diagram-object-guid="{84f1f5d5-22a1-ba4b-7202-055a4456bd0f}">
+      <rect x="0" y="0" rx="10" ry="10" width="135" height="75" class="main-shape" />
+      <foreignObject width="135" height="75" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:3px;"></p>
+          <p class="text-center" style="padding-top:5px">
+            <b>Operator selects validated software image on ground</b>
+          </p>
+        </div>
+      </foreignObject>
+      <polyline points="125,53 125,70" />
+      <polyline points="121,61 129,61" />
+      <polyline points="121,61 121,70" />
+      <polyline points="129,61 129,70" />
+    </g>
+    <g style="" id="{63C1FEF9-61DC-4008-A33A-260BF21243D5}" transform="translate(160, 517)" class="element uml-CallBehaviorAction base-Action" data-diagram-object-guid="{8654d64b-998d-0745-a062-f4db41835fb9}">
+      <rect x="0" y="0" rx="10" ry="10" width="135" height="75" class="main-shape" />
+      <foreignObject width="135" height="75" transform="translate(-0.5,-0.5)">
+        <div class="fo-body" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="display:none;margin:3px;"></p>
+          <p class="text-center" style="padding-top:5px">
+            <b>Spacecraft installs image and reboots if required</b>
+          </p>
+        </div>
+      </foreignObject>
+      <polyline points="125,53 125,70" />
+      <polyline points="121,61 129,61" />
+      <polyline points="121,61 121,70" />
+      <polyline points="129,61 129,70" />
+    </g>
+    <g style="" id="{20998D73-8046-4cb0-BB46-E0ECD9CF4C60}" transform="translate(214, 190)" class="element uml-MergeNode" data-diagram-object-guid="{b2a47ca4-f6e1-ecfa-b781-5f2a5e509647}">
+      <polyline style="filter: url(#dropshadow);stroke-width:1.01" points="0,17 13,0 26,17 13,34 0,17" class="main-shape" />
+      <text x="13" y="17" class="part-decision-label"></text>
+      <!--Label></-Label-->
+    </g>
+    <g style="" id="{4C17E6E3-3D16-4f9a-8364-B33CF1ACD97C}" transform="translate(214, 725)" class="element uml-DecisionNode" data-diagram-object-guid="{d2269ccd-a5d9-b82f-9dbf-0f5ea152b890}">
+      <polyline style="filter: url(#dropshadow);stroke-width:1.01" points="0,17 13,0 26,17 13,34 0,17" class="main-shape" />
+      <text x="13" y="17" class="part-decision-label">Health Check</text>
+      <!--Label></-Label-->
+    </g>
+    <g style="" id="{4AF1DB77-D140-4ab3-A4B0-BC6CA15203D4}" transform="translate(209, 464)" class="element uml-DecisionNode" data-diagram-object-guid="{ea9dfd04-1eff-32b1-430e-3ec7b1bd0cdc}">
+      <polyline style="filter: url(#dropshadow);stroke-width:1.01" points="0,17 13,0 26,17 13,34 0,17" class="main-shape" />
+      <text x="13" y="17" class="part-decision-label">Integrity Check</text>
+      <!--Label></-Label-->
+    </g>
+    <g id="{217F916A-3178-4a0b-9FAB-1428555B58F7}" class="element uml-ControlFlow" data-diagram-object-guid="{033edd87-ff94-6d12-e17e-211d7533fd1f}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="224,30 223,90" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(218,90) rotate(180.955,5,0)" />
+      </g>
+    </g>
+    <g id="{39587824-8EE7-4a99-A46C-EE52B4AB740D}" class="element uml-ControlFlow" data-diagram-object-guid="{063747cb-b507-54b8-87f3-10f777ed8a1a}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="225,862 226,911" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(221,911) rotate(178.831,5,0)" />
+      </g>
+    </g>
+    <g id="{83484941-8B5C-4997-98CF-FB320D1A7A69}" class="element uml-ControlFlow" data-diagram-object-guid="{3f38320d-898c-d479-45c9-2d489a3bb255}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="209,481 164,481 164,207 214,207" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(209,207) rotate(90,5,0)" />
+      </g>
+      <g class="part-controlflow-label">
+        <g transform="translate(132,201)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Package missing</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{6104B31C-9006-4b24-985C-E0E9A101714C}" class="element uml-ControlFlow" data-diagram-object-guid="{64e2fbc4-cb5c-e363-fd87-b30dbde434db}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="225,325 225,370" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(220,370) rotate(180,5,0)" />
+      </g>
+    </g>
+    <g id="{D1CF74D8-EB05-4f40-AEF2-0CA405399D00}" class="element uml-ControlFlow" data-diagram-object-guid="{7075a663-5d42-ed4f-a3b5-f979c7d2c814}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="227,759 225,787" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(220,787) rotate(184.086,5,0)" />
+      </g>
+      <g class="part-controlflow-label">
+        <g transform="translate(216,780)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Succesful</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{0209EBCA-4303-4882-9A41-F9367FB34717}" class="element uml-ControlFlow" data-diagram-object-guid="{742a338e-5b5a-b185-cd8d-cd970821c1ca}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="227,685 227,725" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(222,725) rotate(180,5,0)" />
+      </g>
+    </g>
+    <g id="{C076BCD3-70E3-444f-AD4F-A4D17FE46BF1}" class="element uml-ControlFlow" data-diagram-object-guid="{b926d42c-ea85-3154-34ef-23c1dffa38bf}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="223,445 222,464" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(217,464) rotate(183.013,5,0)" />
+      </g>
+    </g>
+    <g id="{E87F89DB-9052-4905-BAC4-32620331B0BD}" class="element uml-ControlFlow" data-diagram-object-guid="{b9fe1d47-21be-da77-cdb9-5b9a2bcfa1e4}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="561,808 565,842" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(560,842) rotate(173.29,5,0)" />
+      </g>
+    </g>
+    <g id="{85A07EBB-6C23-46a5-AB05-09118DE3B007}" class="element uml-ControlFlow" data-diagram-object-guid="{bc0b41ab-0e14-9ed4-14db-2c26eca8e78f}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="225,165 227,190" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(222,190) rotate(175.426,5,0)" />
+      </g>
+    </g>
+    <g id="{426147A1-902F-4e0e-828C-E105CA1D0BE5}" class="element uml-ControlFlow" data-diagram-object-guid="{be38a683-0b98-ed34-fc55-39ff573c767f}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="227,224 225,250" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(220,250) rotate(184.399,5,0)" />
+      </g>
+    </g>
+    <g id="{82E862F5-C7EF-44ea-BBFF-31A4030DB0F2}" class="element uml-ControlFlow" data-diagram-object-guid="{c27d1f5b-e3f7-d4e2-4b01-449074e56f16}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="240,742 476,770" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(471,770) rotate(96.766,5,0)" />
+      </g>
+      <g class="part-controlflow-label">
+        <g transform="translate(373,717)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">unsuccesful</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{50EA5E2F-F33E-47be-9523-20B3CFEDCE3F}" class="element uml-ControlFlow" data-diagram-object-guid="{cf007490-cada-3848-2c1b-66077e17af1e}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="225,592 225,610" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(220,610) rotate(180,5,0)" />
+      </g>
+    </g>
+    <g id="{D26A6535-BCBC-498b-8646-9FE96BDAD035}" class="element uml-ControlFlow" data-diagram-object-guid="{e58d9f46-505b-62ef-9a7e-f5d2606abb81}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="222,498 224,517" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(219,517) rotate(173.991,5,0)" />
+      </g>
+      <g class="part-controlflow-label">
+        <g transform="translate(215,511)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">Yes</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="{D0A460AA-0520-4ceb-9BD8-9F38DF499AFF}" class="element uml-ControlFlow" data-diagram-object-guid="{f856d0ba-208b-27e9-0a55-2240df8956a7}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="565,877 559,917" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(554,917) rotate(188.531,5,0)" />
+      </g>
+    </g>
+  </g>
+</svg>

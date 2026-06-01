@@ -1,0 +1,1101 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mainSvg" width="1569" height="1464" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css"><![CDATA[
+		#viewport {
+			margin:0;
+			font-family:"Arial";
+			font-size: 10px;
+			text-rendering: optimizeLegibility;
+			image-rendering: optimizeQuality;
+			buffered-rendering: static;
+			color:rgb(109,112,114);
+		}
+		
+		#viewport tab { padding-left: 4em; }
+		
+		.fo-body { margin:0; }
+		
+		.stereotype::before { content: '\00AB'; }
+		.stereotype::after { content: '\00BB'; }
+		.text-stereotype { padding-top: 6px; }
+		
+		.visible { display:block; }
+		.invisible { display:none; }
+		
+		.text-center { text-align:center; }
+		.text-ellipsis {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	
+				g.element				{ fill: url(#gradStandardObject);stroke:rgb(157,139,141);stroke-width:1px;}
+				g.uml-Enumeration		{ fill: url(#gradEnumeration) }
+				g.element rect		{ filter:url(#dropshadow)}
+				g.element circle		{ filter:url(#dropshadow)}
+				g.element ellipse		{ filter:url(#dropshadow)}
+				.fillBeige			{ fill: #fcf2e3; }
+	 
+		g.element text {
+			stroke: rgb(253,250,247);
+			stroke-width:2px;
+			paint-order:stroke;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			fill: rgb(109,112,114);
+		}
+
+		#mainSvg { 
+			background: #aab9dc;
+			background: -moz-linear-gradient(top, #aab9dc 0%, #eff1f8 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aab9dc), color-stop(100%,#eff1f8));
+			background: -webkit-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -o-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: -ms-linear-gradient(top, #aab9dc 0%,#eff1f8 100%);
+			background: linear-gradient(to bottom, #aab9dc 0%,#eff1f8 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab9dc', endColorstr='#eff1f8',GradientType=0 );
+			
+			background:white;
+		}
+		
+		.node					{ fill:none; }
+		.connector				{ fill:none;pointer-events:visibleStroke; }
+		.connectorPointerTarget { fill:none;pointer-events:stroke;visibility:hidden;stroke-width:17;stroke-linejoin:miter;stroke-linecap:butt; }
+		.connector-dash			{ fill:none; stroke-dasharray:7 4; pointer-events:visibleStroke; }
+		.part-notelink			{ fill:none; stroke-dasharray:3; pointer-events:visibleStroke; }
+		.part-associationclass	{ fill:none; stroke-dasharray:6 3; pointer-events:visibleStroke; }
+		.partition-splitter		{ fill:none; stroke-dasharray:3; }
+		.line-dash				{ stroke-dasharray: 7 4; }
+		
+		.action					{ text-anchor:middle; }
+		.actionpin				{ text-anchor:middle; }
+		.text-middle			{ text-anchor:middle; }
+		
+		.fill-gray				{ fill:#3f3f3f; }
+		.text-members			{ fill:#696969;stroke:none;text-anchor:start; }
+		.text-transition		{ fill:black;stroke:none;text-anchor:middle; }
+		.text-object-name		{ fill:black;stroke:none;text-anchor:middle;font-weight:bold; }
+		.text-stereotypes		{ fill:black;stroke:none;text-anchor:start; }
+		.connector-label		{ text-anchor:middle; alignment-baseline:hanging; }
+		.controlflow-label		{ text-anchor:end; alignment-baseline:baseline; }
+		.message-label			{ text-anchor:middle; }
+		.opaque-action-body		{ color:grey }
+	 
+		.partition-name			{ text-anchor:start;alignment-baseline:hanging; }
+		
+		.childelement-icon		{ display:inline-block;width:20px;height:16px;vertical-align:middle; }
+		.component-icon			{ fill:rgb(252,242,227); }
+		.template-arg-box		{ fill:rgb(252,242,227); stroke-dasharray: 7 4; }
+		.template-arg-text		{ text-anchor:start; alignment-baseline:hanging; }
+		
+		.hyperlink-text			{ color:blue; text-decoration:underline; margin:0 }
+		
+		.enumliterals-list {
+			list-style-type: none;
+			margin: 3px 0px 3px 24px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list {
+			list-style-type: none;
+			margin: 3px 0px;
+			padding: 0px;
+			line-height: 13px;
+		}
+		.properties-list li::before {
+			padding: 0px 8px 0px 5px
+		}
+		.properties-list li.private::before {
+			content: '-'; padding-right: 11px;
+		}
+		.properties-list li.protected::before {
+			content: '#';
+		}
+		.properties-list li.public::before {
+			content: '+';
+		}
+		.properties-list li.internal::before {
+			content: '~';
+		}
+		.properties-list li.package::before {
+			content: '~';
+		}
+	 
+		g.element .partitionHeader {
+			fill: none;
+			filter: none;
+		}
+		
+		.highlighted { filter:url(#highlighter)}
+		
+		.part-object-parent {
+			margin: 0px;
+			padding-top: 4px;
+			padding-right: 3px;
+			text-align: right;
+			font-style: italic;
+		}
+		
+		.part-object-rootleaf {
+			margin: 0px;
+			padding-right: 6px;
+			text-align: right;
+		}
+		
+		.part-object-tests {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-left: 5px;
+			border-top: 2px solid red;
+		}
+		
+		.part-usecase-extensionpoints {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 3px;
+			padding-left: 12%;
+			vertical-align: top;
+			border-top: 2px solid red;
+		}
+		
+		.part-diagram-details { border:0; color:blue }
+		.part-diagram-details td { padding:0 }
+		
+		.part-diagram-notes { border:0 }
+		.part-diagram-notes td { padding:0 }		
+	    
+		.part-state-operation { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 71, 136) }
+		.part-state-operation-method { margin:0px; padding-left:10px; color:gray }
+		.part-state-operation-method p { margin: 2px 0px 2px 0px; }
+		.part-state-asframe-name { fill:#f7f3f7 }
+		.part-internal-transition-do { margin:2px 0 0 0; padding-left:5px; color:rgb(0, 30, 30) }
+		.part-internal-transition-behavior { margin:2px 0 0 0; padding-left:15px; color:rgb(0, 71, 136) }
+		
+		.part-timeline-timelabel-container { fill:white }
+    
+	    .connected-feature_mark { fill:none; stroke-width:1 }
+	    
+	    .part-note { line-height:125%; }
+	    .part-note ul { margin:0; padding-left:17px; }
+	    .part-note ol { margin:0; padding-left:12px; }
+	    .part-note ul li { padding-left:10px; }
+	    .part-note ol li { padding-left:15px; }
+	    .part-note ntab { white-space:pre; tab-size:4em; }
+	    .part-note ntab::before { content: '	'; }
+	    
+	    .part-constraint { line-height:125%; }
+	    .part-constraint ul { margin:0; padding-left:5px; list-style-type: none; display: inline-block; }
+	    .part-constraint ol { margin:0; padding-left:5px; display: inline-block; }
+		.part-constraint ul li::before { content: '-'; padding: 0px 2px 0px 0px; }
+	    .part-constraint ntab { white-space:pre; tab-size:4em; }
+	    .part-constraint ntab::before { content: '	'; }
+    
+		.part-decision-label	{ text-anchor:middle;alignment-baseline:central }
+		
+		/*==============================*/
+		
+		.shapescript-errors {
+			border: 0;
+			color: red;
+			width: auto;
+			margin-top: 3px;
+			margin-right: 3px;
+			margin-left: auto;
+			background-color: #e5e5e5a3;
+		}
+		.shapescript-errors caption { text-align: left; font-weight: bold; background-color: inherit }
+		
+		.part-separator { border-top: 1px solid rgb(157,139,141); margin:0px; margin-top:5px }
+		.connector { fill:none; stroke:rgb(107,115,139) }
+		
+		.element.base-Action { fill:rgb(251,241,218) }
+		.element.base-Requirement { fill:url(#gradRequirement) }
+		.element.uml-Activity { fill:rgb(250,247,220) }
+		.element.uml-ActivityParameterNode { fill:rgb(247,197,195) }
+		.element.uml-Class.requirement { fill:rgb(242,251,239) }
+		.element.uml-Interface { fill:url(#gradInterface) }
+		.element.uml-Property, .element.uml-Port { fill:url(#gradProperty) }
+		.element.uml-DataType { fill:rgb(250,249,230) }
+		.element.uml-StateMachine { fill:rgb(245,247,240) }
+		.element.uml-State { fill:url(#gradState) }
+		.element.uml-InstanceSpecification { fill:rgb(224,244,245) }
+		.element.uml-Package { fill:rgb(249,243,240) }
+		.element.uml-Signal { fill:rgb(249,249,249) } /*rgb(255,255,255) - rgb(239,239,239)*/
+		.element.uml-Gate { fill:rgb(032,032,032) }
+		.element.uml-Trigger { fill:rgb(253,240,245) }
+		.element.uml-UseCase { fill:rgb(231,242,253) }
+		.element.uml-Comment { fill:white; stroke:rgb(131,181,190) }
+		
+		.element.uml-InitialNode, .element.uml-JoinNode, .element.uml-ForkNode { fill:rgb(152,132,132) }
+		.element.uml-Pseudostate.kind-Initial, .element.uml-Pseudostate.kind-Join, .element.uml-Pseudostate.kind-Fork, .element.uml-Pseudostate.kind-Junction { fill:rgb(152,132,132) }
+		.element.uml-DecisionNode, .element.uml-MergeNode, .element.uml-ActivityFinalNode, .element.uml-FinalState { fill:rgb(206,225,163) }				
+		.element.uml-Pseudostate.kind-DeepHistory,
+		.element.uml-Pseudostate.kind-ShallowHistory,
+		.element.uml-Pseudostate.kind-Choice,
+		.element.uml-Pseudostate.kind-ExitPoint,		
+		.element.uml-Pseudostate.kind-EntryPoint { fill:rgb(206,225,163) }
+		
+		.part-attribute-container { color:rgb(123,82,86) }
+		.part-operation-container { color:rgb(0, 71, 136) }
+		.part-taggedvalue-container { padding-top:4px }
+		.part-occurrence-specifications { color:rgb(123,82,86); padding-top:2px; padding-left:14px }
+		.part-object-notes { color:#a0a0a0; padding-top:10px; padding-left:11px; padding-right:2px; line-height:110% }
+		.part-timeline-container { fill:#f3fcfc }
+		
+		.requirement-text { white-space:break-spaces }
+
+		a.disabled { pointer-events:none; cursor:not-allowed; color:currentColor; text-decoration:auto }
+
+	]]></style>
+  <defs>
+    <g id="_EAArrow">
+      <polyline points="0,15 5,0 10,15" style="fill:none" />
+    </g>
+    <g id="_EAArrow2">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:black" />
+    </g>
+    <g id="_EAArrow3">
+      <polyline points="0,10 5,0 10,10 5,20 0,10" style="fill:rgb(252, 242, 227)" />
+    </g>
+    <g id="_EAArrowFull">
+      <polyline points="0,15 5,0 10,15 0,15" class="fillBeige" />
+    </g>
+    <g id="_EAArrowFullBlack">
+      <polyline points="0,15 5,0 10,15 0,15" style="fill:black" />
+    </g>
+    <g id="NestingArrow">
+      <circle cx="5" cy="8" r="8" class="fillBeige" />
+      <line x1="-3" y1="8" x2="13" y2="8" />
+      <line x1="5" y1="0" x2="5" y2="16" />
+    </g>
+    <g id="NestingArrowBigger">
+      <circle cx="5" cy="10" r="10" class="fillBeige" />
+      <line x1="-5" y1="10" x2="15" y2="10" />
+      <line x1="5" y1="0" x2="5" y2="20" />
+    </g>
+    <g id="AssemblyConnectorMark">
+      <path class="node" style="stroke-width: 1.001;" d="M-10,0 a10,10 0 1 0 20,0" />
+      <circle cx="0" cy="0" r="7" class="fillBeige" />
+    </g>
+    <g id="RealizesArrow">
+      <polyline points="0,10 5,0 10,10 0,10" style="fill:black" />
+    </g>
+    <linearGradient id="gradStandardObject" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(253,250,247);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(245,234,223);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradEnumeration" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(234,253,228);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(213,249,200);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradDeepHistory" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(240,240,240);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradRequirement" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(242,251,239);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,243,215);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradInterface" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(241,236,250);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(222,212,242);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradProperty" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(218,234,252);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(189,217,249);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradState" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(244,237,217);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(236,225,192);stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropshadow" height="140%" width="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <!-- stdDeviation is how much to blur -->
+      <feOffset dx="3" dy="3" result="offsetblur" />
+      <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic" />
+        <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <g id="compositeDiagramIcon">
+      <ellipse cx="0" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <ellipse cx="15" cy="0" rx="5" ry="3" style="fill:rgba(255,255,255,0.6)" />
+      <polyline class="node" points="5,0 10,0" />
+    </g>
+    <filter id="highlighter">
+      <feFlood flood-color="rgb(0,0,255)" result="flood" />
+      <feComposite operator="in" in="flood" in2="SourceGraphic" result="composite1" />
+      <feOffset dx=" 1" dy=" 1" in="composite1" result="offset1" />
+      <feOffset dx="-1" dy="-1" in="composite1" result="offset2" />
+      <feOffset dx=" 1" dy="-1" in="composite1" result="offset3" />
+      <feOffset dx="-1" dy=" 1" in="composite1" result="offset4" />
+      <feMerge result="merge">
+        <feMergeNode in="offset1" />
+        <feMergeNode in="offset2" />
+        <feMergeNode in="offset3" />
+        <feMergeNode in="offset4" />
+      </feMerge>
+      <feGaussianBlur in="merge" stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="doubleStroke" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feMorphology in="SourceGraphic" result="a" operator="dilate" radius="1" />
+      <feComposite in="SourceGraphic" in2="a" result="xx" operator="xor" />
+    </filter>
+    <radialGradient id="gradNotePin" cx="35%" cy="35%" r="70%" fx="35%" fy="35%">
+      <stop offset="20%" style="stop-color:white;" />
+      <stop offset="100%" style="stop-color:gray;" />
+    </radialGradient>
+    <g id="NotePin">
+      <circle cx="0" cy="0" r="9" stroke="gray" fill="url(#gradNotePin)" />
+    </g>
+  </defs>
+  <g id="viewport" transform="translate(0.5,0.5)">
+    <g style="" id="{77770A6B-A8BC-4b9c-8C2F-19718F9F2D4A}" transform="translate(10, 10)" class="element uml-Package" data-diagram-object-guid="{36e0f87d-2d91-ca12-2f7e-3f94abcb2258}">
+      <rect x="0" y="0" width="1549" height="1442" style="fill:none" class="main-shape" />
+      <polygon points="0,0 145.02148,0 145.02148,5 132.02148,19 0,19" />
+      <text x="3" y="12" style="font-weight: bold; fill:black; stroke:none">[package] Requirements</text>
+    </g>
+    <g style="" id="{ED9804A8-4790-4809-A9E4-D0E27DEBBDF9}" transform="translate(298, 1075)" class="element uml-Artifact" data-diagram-object-guid="{05985389-d313-4817-89a6-9554564ed06e}">
+      <rect x="0" y="0" width="420" height="340" style="fill:none;" class="main-shape" />
+      <foreignObject width="420" height="340">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Safety
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{E0CAA43D-95C5-4f39-9CF9-93FB16B4A089}" transform="translate(46, 1075)" class="element uml-Artifact" data-diagram-object-guid="{194a520b-0616-9a61-5035-3e420ef64436}">
+      <rect x="0" y="0" width="194" height="189" style="fill:none;" class="main-shape" />
+      <foreignObject width="194" height="189">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Security
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FE663707-6CFA-48e2-ACF0-1EB75F471049}" transform="translate(778, 1061)" class="element uml-Artifact" data-diagram-object-guid="{41f2df70-4b3f-ca29-237e-9380d55e4259}">
+      <rect x="0" y="0" width="465" height="184" style="fill:none;" class="main-shape" />
+      <foreignObject width="465" height="184">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Supportability
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{E940C0A8-3575-4934-A9A5-96E5660A1C64}" transform="translate(43, 616)" class="element uml-Artifact" data-diagram-object-guid="{6ff91a59-7936-7b23-4211-8c2657682d68}">
+      <rect x="0" y="0" width="638" height="406" style="fill:none;" class="main-shape" />
+      <foreignObject width="638" height="406">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Performance
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{5248CDFA-F0DE-41f4-A159-A06046A1BF4D}" transform="translate(1102, 52)" class="element uml-Artifact" data-diagram-object-guid="{82ab05ae-88c0-7784-d040-111feff00980}">
+      <rect x="0" y="0" width="420" height="539" style="fill:none;" class="main-shape" />
+      <foreignObject width="420" height="539">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Reliability
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{AD0D6F8E-35A6-46ad-88D7-65BF09A4E540}" transform="translate(728, 658)" class="element uml-Artifact" data-diagram-object-guid="{ac3845bf-9343-6d78-da40-e8929d38340b}">
+      <rect x="0" y="0" width="361" height="356" style="fill:none;" class="main-shape" />
+      <foreignObject width="361" height="356">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Usability
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F6FC181C-22A2-48af-BF42-AAB5460D940B}" transform="translate(1114, 658)" class="element uml-Artifact" data-diagram-object-guid="{d123a7e6-9f7d-55a8-1c50-3f294f01be5e}">
+      <rect x="0" y="0" width="254" height="346" style="fill:none;" class="main-shape" />
+      <foreignObject width="254" height="346">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Economic Constraints
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2951B818-2E68-4da1-B735-2B67CABE085E}" transform="translate(30, 43)" class="element uml-Artifact" data-diagram-object-guid="{fe7c0202-378b-a276-54ab-5655126b13f0}">
+      <rect x="0" y="0" width="1038" height="549" style="fill:none;" class="main-shape" />
+      <foreignObject width="1038" height="549">
+        <div class="fo-body text-center" xmlns="http://www.w3.org/1999/xhtml">
+          <p style="margin:0; padding-top:5px; font-weight:normal;font-style:normal;color:#000;font-family:Arial;text-decoration:none;text-align:inherit">
+						Functional
+					</p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B16B2425-494A-436e-8004-7B998D60673C}" transform="translate(1342, 72)" class="element uml-Class base-Requirement" data-diagram-object-guid="{0473969b-b164-55de-4866-a63431a5592d}">
+      <rect x="0" y="0" width="160" height="137" style="" class="main-shape" />
+      <foreignObject width="160" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b> Battery Deep Discharge Protection</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ12</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall protect batteries against deep discharge.
+<br /></div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{FEAB4175-6A20-4420-855C-6B6CDA6B12CF}" transform="translate(845, 1092)" class="element uml-Class base-Requirement" data-diagram-object-guid="{07a105fc-b6c5-1580-54b1-3a225e36d718}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Use Commercial CubeSat Modules</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ18</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall use commercially available CubeSat subsystems when feasible.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{CC2B5B41-77B8-4dab-961A-991A632EAAEC}" transform="translate(520, 1100)" class="element uml-Class base-Requirement" data-diagram-object-guid="{1425c7e8-89af-eb25-2b58-e320d192422f}">
+      <rect x="0" y="0" width="161" height="122" style="" class="main-shape" />
+      <foreignObject width="161" height="122" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Launch and Deployment Inhibits</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ9</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall implement multiple independent inhibits preventing activation during launch.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{889BA5C9-940C-400b-8C02-E3FEA9B851BF}" transform="translate(785, 869)" class="element uml-Class base-Requirement" data-diagram-object-guid="{1f338c24-79dc-9847-12d2-25acaecbe7db}">
+      <rect x="0" y="0" width="160" height="111" style="" class="main-shape" />
+      <foreignObject width="160" height="111" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Command Traceability</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ17</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall record logs of received and executed commands.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{061438F4-D0D1-4a5a-9691-CB2FE3BB35CA}" transform="translate(738, 689)" class="element uml-Class base-Requirement" data-diagram-object-guid="{2602b513-4807-2782-9028-a87080de7597}">
+      <rect x="0" y="0" width="160" height="150" style="" class="main-shape" />
+      <foreignObject width="160" height="150" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Payload Power Switching</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ15</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The onboard computer shall be able to switch payload power on and off under ground command and autonomous fault or power-management logic.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{46A44C2D-F816-41c0-B422-6D509C875DDD}" transform="translate(1123, 72)" class="element uml-Class base-Requirement" data-diagram-object-guid="{2d049708-d19a-783a-c6f2-94174c4306d1}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Safe Mode</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ10</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall provide a Safe Mode that prioritizes spacecraft survival and basic communications.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{59A51E1D-5386-48f1-85E6-020A09032C83}" transform="translate(693, 419)" class="element uml-Class base-Requirement" data-diagram-object-guid="{374034d3-0e39-0cae-c40f-4abe4bd577f9}">
+      <rect x="0" y="0" width="160" height="137" style="" class="main-shape" />
+      <foreignObject width="160" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Store-and-Forward Message Handling</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ1.2</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall store telemetry and received user messages until they can be downlinked.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{B94ED33D-0896-41ff-A1BB-EA492B625B0D}" transform="translate(880, 419)" class="element uml-Class base-Requirement" data-diagram-object-guid="{4883abff-ecfb-9291-68f6-6ab2795e24c2}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Configurable Radio Parameters</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ1.3</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall provide configurable transmission parameters.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F56C0C57-7C35-419b-8E46-F1A9B6FD1700}" transform="translate(62, 826)" class="element uml-Class base-Requirement" data-diagram-object-guid="{490431cb-6082-02dd-771e-b862d06f444a}">
+      <rect x="0" y="0" width="160" height="137" style="" class="main-shape" />
+      <foreignObject width="160" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Power Budget Compliance</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ5</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall operate within a power budget that accounts for a 95 minute orbit with 30–40 minutes of eclipse.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{BE1C9888-5339-4a47-8998-29801543D8D7}" transform="translate(1343, 239)" class="element uml-Class base-Requirement" data-diagram-object-guid="{4e9773c0-1cb8-50be-d752-ce5eafa50b28}">
+      <rect x="0" y="0" width="160" height="163" style="" class="main-shape" />
+      <foreignObject width="160" height="163" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Fault Detection and Recovery</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ13</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The onboard computer must be able to handle and recover from transient faults such as radiation induced upsets.
+<br /></div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{9B14D44A-1B25-4c9d-BD85-6D0397B13621}" transform="translate(360, 1278)" class="element uml-Class base-Requirement" data-diagram-object-guid="{50ede49c-3f4f-fa4f-6647-809ada53b047}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Delayed Deployables</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ9.1</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">Any deployable elements shall remain stowed until after deployment confirmation.
+<br /></div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{04F1602C-40C7-429a-B733-A0C291DCA083}" transform="translate(260, 419)" class="element uml-Class base-Requirement" data-diagram-object-guid="{62a8be9a-5e85-312c-9d92-61a798eaf781}">
+      <rect x="0" y="0" width="160" height="125" style="" class="main-shape" />
+      <foreignObject width="160" height="125" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Commandable Operations</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ1.4</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall accept and execute commands from ground operators.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7C50DF7B-90E1-4e75-9E20-38A7CAD93671}" transform="translate(918, 688)" class="element uml-Class base-Requirement" data-diagram-object-guid="{7a664fb5-b777-ebfa-14db-c7138b45a357}">
+      <rect x="0" y="0" width="159" height="152" style="" class="main-shape" />
+      <foreignObject width="159" height="152" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Autonomous Operation Between Contacts</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ16</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall operate autonomously between ground contacts without continuous operator supervision.
+<br /></div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{6AD66C7D-D977-42bb-9CFD-B720DBB8692F}" transform="translate(1074, 1098)" class="element uml-Class base-Requirement" data-diagram-object-guid="{87f6d494-e50d-5b14-f8b1-11500a090c16}">
+      <rect x="0" y="0" width="160" height="114" style="" class="main-shape" />
+      <foreignObject width="160" height="114" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Software Update</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ19</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall support remote software updates </div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{98966BC0-C324-473a-8349-78246111234A}" transform="translate(63, 1127)" class="element uml-Class base-Requirement" data-diagram-object-guid="{8c36eec8-28dd-34e1-5117-b2cc1d668e7a}">
+      <rect x="0" y="0" width="160" height="111" style="" class="main-shape" />
+      <foreignObject width="160" height="111" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Command Authentication</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ7</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system must authenticate commands before execution.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{819E2AF3-0DD6-4b1c-B2D7-1D93D3EB3C3F}" transform="translate(1169, 857)" class="element uml-Class base-Requirement" data-diagram-object-guid="{95117ba3-0b2c-9c13-c856-bbe972ddacd5}">
+      <rect x="0" y="0" width="160" height="111" style="" class="main-shape" />
+      <foreignObject width="160" height="111" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Subsystem Cost Range</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ21</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">Subsystem costs should typically fall between €5k and €40k.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{2654DC47-9315-434e-9935-954A04091C73}" transform="translate(483, 637)" class="element uml-Class base-Requirement" data-diagram-object-guid="{a412ccec-56d0-1bd2-9f66-41df76c6e833}">
+      <rect x="0" y="0" width="160" height="163" style="" class="main-shape" />
+      <foreignObject width="160" height="163" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Message Retention Capacity</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ4</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall provide sufficient data storage to retain at least 72 hours of expected user traffic and operational logs under typical traffic assumptions.
+<br /></div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{EF070FA5-F466-4278-8702-2157ED51AB4E}" transform="translate(265, 643)" class="element uml-Class base-Requirement" data-diagram-object-guid="{ac4127ae-bf4c-fe1f-f4b1-42dd19911ae9}">
+      <rect x="0" y="0" width="160" height="150" style="" class="main-shape" />
+      <foreignObject width="160" height="150" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Receiver Duty Cycle</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ3</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall support a receiver duty cycle between 10% and 50% of each orbital period, subject to available power margins.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3300211D-A0EA-427c-BB2E-0E3E5226FD52}" transform="translate(1137, 243)" class="element uml-Class base-Requirement" data-diagram-object-guid="{adfba2c7-d31c-9283-fedf-7d9b0fb6edd3}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Temperature Protection</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ11</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall implement safeguards to keep itself within operational temperature.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1490E120-F52F-491b-AF1F-940ED8F602BA}" transform="translate(60, 419)" class="element uml-Class base-Requirement" data-diagram-object-guid="{b58e9926-73d9-c004-acb4-56d1447aa32f}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Telemetry Service</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ1.1</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall transmit spacecraft health information to ground operators.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{35047A3F-CAB8-4c7b-8AE4-0043AEAEEA95}" transform="translate(468, 128)" class="element uml-Class base-Requirement" data-diagram-object-guid="{cb3401ec-f69a-cb71-3911-9cfc5065bc7a}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Radio Relay Service</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ1</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system must relay messages from ground users to radio ground stations.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{03AFCE6D-E088-4662-BC28-9F6C1E99BF26}" transform="translate(265, 833)" class="element uml-Class base-Requirement" data-diagram-object-guid="{d18e2b58-9270-6bb5-a946-061c9a753e87}">
+      <rect x="0" y="0" width="160" height="163" style="" class="main-shape" />
+      <foreignObject width="160" height="163" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Volume and Form Factor Compliance</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ6</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The mechanical design shall comply with the standard 3U CubeSat form factor (approximately 10 × 10 × 34 cm) with no protrusions during launch.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{3E590793-97D3-443e-9D5C-865EC1B8EBE2}" transform="translate(1168, 709)" class="element uml-Class base-Requirement" data-diagram-object-guid="{dbec9092-d9be-b26f-5eb3-5b9f856a6c94}">
+      <rect x="0" y="0" width="160" height="111" style="" class="main-shape" />
+      <foreignObject width="160" height="111" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Total Hardware Budget</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ20</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system hardware cost shall remain on the order of €200k.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{7CB9D964-2E9A-46ea-9AF9-455C5DF524AF}" transform="translate(337, 1099)" class="element uml-Class base-Requirement" data-diagram-object-guid="{dfda7457-f1eb-469b-9b5f-8321a277f93b}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>End-of-Life Passivation</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ8</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">At end-of-life, the system shall disable all transmitters and passivate the battery.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{04E8F710-70DE-497c-826A-A95DDB68064B}" transform="translate(1344, 436)" class="element uml-Class base-Requirement" data-diagram-object-guid="{ef9382c6-0e67-6c88-6e83-94a347f75ffc}">
+      <rect x="0" y="0" width="160" height="137" style="" class="main-shape" />
+      <foreignObject width="160" height="137" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Software Update Recovery</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ14</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall provide a recovery or rollback mechanism to restore a previous working configuration if an update fails.
+<br /></div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{C19BC655-76E9-4ff9-972E-358F045021C9}" transform="translate(65, 643)" class="element uml-Class base-Requirement" data-diagram-object-guid="{f61ab8f3-52ba-8d14-d5bf-804c41405467}">
+      <rect x="0" y="0" width="160" height="163" style="" class="main-shape" />
+      <foreignObject width="160" height="163" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Ground Contact Utilization</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ2</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall be capable of downlinking stored messages and telemetry during approximately 2–4 ground station passes per day, each with 5–10 minutes of usable link time.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{1E3EB890-5996-47b5-A257-6C73FED88D08}" transform="translate(468, 419)" class="element uml-Class base-Requirement" data-diagram-object-guid="{f99520eb-aa62-3fa1-81c5-bccc5212d4f6}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Payload Interface Services</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ1.5</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall provide electrical and data interfaces to support operation of onboard payloads.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g style="" id="{F3A4E834-F3BC-40dc-89DD-F1612F926FBA}" transform="translate(557, 1278)" class="element uml-Class base-Requirement" data-diagram-object-guid="{fad589fb-8c69-a7b8-f799-0d4bdec90c51}">
+      <rect x="0" y="0" width="160" height="124" style="" class="main-shape" />
+      <foreignObject width="160" height="124" transform="translate(-0.5,-0.5)">
+        <div class="fo-body text-content" xmlns="http://www.w3.org/1999/xhtml">
+          <p class="text-center text-ellipsis text-stereotype" style="margin:0px;">
+            <span class="stereotype part-object-stereotype" xmlns="http://www.w3.org/1999/xhtml">requirement</span>
+          </p>
+          <p class="text-center part-object-name" style="margin-top:0px;margin-bottom:2px;text-decoration:none;">
+            <b>Delayed RF Activation</b>
+          </p>
+          <div class="part-object-sysmlblock"></div>
+          <div class="part-taggedvalue-container part-separator">
+            <p class="requirement-text" style="text-align:left; margin:0; margin-top:2px; margin-left:6px;">id = REQ9.2</p>
+          </div>
+          <div class="part-object-notes part-separator">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="part-note" style="word-wrap:break-word;">The system shall delay radio transmission for a minimum of 30 minutes after deployment.</div>
+          </div>
+          <p class="childdiagram"></p>
+        </div>
+      </foreignObject>
+    </g>
+    <g id="{3FF225E8-6A20-473a-9F2F-F8DBD96F6A83}" class="element uml-Dependency" data-diagram-object-guid="{072768d3-c314-b950-f956-58b8691e2932}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="429,1278 429,1272 600,1272 600,1222" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(595,1222) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{F8AABA93-1ABF-4876-A1C6-80F86DDCBA9E}" class="element uml-Dependency" data-diagram-object-guid="{21a2124b-3250-b663-1bd0-019e3408c24c}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="548,419 548,302 548,302 548,252" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(543,252) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{67724CE1-52B2-471c-B3EF-CBDAA07E9CDE}" class="element uml-Dependency" data-diagram-object-guid="{22af4871-bfb6-83a4-a5cc-2197ae491d1a}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="959,419 959,302 548,302 548,252" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(543,252) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{B2741C2D-7188-4afe-BDE7-16B4A8903F98}" class="element uml-Dependency" data-diagram-object-guid="{4ebf26db-9ffc-061d-c5e9-3c69f6bfaf2b}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="637,1278 637,1272 600,1272 600,1222" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(595,1222) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{25AFFDB0-D70D-4e6c-8C88-712C141421EA}" class="element uml-Dependency" data-diagram-object-guid="{6e8d9e19-1c49-9ae5-4d55-78012ed34120}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="140,419 140,302 548,302 548,252" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(543,252) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{67FBBC66-ED72-41bc-A669-86BA34DE708F}" class="element uml-Dependency" data-diagram-object-guid="{9b4ae445-9427-2c08-4f58-d31597d97d1c}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="340,419 340,302 548,302 548,252" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(543,252) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{252473C4-A260-40f1-A77B-982622368B56}" class="element uml-Dependency" data-diagram-object-guid="{e15fd7c2-6880-a524-c0c3-992b340ddb51}">
+      <g class="main-shape">
+        <polyline class="connector" style="" points="772,419 772,302 548,302 548,252" />
+        <use style="" xlink:href="#NestingArrow" transform="translate(543,252) rotate(0,5,0)" />
+      </g>
+    </g>
+    <g id="{62941D99-28D1-40ba-AC53-2130C7CDF7A3}" class="element uml-Dependency" data-diagram-object-guid="{ed5b540f-22e9-a36c-b1b9-8fc910343e09}">
+      <g class="main-shape">
+        <polyline class="connector-dash" style="" points="1248,857 1248,820" />
+        <use style="" xlink:href="#_EAArrow" transform="translate(1243,820) rotate(0,5,0)" />
+      </g>
+      <g class="part-connector-label">
+        <g transform="translate(1248,851)" style="text-anchor:pvm; dominant-baseline:ideographic">
+          <g>
+            <text dy="0em">
+              <tspan class="stereotype part-connector-stereotype">«deriveReqt»</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
